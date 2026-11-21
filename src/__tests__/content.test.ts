@@ -25,12 +25,22 @@ describe("content", () => {
     if (profile.email) expect(profile.email).toMatch(/^[^@\s]+@[^@\s]+\.[a-z]+$/);
   });
 
+  it("gives every hobby and interest a unique slug and some detail", () => {
+    const all = [...hobbies, ...interests];
+    expect(new Set(all.map((p) => p.slug)).size).toBe(all.length);
+    for (const p of all) {
+      expect(p.tiles.length).toBeGreaterThan(0);
+      expect(p.notes.length).toBeGreaterThan(0);
+      expect(p.slug).toMatch(/^[a-z0-9-]+$/);
+    }
+  });
+
   it("never shows a street address", () => {
     expect(profile.location).not.toMatch(/\d/);
   });
 
   it("points every screenshot at a real file with alt text", () => {
-    const files = Object.keys(import.meta.glob("../../public/shots/*.png")).map((f) =>
+    const files = Object.keys(import.meta.glob("../../public/shots/*.{png,jpg}")).map((f) =>
       f.replace("../../public", ""),
     );
     for (const shot of projects.flatMap((p) => p.shots)) {

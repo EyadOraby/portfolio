@@ -39,7 +39,7 @@ export const experience: Experience[] = [
     place: "Mobile projects",
     period: "2023 – present",
     points: [
-      "Built Tabkha, a localized Flutter app with Firebase Auth, Cloud Firestore, Riverpod and Hive caching.",
+      "Built Tabkha, a bilingual recipe app with Riverpod 3, Firebase Auth, Hive and a REST API, and upgraded it to current Flutter.",
       "Built Mini Shop, a shopping app with BLoC/Cubit state, a REST API through Dio and an offline cart in Hive.",
       "Completed the Lookfinder technical assessment: BLoC architecture, repositories and an API layer with Dio.",
     ],
@@ -49,7 +49,7 @@ export const experience: Experience[] = [
     place: "University",
     period: "2023",
     points: [
-      "A citizen services app in Flutter and Firebase: government ID and IC requests, doctor and hospital booking, and job listings.",
+      "SANAD, a citizen services app in Flutter: government ID and IC requests, doctor and hospital booking, and job listings. Revived on current Flutter with tests and CI in 2026.",
     ],
   },
 ];
@@ -115,8 +115,8 @@ export type Project = {
   accent: string;
 };
 
-const desktop = (src: string, alt: string): Shot => ({ src: `/shots/${src}.png`, alt, device: "desktop" });
-const phone = (src: string, alt: string): Shot => ({ src: `/shots/${src}.png`, alt, device: "phone" });
+const desktop = (src: string, alt: string, ext = "png"): Shot => ({ src: `/shots/${src}.${ext}`, alt, device: "desktop" });
+const phone = (src: string, alt: string, ext = "png"): Shot => ({ src: `/shots/${src}.${ext}`, alt, device: "phone" });
 
 export const projects: Project[] = [
   {
@@ -208,31 +208,53 @@ export const projects: Project[] = [
     name: "Tabkha",
     kind: "Mobile",
     context: "Personal · private repo",
-    tagline: "A cooking app with onboarding, accounts and a fully localized interface.",
-    problem: "Recipe apps often ignore Arabic speakers, and switching language mid-session usually breaks layouts.",
+    tagline: "A bilingual cooking app: browse and search recipes, follow the steps and keep favourites.",
+    problem:
+      "Most recipe apps ignore Arabic speakers, and switching language mid-session usually breaks layouts.",
     approach:
-      "Riverpod with code generation for state, Firebase Auth and Firestore for data, Hive for caching, and right-to-left aware layouts.",
-    outcome: "English and Arabic with a live language picker, offline-friendly caching and a clean onboarding flow.",
-    highlights: ["Firebase Auth and Cloud Firestore", "Riverpod with code generation", "Language picker and full localization"],
-    stack: ["Flutter", "Riverpod", "Firebase", "Hive", "i18n"],
+      "Riverpod 3 providers over TheMealDB for categories, search and recipes, Firebase Auth for accounts with a guest mode, Hive for favourites, and right-to-left aware layouts with live language switching.",
+    outcome:
+      "English and Arabic throughout, favourites that survive restarts, and an injectable API client tested against a mock HTTP client in CI.",
+    highlights: [
+      "Search with debounce, category strip and a responsive recipe grid",
+      "Recipe details with ingredients, measures and numbered steps",
+      "Upgraded to current Flutter, Riverpod 3 and hive_ce",
+    ],
+    stack: ["Flutter", "Riverpod", "Firebase Auth", "Hive", "REST", "i18n"],
     links: [],
-    shots: [],
-    accent: "#e2843b",
+    shots: [
+      phone("tabkha-home", "Tabkha home on a phone: search, recipe categories and a grid of chicken dishes", "jpg"),
+      phone("tabkha-recipe", "A Tabkha recipe with its photo, cuisine and ingredient list", "jpg"),
+      phone("tabkha-login", "Tabkha sign-in screen with a continue-as-guest option"),
+      desktop("tabkha-desktop", "Tabkha on the web with a six-column recipe grid", "jpg"),
+    ],
+    accent: "#2a8056",
   },
   {
-    slug: "citizen-services",
-    name: "Citizen Services",
+    slug: "sanad",
+    name: "SANAD",
     kind: "Mobile",
     context: "Graduation project",
     tagline: "One app for government ID requests, doctor and hospital bookings, and job listings.",
-    problem: "Everyday services were spread across offices, phone lines and websites with no single place to start.",
-    approach: "A Flutter app on Firebase with a shared booking calendar and form flows reused across every service type.",
-    outcome: "A single catalog across government, medical and jobs, with bookings stored in Cloud Firestore.",
-    highlights: ["Booking calendar and form flows", "Firebase backend with Cloud Firestore", "Service catalog across three domains"],
-    stack: ["Flutter", "Firebase", "Firestore"],
+    problem: "Everyday public services in Egypt are spread across offices, phone lines and websites, with no single place to start.",
+    approach:
+      "A Flutter app with one catalog for government, medical and job services, shared booking flows with date and time pickers, and Material 3 navigation between sections.",
+    outcome:
+      "Revived in 2026: upgraded from Dart 2 to current Flutter, replaced discontinued packages, fixed sign-out and navigation, and added tests and CI.",
+    highlights: [
+      "ID renewal and integrated services card requests",
+      "Doctors, hospitals, radiology and physiotherapy with booking",
+      "Web deep links for demos, covered by tests",
+    ],
+    stack: ["Flutter", "Dart 3", "Material 3", "Firebase"],
     links: [],
-    shots: [],
-    accent: "#5b8def",
+    shots: [
+      phone("sanad-home", "SANAD home: what's new and the services on offer"),
+      phone("sanad-medical", "SANAD medical services: doctors, hospitals, radiology and physiotherapy"),
+      phone("sanad-doctors", "SANAD doctors list with specialties, days, hours and ratings"),
+      phone("sanad-login", "SANAD sign-in with a national ID"),
+    ],
+    accent: "#5fa35a",
   },
   {
     slug: "lookfinder",
@@ -259,60 +281,186 @@ export const metrics: { value: number; suffix: string; label: string }[] = [
   { value: 2, suffix: "", label: "live production apps" },
 ];
 
+export type Pastime = {
+  slug: string;
+  title: string;
+  emoji: string;
+  status: "Active" | "Exploring";
+  tagline: string;
+  overview: string;
+  tiles: { label: string; value: string }[];
+  notes: string[];
+  accent: string;
+};
+
 /** The hidden "Off the clock" view: life away from the keyboard. */
-export const hobbies: { title: string; text: string; emoji: string }[] = [
+export const hobbies: Pastime[] = [
   {
-    emoji: "♟️",
+    slug: "chess",
     title: "Chess",
-    text: "Openings, endgames and the occasional blunder. Good practice for thinking a few moves ahead.",
+    emoji: "♟️",
+    status: "Active",
+    tagline: "Thinking a few moves ahead.",
+    overview:
+      "Openings, endgames and the occasional blunder. Chess is the hobby that feels closest to engineering: you weigh options, picture what happens next and commit.",
+    tiles: [
+      { label: "What I enjoy", value: "Openings and endgames" },
+      { label: "It teaches me", value: "Patience and planning" },
+      { label: "Shows up in code as", value: "Edge cases first" },
+    ],
+    notes: [
+      "Calculating a line before moving is a lot like reasoning through a change before writing it.",
+      "Losing a game to one careless move is a good reminder to review my own work.",
+    ],
+    accent: "#c9b38a",
   },
   {
-    emoji: "🥋",
+    slug: "martial-arts",
     title: "Martial arts",
-    text: "Discipline, patience and showing up every day, on the mat and off it.",
+    emoji: "🥋",
+    status: "Active",
+    tagline: "Discipline, on the mat and off it.",
+    overview:
+      "Training is about showing up every day, drilling the basics until they are automatic and staying calm under pressure.",
+    tiles: [
+      { label: "What I enjoy", value: "Technique and drilling" },
+      { label: "It teaches me", value: "Discipline and focus" },
+      { label: "Shows up in code as", value: "Consistent habits" },
+    ],
+    notes: [
+      "Small, repeated practice beats occasional bursts of effort.",
+      "Respect for the people you train with carries over to every team.",
+    ],
+    accent: "#e2574c",
   },
   {
-    emoji: "🏀",
+    slug: "basketball",
     title: "Basketball",
-    text: "Pick-up games and fast breaks. Reading the court is a lot like reading a codebase.",
+    emoji: "🏀",
+    status: "Active",
+    tagline: "Fast breaks and reading the court.",
+    overview:
+      "Pick-up games with friends. Basketball rewards quick decisions, good spacing and knowing when to pass instead of forcing the shot.",
+    tiles: [
+      { label: "What I enjoy", value: "Pick-up games" },
+      { label: "It teaches me", value: "Quick decisions" },
+      { label: "Shows up in code as", value: "Team over hero ball" },
+    ],
+    notes: ["The best plays usually come from the extra pass, and the best code from a second pair of eyes."],
+    accent: "#f08a3c",
   },
   {
-    emoji: "⚽",
+    slug: "football",
     title: "Football",
-    text: "Playing with friends and following the big matches every weekend.",
+    emoji: "⚽",
+    status: "Active",
+    tagline: "Playing with friends, watching the big matches.",
+    overview: "Football is where I switch off: a match with friends during the week and the big games at the weekend.",
+    tiles: [
+      { label: "What I enjoy", value: "Playing and watching" },
+      { label: "It teaches me", value: "Playing a role" },
+      { label: "Shows up in code as", value: "Clear ownership" },
+    ],
+    notes: ["Every position matters, and a team works when everyone knows their part."],
+    accent: "#4fb6a3",
   },
   {
-    emoji: "✈️",
+    slug: "travelling",
     title: "Travelling",
-    text: "New cities, new food and new ways of doing everyday things. Always planning the next trip.",
+    emoji: "✈️",
+    status: "Active",
+    tagline: "New cities, new food, new ways of doing things.",
+    overview:
+      "Seeing how other places solve everyday problems, from transport to street food, is the best way I know to get fresh ideas.",
+    tiles: [
+      { label: "What I enjoy", value: "Cities and food" },
+      { label: "It teaches me", value: "Adapting quickly" },
+      { label: "Shows up in code as", value: "Designing for everyone" },
+    ],
+    notes: ["Using apps in a new country and language is the fastest way to notice what makes software friendly."],
+    accent: "#5b8def",
   },
   {
-    emoji: "🪙",
+    slug: "coins-and-banknotes",
     title: "Coins and banknotes",
-    text: "A growing collection of coins and currency from different countries and eras, each with its own story.",
+    emoji: "💵",
+    status: "Active",
+    tagline: "A small history lesson in every piece.",
+    overview:
+      "A growing collection of coins and currency from different countries and eras. Each piece says something about where it came from and when.",
+    tiles: [
+      { label: "What I enjoy", value: "Finding rare pieces" },
+      { label: "It teaches me", value: "Attention to detail" },
+      { label: "Shows up in code as", value: "Caring about the small stuff" },
+    ],
+    notes: ["Collecting is mostly about noticing details others walk past, which is half of good UI work."],
+    accent: "#c9a24b",
   },
 ];
 
 /** Areas of tech I follow for fun, beyond day-to-day app work. */
-export const interests: { title: string; text: string; emoji: string }[] = [
+export const interests: Pastime[] = [
   {
-    emoji: "⚙️",
+    slug: "devops",
     title: "DevOps",
-    text: "CI/CD, containers and infrastructure as code: the machinery that gets code to users safely.",
+    emoji: "⚙️",
+    status: "Exploring",
+    tagline: "The machinery that gets code to users safely.",
+    overview:
+      "CI/CD, containers and infrastructure as code. Every project in this portfolio already ships through automated checks, and I want to go deeper into the platform side.",
+    tiles: [
+      { label: "Already using", value: "GitHub Actions, Vercel deploys" },
+      { label: "Exploring", value: "Docker, infrastructure as code" },
+      { label: "Why", value: "Shipping is part of the job" },
+    ],
+    notes: ["Every pull request in my projects runs typecheck, tests and a build before it can merge."],
+    accent: "#2088ff",
   },
   {
-    emoji: "🌐",
+    slug: "networking",
     title: "Networking",
-    text: "How packets actually travel: TCP/IP, DNS, routing and what happens between a tap and a response.",
+    emoji: "🌐",
+    status: "Exploring",
+    tagline: "What happens between a tap and a response.",
+    overview: "TCP/IP, DNS, routing and CDNs: the path a request takes from a phone to a server and back.",
+    tiles: [
+      { label: "Already using", value: "REST APIs, HTTP clients" },
+      { label: "Exploring", value: "TCP/IP, DNS, CDNs" },
+      { label: "Why", value: "Faster, sturdier apps" },
+    ],
+    notes: ["Knowing where latency comes from makes loading states and caching decisions much easier."],
+    accent: "#4fd1a5",
   },
   {
-    emoji: "🔐",
+    slug: "cybersecurity",
     title: "Cybersecurity",
-    text: "Threat models, secure defaults and how real attacks work, so the apps I build are harder to break.",
+    emoji: "🔐",
+    status: "Exploring",
+    tagline: "Building things that are harder to break.",
+    overview: "Threat models, secure defaults and how real attacks work, so the apps I build protect the people using them.",
+    tiles: [
+      { label: "Already using", value: "Rate limits, security headers, hashed passwords" },
+      { label: "Exploring", value: "OWASP Top 10, threat modelling" },
+      { label: "Why", value: "Users trust us with their data" },
+    ],
+    notes: ["RSVP Studio uses rate limits, security headers and scrypt password hashing from day one."],
+    accent: "#9b7cf0",
   },
   {
-    emoji: "🧮",
+    slug: "computer-architecture",
     title: "Computer architecture",
-    text: "CPUs, memory hierarchies and caches: the layer underneath every abstraction I use.",
+    emoji: "🧮",
+    status: "Exploring",
+    tagline: "The layer underneath every abstraction.",
+    overview: "CPUs, pipelines, memory hierarchies and caches: how the hardware actually runs the code we write.",
+    tiles: [
+      { label: "Exploring", value: "Pipelines, caches, memory" },
+      { label: "Why", value: "Performance starts below the framework" },
+      { label: "Favourite idea", value: "Locality of reference" },
+    ],
+    notes: ["Understanding caches explains why some code is fast and some is not, whatever the language."],
+    accent: "#ff8a65",
   },
 ];
+
+export const pastimes: Pastime[] = [...hobbies, ...interests];
