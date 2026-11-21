@@ -247,7 +247,7 @@ button.widget:hover {
 }
 
 /* Professional apps */
-.view .pro-title {
+:is(.view, .home) .pro-title {
   font-size: clamp(2rem, 4.6vw, 3.4rem);
   line-height: 1.05;
   max-width: 18ch;
@@ -326,7 +326,7 @@ button.widget:hover {
   flex: none;
 }
 
-.view .chapter h3 {
+:is(.view, .home) .chapter h3 {
   margin: 1rem 0 0.8rem;
   font-size: clamp(2.2rem, 5vw, 3.6rem);
   line-height: 0.95;
@@ -546,4 +546,95 @@ button.widget:hover {
 
 .intro-dock-more:hover {
   color: var(--text);
+}
+
+/* Home: professional work first, side projects as an insight, the rest below. */
+.hero {
+  min-height: min(78vh, 46rem);
+  display: grid;
+  align-items: center;
+}
+
+.hero-intro h1 {
+  font-size: clamp(3.4rem, 9vw, 7.5rem);
+}
+
+.home .pro {
+  margin-top: clamp(3rem, 8vw, 6rem);
+}
+
+.insight {
+  margin: clamp(5rem, 11vw, 8rem) 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.insight-kicker {
+  margin: 0;
+  font: 500 0.75rem ui-monospace, Consolas, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.insight h2 {
+  margin: 0.6rem 0 0.5rem;
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  max-width: 24ch;
+}
+
+.insight-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.3rem;
+}
+
+.insight-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.insight-links a:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.insight-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.insight-links .insight-all {
+  border-color: transparent;
+  color: var(--muted);
+}
+
+.home-more {
+  margin: 0 0 clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+}
+
+.hero .widget-intro {
+  grid-area: auto;
+}
+
+.hero {
+  min-height: 0;
+  padding-block: clamp(2rem, 8vw, 6rem) 0;
+}
+
+/* The intro already shows the app icons on the home page. */
+.home .pro .dock {
+  display: none;
 }

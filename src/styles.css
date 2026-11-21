@@ -149,9 +149,9 @@ kbd {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-areas:
-    "intro intro proj  proj"
-    "work  clock proj  proj"
-    "live  stack stack stack"
+    "proj  proj  work  clock"
+    "proj  proj  live  live"
+    "stack stack stack stack"
     "metrics metrics metrics metrics";
   gap: 1rem;
 }
@@ -1624,7 +1624,6 @@ a.widget:active {
   .bento {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
-      "intro intro"
       "proj  proj"
       "work  clock"
       "live  live"
@@ -1655,7 +1654,7 @@ a.widget:active {
   .bento {
     gap: 0.75rem;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "intro" "proj" "work" "clock" "live" "stack" "metrics";
+    grid-template-areas: "proj" "work" "clock" "live" "stack" "metrics";
   }
 
   .widget-clock {

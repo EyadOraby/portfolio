@@ -3,8 +3,9 @@ import { Counter } from "../components/Counter";
 import { HoldClock } from "../components/HoldClock";
 import { ArrowIcon, BriefcaseIcon, GithubIcon, LayersIcon, MailIcon, SearchIcon } from "../components/Icons";
 import { Playground } from "../components/Playground";
+import { ProShowcase } from "../components/ProShowcase";
 import { ShotCycler } from "../components/ShotCycler";
-import { spotlight } from "../components/hooks";
+import { spotlight, useReveal } from "../components/hooks";
 import { experience, metrics, proApps, profile, projects, skills } from "../content";
 
 const live = projects.flatMap((p) =>
@@ -16,13 +17,14 @@ const live = projects.flatMap((p) =>
 const allSkills = skills.flatMap((g) => g.items);
 
 export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock: () => void }) {
+  useReveal();
   const [paused, setPaused] = useState(false);
   const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
 
   return (
     <main className="home">
-      <div className="bento">
-        <section className="widget widget-intro" onPointerMove={spotlight} aria-labelledby="name">
+      <div className="hero">
+        <section className="widget widget-intro hero-intro" onPointerMove={spotlight} aria-labelledby="name">
           <div className="intro-top">
             <span className="monogram" aria-hidden="true">
               EO
@@ -55,8 +57,8 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             </a>
           </div>
           <div className="intro-actions">
-            <a className="button" href="#projects">
-              See the work <ArrowIcon />
+            <a className="button" href="#work">
+              See all my apps <ArrowIcon />
             </a>
             <a className="button button-ghost" href={profile.github} target="_blank" rel="noopener noreferrer">
               <GithubIcon /> GitHub
@@ -77,6 +79,31 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             </button>
           </div>
         </section>
+      </div>
+
+      <ProShowcase />
+
+      <aside className="insight" aria-labelledby="side-heading" data-reveal="up">
+        <p className="insight-kicker">Beyond the day job</p>
+        <h2 id="side-heading">I also build open-source and freelance products.</h2>
+        <p className="muted">
+          A multi-event RSVP builder live on Vercel, plus Flutter apps with web demos you can open right now.
+        </p>
+        <div className="insight-links">
+          {projects.slice(0, 5).map((p) => (
+            <a key={p.slug} href={`#projects/${p.slug}`} style={{ "--accent": p.accent } as React.CSSProperties}>
+              <span className="insight-dot" aria-hidden="true" />
+              {p.name}
+            </a>
+          ))}
+          <a href="#projects" className="insight-all">
+            All case studies <ArrowIcon />
+          </a>
+        </div>
+      </aside>
+
+      <h2 className="home-more" data-reveal="up">More about me</h2>
+      <div className="bento">
 
         <a
           className="widget widget-projects"
