@@ -110,13 +110,16 @@ export default function App() {
   );
 
   const back = () => go("#");
+  const openPastime = useCallback((slug: string | null) => go(slug ? `#off-duty/${slug}` : "#off-duty"), [go]);
 
   return (
     <>
       {route.view === "home" && <Home onPalette={() => setPalette(true)} onUnlock={() => go("#off-duty")} />}
       {route.view === "work" && <WorkView onBack={back} />}
       {route.view === "projects" && <ProjectsView onBack={back} anchor={route.anchor} />}
-      {route.view === "off-duty" && <OffDutyView onBack={back} />}
+      {route.view === "off-duty" && (
+        <OffDutyView onBack={back} slug={route.anchor} onOpen={openPastime} />
+      )}
       <CommandPalette actions={actions} open={palette} onClose={() => setPalette(false)} />
     </>
   );
