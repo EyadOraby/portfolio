@@ -1,5 +1,7 @@
 # Eyad Oraby · Portfolio
 
+[![CI](https://github.com/EyadOraby/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/EyadOraby/portfolio/actions/workflows/ci.yml)
+
 My portfolio, presented as a phone, because most of what I build lives on one.
 
 - **Work** and **Projects** are apps on the home screen. Tap one and it opens out of its icon.
