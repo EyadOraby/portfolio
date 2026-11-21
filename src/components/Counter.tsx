@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "./hooks";
 
 /** Counts up to a number the first time it scrolls into view. */
-export function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
+export function Counter({ value, suffix = "", decimals = 0 }: { value: number; suffix?: string; decimals?: number }) {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
   const [shown, setShown] = useState(reduced ? value : 0);
@@ -20,7 +20,8 @@ export function Counter({ value, suffix = "" }: { value: number; suffix?: string
       const t0 = performance.now();
       const tick = (t: number) => {
         const p = Math.min(1, (t - t0) / 1100);
-        setShown(Math.round(value * (1 - Math.pow(1 - p, 3))));
+        const f = 10 ** decimals;
+        setShown(Math.round(value * (1 - Math.pow(1 - p, 3)) * f) / f);
         if (p < 1) raf = requestAnimationFrame(tick);
       };
       raf = requestAnimationFrame(tick);
@@ -30,12 +31,12 @@ export function Counter({ value, suffix = "" }: { value: number; suffix?: string
       observer.disconnect();
       cancelAnimationFrame(raf);
     };
-  }, [reduced, value]);
+  }, [reduced, value, decimals]);
 
   return (
     <span ref={ref} className="counter" aria-label={`${value}${suffix}`}>
       <span aria-hidden="true">
-        {shown}
+        {shown.toFixed(decimals)}
         {suffix}
       </span>
     </span>

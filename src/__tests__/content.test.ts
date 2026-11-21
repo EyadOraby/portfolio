@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { experience, hobbies, interests, metrics, principles, profile, projects, skills } from "../content";
+import { experience, hobbies, interests, metrics, proApps, principles, profile, projects, skills } from "../content";
 import { filterCommands, holdProgress, parseHash, wrapIndex } from "../lib";
 
 describe("content", () => {
@@ -47,6 +47,18 @@ describe("content", () => {
       expect(files).toContain(shot.src);
       expect(shot.alt.length).toBeGreaterThan(10);
     }
+  });
+
+  it("has an icon and every screenshot for each shipped app", () => {
+    const files = Object.keys(import.meta.glob("../../public/pro/*.webp")).map((f) => f.replace("../../public", ""));
+    expect(new Set(proApps.map((a) => a.slug)).size).toBe(proApps.length);
+    for (const app of proApps) {
+      expect(files).toContain(`/pro/${app.slug}-icon.webp`);
+      for (let i = 1; i <= app.shots; i++) expect(files).toContain(`/pro/${app.slug}-${i}.webp`);
+      for (const link of app.links) expect(link.href).toMatch(/^https:\/\/(apps\.apple\.com|play\.google\.com)\//);
+      if (app.status === "Live") expect(app.links.length).toBeGreaterThan(0);
+    }
+    expect(experience[0].place).toContain("Apes Solutions");
   });
 
   it("never links the client's private site", () => {

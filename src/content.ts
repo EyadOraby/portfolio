@@ -5,11 +5,12 @@
 
 export const profile = {
   name: "Eyad Oraby",
-  role: "Software Engineer · Mobile & Web",
-  tagline: "I build Flutter apps people enjoy using, and the web products behind them.",
+  role: "Flutter Software Engineer · Apes Solutions",
+  tagline: "I build mobile apps that make it to the App Store, and stay there.",
   summary:
-    "Mobile-first software engineer. Most of my work is cross-platform apps in Flutter, from login to checkout, with clean architecture (BLoC, Riverpod), offline caching and Firebase. On the web I build with Next.js, TypeScript and Postgres, and ship to production with tests and CI.",
+    "Software engineer at Apes Solutions. I take Flutter apps from Figma to release on iOS and Android: architecture, API integration, payments, push notifications and the store submission at the end. I started out building Power BI and SAP dashboards, so data-heavy screens are home turf.",
   github: "https://github.com/EyadOraby",
+  linkedin: "https://www.linkedin.com/in/eyad-oraby-30631b247/",
   /** Leave empty to hide the email button. */
   /** Path to a CV in public/ (e.g. "/cv.pdf"). Leave empty to hide the button. */
   cv: "",
@@ -18,13 +19,20 @@ export const profile = {
 };
 
 export type ProApp = {
+  slug: string;
   name: string;
+  category: string;
+  year: number;
   summary: string;
-  status: "Live" | "In development" | "Internal" | "Retired";
-  platforms: string[];
+  role?: string;
+  stat?: { value: string; label: string };
+  tags: string[];
   links: { label: string; href: string }[];
-  shots: Shot[];
-  accent: string;
+  shots: number;
+  /** Background, ink and accent taken from the app's own branding. */
+  colors: { bg: string; ink: string; accent: string };
+  status: "Live" | "Retired";
+  featured?: boolean;
 };
 
 export type Experience = {
@@ -32,40 +40,269 @@ export type Experience = {
   place: string;
   period: string;
   points: string[];
-  /** Apps shipped in this role, shown with screenshots on the Experience page. */
-  apps?: ProApp[];
 };
 
-/** Professional highlights, newest first. */
+const store = (ios?: string, android?: string) => [
+  ...(ios ? [{ label: "App Store", href: `https://apps.apple.com/eg/app/${ios}` }] : []),
+  ...(android ? [{ label: "Google Play", href: `https://play.google.com/store/apps/details?id=${android}` }] : []),
+];
+
+/** Production apps shipped to the App Store and Google Play. Screens come from each store listing. */
+export const proApps: ProApp[] = [
+  {
+    slug: "spark-entertainment",
+    name: "Spark",
+    category: "Booking & sports",
+    year: 2025,
+    summary:
+      "Discover and book sports, adventures, wellness sessions and experiences. Venue, event and class listings, secure checkout and paid memberships.",
+    stat: { value: "4.8★", label: "from 244 ratings on the App Store" },
+    tags: ["Bookings", "Memberships", "Payments"],
+    links: store("spark-entertainment/id6739362680", "com.apessmartsolutions.spark"),
+    shots: 3,
+    colors: { bg: "#2d2d2d", ink: "#F3F6EC", accent: "#C6F43A" },
+    status: "Live",
+    featured: true,
+  },
+  {
+    slug: "aisu",
+    name: "AISU",
+    category: "Industry data · Arab Iron and Steel Union",
+    year: 2026,
+    summary:
+      "Official app of the Arab Iron and Steel Union. Steel prices with interactive charts, production and trade statistics, the Arab Steel Map, industry news, a member directory and a glossary, in Arabic and English.",
+    role: "Mobile developer, building the Flutter app alongside the product and backend teams.",
+    tags: ["Price charts", "Industry statistics", "Arabic RTL · English"],
+    links: store("aisu/id6799080208", "com.apessmartsolutions.aisuMobile"),
+    shots: 5,
+    colors: { bg: "#13407a", ink: "#FFFFFF", accent: "#E8B84A" },
+    status: "Live",
+    featured: true,
+  },
+  {
+    slug: "arab-steel-summit",
+    name: "Arab Steel Summit",
+    category: "Events · 19th Summit, Cairo",
+    year: 2026,
+    summary:
+      "Event app for the Arab Iron and Steel Union's annual summit, updated for the 19th Arab Steel Summit in Cairo: agenda, speakers, sponsors, exhibitors and attendee registration.",
+    role: "Led the full UI revamp for the 2026 edition and shipped fixes and updates through the event.",
+    tags: ["UI revamp", "Agenda", "Exhibitors"],
+    links: store("arab-steel-summit/id6752536030", "com.apessmartsolutions.arabsteelsummit"),
+    shots: 3,
+    colors: { bg: "#bfc9dc", ink: "#0F2444", accent: "#13407A" },
+    status: "Live",
+    featured: true,
+  },
+  {
+    slug: "egypt-international-boat-show",
+    name: "Egypt International Boat Show",
+    category: "Events",
+    year: 2025,
+    summary: "Official app for the Egypt International Boat Show: the event guide, exhibitors and a look back at past editions.",
+    tags: ["Event guide", "Exhibitors", "Past editions"],
+    links: store("egypt-international-boat-show/id6755657894", "com.apessmartsolutions.eibs.prod"),
+    shots: 3,
+    colors: { bg: "#025866", ink: "#F0FAFA", accent: "#8FE3EA" },
+    status: "Live",
+    featured: true,
+  },
+  {
+    slug: "inspkt",
+    name: "INSPKT",
+    category: "Business tools",
+    year: 2026,
+    summary:
+      "Car inspection platform. Inspectors manage bookings and work through detailed vehicle checklists with photos, so buyers can pick the right car.",
+    tags: ["Inspection checklists", "Photo uploads", "Bookings"],
+    links: store("inspkt/id6757188921"),
+    shots: 4,
+    colors: { bg: "#000000", ink: "#F5F5F5", accent: "#9DB4E6" },
+    status: "Live",
+    featured: true,
+  },
+  {
+    slug: "hpadel",
+    name: "HPadel",
+    category: "Booking & sports",
+    year: 2024,
+    summary: "Padel court booking. Find a location, reserve a court, keep track of your bookings and follow community news.",
+    tags: ["Court booking", "Calendar", "News feed"],
+    links: store("hpadel/id6450797965", "com.apessmartsolutions.hpadelapp"),
+    shots: 4,
+    colors: { bg: "#24538e", ink: "#FFFFFF", accent: "#FF7A55" },
+    status: "Live",
+    featured: true,
+  },
+  {
+    slug: "spark-merchant",
+    name: "Spark Merchant",
+    category: "Business tools",
+    year: 2025,
+    summary: "The vendor side of Spark: upcoming bookings, customer details and live updates for venues.",
+    tags: ["Vendor dashboard", "Live updates"],
+    links: store("spark-merchant/id6743125434", "com.apessmartsolutions.sparkadmin"),
+    shots: 3,
+    colors: { bg: "#303030", ink: "#F3F6EC", accent: "#A8F030" },
+    status: "Live",
+  },
+  {
+    slug: "riseup",
+    name: "RiseUp",
+    category: "Events",
+    year: 2024,
+    summary: "Companion app for the RiseUp Summit startup event: agenda, speakers, workshops and exhibitors.",
+    tags: ["Agenda", "Speakers"],
+    links: store("riseup/id6498714758", "com.apessmartsolutions.riseup"),
+    shots: 3,
+    colors: { bg: "#47518f", ink: "#FFFFFF", accent: "#F5D547" },
+    status: "Live",
+  },
+  {
+    slug: "padbol-egypt",
+    name: "Padbol Egypt",
+    category: "Booking & sports",
+    year: 2025,
+    summary: "Book Padbol courts in a few taps: nearest location, open slots and your bookings.",
+    tags: ["Court booking", "Locations"],
+    links: store("padbol-egypt/id6745130436", "com.apessmartsolutions.padbolegypt"),
+    shots: 3,
+    colors: { bg: "#232323", ink: "#F5F5F5", accent: "#FF4040" },
+    status: "Live",
+  },
+  {
+    slug: "tamreena",
+    name: "Tamreena",
+    category: "Health & fitness",
+    year: 2024,
+    summary: "Tailored workout plans, personalised meal plans and progress tracking in one app.",
+    tags: ["Workouts", "Meal plans"],
+    links: store("tamreena/id6475480492", "com.apessmartsolutions.tamreena"),
+    shots: 3,
+    colors: { bg: "#FFFFFF", ink: "#1B1B1B", accent: "#D9661B" },
+    status: "Live",
+  },
+  {
+    slug: "footfit",
+    name: "FootFit",
+    category: "Booking & sports",
+    year: 2025,
+    summary: "Football training: book sessions, buy packages, check in by QR code and earn rewards.",
+    tags: ["Packages", "QR check-in", "Rewards"],
+    links: store("footfit/id6742765982", "com.footfit.mena"),
+    shots: 3,
+    colors: { bg: "#141414", ink: "#F5F5F5", accent: "#E8C84A" },
+    status: "Live",
+  },
+  {
+    slug: "bullsports-club",
+    name: "Bullsports Club",
+    category: "Booking & sports",
+    year: 2026,
+    summary: "Multi-sport club app: see the sports at each location and book a court in seconds.",
+    tags: ["Multi-sport", "Booking"],
+    links: store("bullsports-club/id6761111292"),
+    shots: 3,
+    colors: { bg: "#434041", ink: "#F7F5F5", accent: "#FF5A5A" },
+    status: "Live",
+  },
+  {
+    slug: "smash-padel",
+    name: "Smash Padel",
+    category: "Booking & sports",
+    year: 2023,
+    summary: "Booking app for Smash Padel Academy in Sheikh Zayed: locations, coaches and training packages.",
+    tags: ["Coaches", "Packages"],
+    links: store("smash-padel/id1662258177"),
+    shots: 3,
+    colors: { bg: "#0e92d5", ink: "#FFFFFF", accent: "#FFE36B" },
+    status: "Live",
+  },
+  {
+    slug: "eventbeez",
+    name: "EventBeez",
+    category: "Events",
+    year: 2023,
+    summary: "Event management in your pocket: attendees, sessions, workshops and seminars.",
+    tags: ["Attendees", "Sessions"],
+    links: store("eventbeez/id6461975231"),
+    shots: 3,
+    colors: { bg: "#ffde80", ink: "#1A1A1A", accent: "#1A1A1A" },
+    status: "Live",
+  },
+  {
+    slug: "status-strong",
+    name: "Status Strong",
+    category: "Mental wellness · iOS",
+    year: 2024,
+    summary:
+      "Daily check-ins, a personal dashboard to track mood trends, and accountability partners for support. Built during my time at Status Strong.",
+    tags: ["Check-ins", "Mood trends"],
+    links: [],
+    shots: 3,
+    colors: { bg: "#1d2a3a", ink: "#F2F5F9", accent: "#7FB2FF" },
+    status: "Retired",
+  },
+];
+
+/** Apps delivered without public store screens. */
+export const alsoDelivered = ["Galasa", "Cairo Talents", "Views Real Estate"];
+
+/** Professional roles, newest first. */
 export const experience: Experience[] = [
   {
-    title: "Freelance Software Engineer",
-    place: "Independent",
-    period: "Ongoing",
+    title: "Software Engineer",
+    place: "Apes Solutions · Cairo",
+    period: "Feb 2025 – Present",
     points: [
-      "Designed and shipped RSVP Studio, a multi-event RSVP builder in Next.js, Prisma and Postgres, live on Vercel with CI and 150+ tests.",
-      "Delivered a custom wedding RSVP site for a client, with an admin dashboard and meal and dietary tracking.",
-      "Planning a mobile app and back-office for a martial arts academy: specs, architecture decisions and delivery workflow.",
+      "Lead end-to-end Flutter delivery, from Figma handoff and architecture to App Store and Google Play release.",
+      "Shipped apps including Spark and Spark Merchant, AISU, Egypt International Boat Show, INSPKT, Padbol Egypt, FootFit and Bullsports Club.",
+      "Led the UI revamp of the Arab Steel Summit app for the 19th Summit in Cairo (Nov 2026).",
+      "Design REST contracts with backend engineers; integrate Firebase Auth, FCM push, Paymob payments and Strapi CMS.",
+      "Build data-heavy screens: vendor dashboards, KPI views, maps and charts.",
     ],
   },
   {
     title: "Flutter Developer",
-    place: "Mobile projects",
-    period: "2023 – present",
+    place: "Talento · Remote",
+    period: "Dec 2024 – Feb 2025",
     points: [
-      "Built Tabkha, a bilingual recipe app with Riverpod 3, Firebase Auth, Hive and a REST API, and upgraded it to current Flutter.",
-      "Built Mini Shop, a shopping app with BLoC/Cubit state, a REST API through Dio and an offline cart in Hive.",
-      "Completed the Lookfinder technical assessment: BLoC architecture, repositories and an API layer with Dio.",
+      "Built a reusable UI component library that kept screens consistent and sped up feature delivery.",
+      "Reworked API handling and caching to lower response times and improve reliability.",
     ],
   },
   {
-    title: "Graduation Project",
-    place: "University",
-    period: "2023",
+    title: "Junior Flutter Developer",
+    place: "Status Strong · Remote",
+    period: "Jul 2024 – Dec 2024",
     points: [
-      "SANAD, a citizen services app in Flutter: government ID and IC requests, doctor and hospital booking, and job listings. Revived on current Flutter with tests and CI in 2026.",
+      "Cut screen load times by about 20% through rendering and rebuild optimisations.",
+      "Helped migrate the app to a modular architecture so several developers could work in parallel.",
     ],
   },
+  {
+    title: "Junior Flutter Developer",
+    place: "Apes Solutions · Cairo",
+    period: "Jul 2023 – Nov 2023",
+    points: ["Delivered core modules for Smash Padel and Views Real Estate, including REST integration and paginated feeds."],
+  },
+  {
+    title: "Data & product internships",
+    place: "Gameball · MEGA · eTax",
+    period: "2022 – 2023",
+    points: [
+      "Power BI KPI dashboards at MEGA for Construction; SAP BusinessObjects dashboards at eTax; product and analytics at Gameball.",
+    ],
+  },
+];
+
+export const education: { school: string; degree: string; highlight?: string }[] = [
+  {
+    school: "Arab Academy for Science & Technology",
+    degree: "B.Sc. Business Information Systems · 2020–2023",
+    highlight: "3.88 GPA · honors, ranked 4th in class",
+  },
+  { school: "American University in Cairo", degree: "Computer Engineering coursework · 2017–2020" },
 ];
 
 /** How I work: shown on the Work view. */
@@ -89,21 +326,15 @@ export const principles: { title: string; text: string }[] = [
 ];
 
 export const skills: { group: string; items: string[] }[] = [
+  { group: "Mobile", items: ["Flutter", "Dart", "Riverpod", "BLoC / Cubit", "Provider", "GoRouter", "Hive", "Build flavors"] },
   {
-    group: "Mobile",
-    items: ["Flutter", "Dart", "BLoC / Cubit", "Riverpod", "Provider", "Hive", "Localization"],
+    group: "Backend & services",
+    items: ["REST APIs", "Dio", "Firebase Auth", "Firestore", "FCM push", "Paymob", "Strapi"],
   },
+  { group: "Data & dashboards", items: ["Power BI", "SAP BusinessObjects", "SQL", "R", "Flutter charts"] },
   {
-    group: "Web",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL"],
-  },
-  {
-    group: "Backend & cloud",
-    items: ["Firebase Auth", "Cloud Firestore", "REST APIs (Dio)", "Vercel", "Neon"],
-  },
-  {
-    group: "Practice",
-    items: ["Clean architecture", "Testing (Vitest)", "GitHub Actions CI", "Code review", "Accessibility"],
+    group: "Web & delivery",
+    items: ["Next.js", "TypeScript", "Git", "GitHub Actions", "Patrol", "Maestro", "Postman", "Figma"],
   },
 ];
 
@@ -294,15 +525,11 @@ export const projects: Project[] = [
 ];
 
 /** Headline numbers for the home screen. */
-export const metrics: { value: number; suffix: string; label: string }[] = [
-  { value: projects.length, suffix: "", label: "shipped projects" },
-  { value: projects.filter((p) => p.kind === "Mobile").length, suffix: "", label: "Flutter apps" },
-  { value: 150, suffix: "+", label: "automated tests" },
-  {
-    value: projects.filter((p) => p.links.some((l) => /live/i.test(l.label))).length,
-    suffix: "",
-    label: "apps you can open now",
-  },
+export const metrics: { value: number; decimals?: number; suffix: string; label: string }[] = [
+  { value: 17, suffix: "", label: "apps shipped to the stores" },
+  { value: 4.8, decimals: 1, suffix: "★", label: "Spark, from 244 ratings" },
+  { value: 3, suffix: "+ yrs", label: "Flutter in production" },
+  { value: projects.length, suffix: "", label: "open-source projects" },
 ];
 
 export type Pastime = {

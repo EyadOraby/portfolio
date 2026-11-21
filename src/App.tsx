@@ -115,7 +115,7 @@ export default function App() {
   return (
     <>
       {route.view === "home" && <Home onPalette={() => setPalette(true)} onUnlock={() => go("#off-duty")} />}
-      {route.view === "work" && <WorkView onBack={back} />}
+      {route.view === "work" && <WorkView onBack={back} anchor={route.anchor} />}
       {route.view === "projects" && <ProjectsView onBack={back} anchor={route.anchor} />}
       {route.view === "off-duty" && (
         <OffDutyView onBack={back} slug={route.anchor} onOpen={openPastime} />

@@ -5,7 +5,7 @@ import { ArrowIcon, BriefcaseIcon, GithubIcon, LayersIcon, MailIcon, SearchIcon 
 import { Playground } from "../components/Playground";
 import { ShotCycler } from "../components/ShotCycler";
 import { spotlight } from "../components/hooks";
-import { experience, metrics, profile, projects, skills } from "../content";
+import { experience, metrics, proApps, profile, projects, skills } from "../content";
 
 const live = projects.flatMap((p) =>
   p.links
@@ -29,7 +29,7 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             </span>
             <span className="pill">
               <span className="pulse" aria-hidden="true" />
-              Shipping Flutter &amp; Next.js
+              17 apps on the App Store &amp; Google Play
             </span>
           </div>
           <h1 id="name">{profile.name}</h1>
@@ -38,6 +38,22 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             {profile.location && <span className="location"> · {profile.location}</span>}
           </p>
           <p className="tagline">{profile.tagline}</p>
+          <div className="intro-dock" aria-label="Shipped apps">
+            {proApps.slice(0, 9).map((app, i) => (
+              <a
+                key={app.slug}
+                href={`#work/${app.slug}`}
+                title={app.name}
+                className="dock-icon"
+                style={{ "--delay": `${i * -0.8}s` } as React.CSSProperties}
+              >
+                <img src={`/pro/${app.slug}-icon.webp`} alt={app.name} width={44} height={44} />
+              </a>
+            ))}
+            <a href="#work" className="intro-dock-more">
+              +{proApps.length - 9}
+            </a>
+          </div>
           <div className="intro-actions">
             <a className="button" href="#projects">
               See the work <ArrowIcon />
@@ -78,7 +94,7 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             </span>
             <span>
               <strong>Projects</strong>
-              <small>{projects.length} case studies · freelance &amp; personal</small>
+              <small>{projects.length} open-source &amp; freelance case studies</small>
             </span>
             <span className="widget-go" aria-hidden="true">
               <ArrowIcon />
@@ -94,16 +110,16 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             </span>
             <span>
               <strong>Experience</strong>
-              <small>Professional</small>
+              <small>17 store apps · 4 companies</small>
             </span>
             <span className="widget-go" aria-hidden="true">
               <ArrowIcon />
             </span>
           </div>
           <ol className="mini-timeline">
-            {experience.map((item) => (
-              <li key={item.title}>
-                <span>{item.title}</span>
+            {experience.slice(0, 4).map((item) => (
+              <li key={item.period}>
+                <span>{item.place.split(" · ")[0]}</span>
                 <small>{item.period}</small>
               </li>
             ))}
@@ -146,7 +162,7 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
         <section className="widget widget-metrics" onPointerMove={spotlight} aria-label="Highlights">
           {metrics.map((m) => (
             <div key={m.label} className="metric">
-              <Counter value={m.value} suffix={m.suffix} />
+              <Counter value={m.value} suffix={m.suffix} decimals={m.decimals} />
               <span>{m.label}</span>
             </div>
           ))}
