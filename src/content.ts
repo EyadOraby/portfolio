@@ -11,8 +11,8 @@ export const profile = {
     "Mobile-first software engineer. Most of my work is cross-platform apps in Flutter, from login to checkout, with clean architecture (BLoC, Riverpod), offline caching and Firebase. On the web I build with Next.js, TypeScript and Postgres, and ship to production with tests and CI.",
   github: "https://github.com/EyadOraby",
   /** Leave empty to hide the email button. */
-  email: "",
-  location: "",
+  email: "eyadoraby99@gmail.com",
+  location: "Giza, Egypt",
 };
 
 export type Experience = {
@@ -259,9 +259,7 @@ export const metrics: { value: number; suffix: string; label: string }[] = [
   { value: 2, suffix: "", label: "live production apps" },
 ];
 
-/**
- * The hidden "Off the clock" view. Replace these with your own interests.
- */
+/** The hidden "Off the clock" view: life away from the keyboard. */
 export const hobbies: { title: string; text: string; emoji: string }[] = [
   {
     emoji: "♟️",
@@ -274,13 +272,47 @@ export const hobbies: { title: string; text: string; emoji: string }[] = [
     text: "Discipline, patience and showing up every day, on the mat and off it.",
   },
   {
-    emoji: "📱",
-    title: "Polishing small details",
-    text: "Tweaking animations and spacing until an app feels right in the hand.",
+    emoji: "🏀",
+    title: "Basketball",
+    text: "Pick-up games and fast breaks. Reading the court is a lot like reading a codebase.",
   },
   {
-    emoji: "🧠",
-    title: "Learning in public",
-    text: "Trying new tools, writing down what worked and turning side ideas into shipped projects.",
+    emoji: "⚽",
+    title: "Football",
+    text: "Playing with friends and following the big matches every weekend.",
+  },
+  {
+    emoji: "✈️",
+    title: "Travelling",
+    text: "New cities, new food and new ways of doing everyday things. Always planning the next trip.",
+  },
+  {
+    emoji: "🪙",
+    title: "Coins and banknotes",
+    text: "A growing collection of coins and currency from different countries and eras, each with its own story.",
+  },
+];
+
+/** Areas of tech I follow for fun, beyond day-to-day app work. */
+export const interests: { title: string; text: string; emoji: string }[] = [
+  {
+    emoji: "⚙️",
+    title: "DevOps",
+    text: "CI/CD, containers and infrastructure as code: the machinery that gets code to users safely.",
+  },
+  {
+    emoji: "🌐",
+    title: "Networking",
+    text: "How packets actually travel: TCP/IP, DNS, routing and what happens between a tap and a response.",
+  },
+  {
+    emoji: "🔐",
+    title: "Cybersecurity",
+    text: "Threat models, secure defaults and how real attacks work, so the apps I build are harder to break.",
+  },
+  {
+    emoji: "🧮",
+    title: "Computer architecture",
+    text: "CPUs, memory hierarchies and caches: the layer underneath every abstraction I use.",
   },
 ];

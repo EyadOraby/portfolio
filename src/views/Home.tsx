@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Counter } from "../components/Counter";
 import { HoldClock } from "../components/HoldClock";
-import { ArrowIcon, BriefcaseIcon, GithubIcon, LayersIcon, SearchIcon } from "../components/Icons";
+import { ArrowIcon, BriefcaseIcon, GithubIcon, LayersIcon, MailIcon, SearchIcon } from "../components/Icons";
 import { ShotCycler } from "../components/ShotCycler";
 import { spotlight } from "../components/hooks";
 import { experience, metrics, profile, projects, skills } from "../content";
@@ -33,7 +33,10 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             </span>
           </div>
           <h1 id="name">{profile.name}</h1>
-          <p className="role">{profile.role}</p>
+          <p className="role">
+            {profile.role}
+            {profile.location && <span className="location"> · {profile.location}</span>}
+          </p>
           <p className="tagline">{profile.tagline}</p>
           <div className="intro-actions">
             <a className="button" href="#projects">
@@ -42,6 +45,11 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             <a className="button button-ghost" href={profile.github} target="_blank" rel="noopener noreferrer">
               <GithubIcon /> GitHub
             </a>
+            {profile.email && (
+              <a className="button button-ghost" href={`mailto:${profile.email}`}>
+                <MailIcon /> Email
+              </a>
+            )}
             <button type="button" className="kbd-hint" onClick={onPalette}>
               <SearchIcon /> <kbd>{isMac ? "⌘" : "Ctrl"}</kbd>
               <kbd>K</kbd>

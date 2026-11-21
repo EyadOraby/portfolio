@@ -317,6 +317,11 @@ a.widget:active {
   font-weight: 500;
 }
 
+.location {
+  color: var(--muted);
+  font-weight: 400;
+}
+
 .tagline {
   margin: 0.6rem 0 0;
   max-width: 30rem;
@@ -1530,9 +1535,9 @@ a.widget:active {
 .hobbies {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 1rem;
-  margin: 2rem 0 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -1555,7 +1560,7 @@ a.widget:active {
   font-size: 2rem;
 }
 
-.view .hobby h2 {
+.view .hobby h3 {
   margin: 0.7rem 0 0.4rem;
   font-size: 1.2rem;
 }

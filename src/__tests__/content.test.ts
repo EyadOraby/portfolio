@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { experience, hobbies, metrics, principles, profile, projects, skills } from "../content";
+import { experience, hobbies, interests, metrics, principles, profile, projects, skills } from "../content";
 import { filterCommands, holdProgress, parseHash, wrapIndex } from "../lib";
 
 describe("content", () => {
@@ -10,6 +10,7 @@ describe("content", () => {
     expect(skills.length).toBeGreaterThan(0);
     expect(projects.length).toBeGreaterThan(0);
     expect(hobbies.length).toBeGreaterThan(0);
+    expect(interests.length).toBeGreaterThan(0);
     expect(metrics.every((m) => m.value > 0)).toBe(true);
   });
 
@@ -21,6 +22,11 @@ describe("content", () => {
       expect(link.href).toMatch(/^https:\/\//);
     }
     expect(profile.github).toMatch(/^https:\/\/github\.com\//);
+    if (profile.email) expect(profile.email).toMatch(/^[^@\s]+@[^@\s]+\.[a-z]+$/);
+  });
+
+  it("never shows a street address", () => {
+    expect(profile.location).not.toMatch(/\d/);
   });
 
   it("points every screenshot at a real file with alt text", () => {

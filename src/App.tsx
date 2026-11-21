@@ -85,6 +85,19 @@ export default function App() {
           run: () => window.open(l.href, "_blank", "noopener,noreferrer"),
         })),
       ),
+      ...(profile.email
+        ? [
+            {
+              id: "email",
+              label: "Email me",
+              hint: profile.email,
+              keywords: "contact hire mail",
+              run: () => {
+                window.location.href = `mailto:${profile.email}`;
+              },
+            },
+          ]
+        : []),
       {
         id: "github",
         label: "GitHub profile",
