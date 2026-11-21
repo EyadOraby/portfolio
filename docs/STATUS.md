@@ -9,8 +9,8 @@ Where everything stands, so work can resume from any machine. Updated 2026-11-21
 | Portfolio | EyadOraby/portfolio | portfolio-alpha-sepia-82.vercel.app | Up to date on `main` (Vercel deploys on merge) |
 | RSVP Studio | EyadOraby/wedding-rsvp | wedding-rsvp-tau-five.vercel.app | Up to date; see its `docs/WORKFLOW.md` |
 | Mini Shop | EyadOraby/Mini-Shop-App | eyadoraby.github.io/Mini-Shop-App | Up to date; web demo on GitHub Pages |
-| Tabkha | EyadOraby/tabkha_app (private) | none | Up to date on `main`: recipes home, Flutter upgrade, CI |
-| SANAD (graduation) | EyadOraby/grad (private) | none | Up to date on `main`: Flutter 3 upgrade, app flow fixes, CI |
+| Tabkha | EyadOraby/tabkha_app | eyadoraby.github.io/tabkha_app | Up to date on `main`: recipes home, Flutter upgrade, CI |
+| SANAD (graduation) | EyadOraby/grad | eyadoraby.github.io/grad | Up to date on `main`: Flutter 3 upgrade, app flow fixes, CI |
 
 ## Flutter
 
@@ -25,5 +25,5 @@ Both apps open any screen on the web with `?screen=`, for example `?screen=home`
 ## Waiting on Eyad
 
 - Personalise hobby details in `src/content.ts` (they are written as reflections, not facts)
-- Optional: make Tabkha or SANAD public to host their web demos on GitHub Pages
+- Tabkha sign-in on the web demo needs `eyadoraby.github.io` added to Firebase Auth authorized domains (guest mode works without it)
 - Optional: custom domain, Resend API key for RSVP Studio emails

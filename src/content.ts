@@ -207,7 +207,7 @@ export const projects: Project[] = [
     slug: "tabkha",
     name: "Tabkha",
     kind: "Mobile",
-    context: "Personal · private repo",
+    context: "Personal · live demo",
     tagline: "A bilingual cooking app: browse and search recipes, follow the steps and keep favourites.",
     problem:
       "Most recipe apps ignore Arabic speakers, and switching language mid-session usually breaks layouts.",
@@ -221,7 +221,10 @@ export const projects: Project[] = [
       "Upgraded to current Flutter, Riverpod 3 and hive_ce",
     ],
     stack: ["Flutter", "Riverpod", "Firebase Auth", "Hive", "REST", "i18n"],
-    links: [],
+    links: [
+      { label: "Live demo", href: "https://eyadoraby.github.io/tabkha_app/?screen=home" },
+      { label: "Code", href: "https://github.com/EyadOraby/tabkha_app" },
+    ],
     shots: [
       phone("tabkha-home", "Tabkha home on a phone: search, recipe categories and a grid of chicken dishes", "jpg"),
       phone("tabkha-recipe", "A Tabkha recipe with its photo, cuisine and ingredient list", "jpg"),
@@ -247,7 +250,10 @@ export const projects: Project[] = [
       "Web deep links for demos, covered by tests",
     ],
     stack: ["Flutter", "Dart 3", "Material 3", "Firebase"],
-    links: [],
+    links: [
+      { label: "Live demo", href: "https://eyadoraby.github.io/grad/" },
+      { label: "Code", href: "https://github.com/EyadOraby/grad" },
+    ],
     shots: [
       phone("sanad-home", "SANAD home: what's new and the services on offer"),
       phone("sanad-medical", "SANAD medical services: doctors, hospitals, radiology and physiotherapy"),
