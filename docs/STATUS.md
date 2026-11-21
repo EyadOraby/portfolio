@@ -1,16 +1,16 @@
 # Status across projects
 
-Where everything stands, so work can resume from any machine. Updated 2026-11-22.
+Where everything stands, so work can resume from any machine. Updated 2026-11-22 (evening).
 
 ## Projects
 
 | Project | Repo | Live | What's there |
 | --- | --- | --- | --- |
-| Portfolio | EyadOraby/portfolio | portfolio-alpha-sepia-82.vercel.app | Professional apps first (17 store apps), case studies, Off the clock, printable CV at `#cv`. Vercel deploys on merge |
+| Portfolio | EyadOraby/portfolio | portfolio-alpha-sepia-82.vercel.app | Professional apps first (17 store apps), case studies, Off the clock, printable CV at `#cv`. English and Arabic (`?lang=ar`). Vercel deploys on merge |
 | RSVP Studio | EyadOraby/wedding-rsvp | wedding-rsvp-tau-five.vercel.app | Multi-event RSVP builder; see its `docs/WORKFLOW.md` |
-| Mini Shop | EyadOraby/Mini-Shop-App | eyadoraby.github.io/Mini-Shop-App (app at `/app/`) | Shop, wishlist, cart with promo codes, checkout, orders, dark mode, admin dashboard (`?screen=admin`), offline catalog |
-| Tabkha | EyadOraby/tabkha_app | eyadoraby.github.io/tabkha_app (app at `/app/`) | Food delivery, ratings and recipes; restaurant console (`?screen=admin`) and platform console (`?screen=superadmin`) |
-| SANAD (graduation) | EyadOraby/grad | eyadoraby.github.io/grad (app at `/app/`) | Bookings, government request tracking, job applications, Activity tab, accessibility settings, staff portal (`?screen=staff`) |
+| Mini Shop | EyadOraby/Mini-Shop-App | eyadoraby.github.io/Mini-Shop-App (app at `/app/`) | Shop, wishlist, cart with promo codes, checkout, orders, dark mode, admin dashboard (`?screen=admin`), offline catalog; English and Arabic |
+| Tabkha | EyadOraby/tabkha_app | eyadoraby.github.io/tabkha_app (app at `/app/`) | Food delivery, ratings and recipes; sign-in with one-tap demo accounts (customer, restaurant admin, super admin); restaurant console (`?screen=admin`) and platform console (`?screen=superadmin`); English and Arabic |
+| SANAD (graduation) | EyadOraby/grad | eyadoraby.github.io/grad (app at `/app/`) | Login with guest and demo accounts (citizen, staff), bookings, request tracking, job applications, Activity, accessibility settings, staff portal (`?screen=staff`); desktop portal layout; English and Arabic |
 
 Each Flutter repo has a landing page at its root and the app under `/app/`. CI analyzes, tests and builds the web app on every pull request, deploys GitHub Pages from `main`, and publishes an Android APK to the `android` GitHub release (`mini-shop.apk`, `tabkha.apk`, `sanad.apk`).
 
@@ -23,6 +23,22 @@ Every app opens any screen on the web with `?screen=`, and `?demo=1` fills in sa
 ## Portfolio screenshots
 
 `public/shots/` holds the open-source app captures (phones at 390×844 with a device pixel ratio of 2, desktops at 1280×800, photo-heavy shots as JPEG). `public/pro/` holds icons and store screenshots of the 17 professional apps, taken from the "Eyad Oraby" profile artifact. Tests check that every referenced image exists.
+
+## Languages
+
+Every project has English and Arabic with right-to-left layouts. `?lang=ar` or `?lang=en` opens a language directly, and the choice is remembered. Strings are keyed by their English text with `t()` / `context.t()` falling back to English:
+- Portfolio: `src/i18n.ar.ts` (interface) and `src/content.ar.ts` (content)
+- Mini Shop: `lib/app/strings.dart`; Tabkha: `lib/Features/Food/food_strings.dart` plus the ARB files; SANAD: `lib/l10n/sanad_strings.dart`
+
+## Demo access
+
+- Tabkha sign-in: Continue as guest, or Customer / Restaurant admin / Super admin demo accounts
+- SANAD login: Continue as guest, or Citizen / Staff demo accounts (`?demo=1` seeds the citizen's activity)
+- Mini Shop: `?demo=1` fills the cart, wishlist and orders
+
+## Layouts
+
+All apps adapt to phones, tablets and desktops: bottom navigation on phones, navigation rails or side menus with centered, width-limited content on wide screens.
 
 ## Data
 
