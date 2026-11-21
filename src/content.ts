@@ -257,7 +257,7 @@ export const projects: Project[] = [
     approach:
       "A Flutter app with one catalog for government, medical and job services, shared booking flows with date and time pickers, and Material 3 navigation between sections.",
     outcome:
-      "Revived in 2026: upgraded from Dart 2 to current Flutter, replaced discontinued packages, fixed sign-out and navigation, and added tests and CI.",
+      "Revived in 2026: upgraded from Dart 2 to current Flutter, redesigned in an emerald and gold government style, fixed sign-out and navigation, and added tests, CI and a web demo.",
     highlights: [
       "ID renewal and integrated services card requests",
       "Doctors, hospitals, radiology and physiotherapy with booking",
