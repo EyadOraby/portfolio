@@ -12,7 +12,7 @@ const pick = (name: string) => shotsBySrc.get(`/shots/${name}.png`) ?? shotsBySr
 /** Pairs a desktop screenshot with a phone one, so each scene shows both sides of a product. */
 const pairs: [slug: string, wide: string, tall: string][] = [
   ["rsvp-studio", "rsvp-builder", "rsvp-mobile"],
-  ["mini-shop", "shop-desktop", "shop-mobile"],
+  ["mini-shop", "shop-desktop", "shop-home"],
   ["tabkha", "tabkha-desktop", "tabkha-home"],
   ["wedding-invitation", "rsvp-event-page", "rsvp-mobile-form"],
 ];
