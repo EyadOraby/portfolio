@@ -110,10 +110,14 @@ export const projects: Project[] = [
     highlights: [
       "BLoC/Cubit state management with repositories",
       "Dio API layer with loading and error states",
-      "Cart saved offline with Hive",
+      "Cart saved offline with Hive, on mobile and the web",
+      "Category filters, sorting, pull to refresh and tests in CI",
     ],
     stack: ["Flutter", "Dart", "BLoC", "Dio", "Hive"],
-    links: [{ label: "Code", href: "https://github.com/EyadOraby/Mini-Shop-App" }],
+    links: [
+      { label: "Live demo", href: "https://eyadoraby.github.io/Mini-Shop-App/" },
+      { label: "Code", href: "https://github.com/EyadOraby/Mini-Shop-App" },
+    ],
     accent: "#4fb6a3",
   },
   {
