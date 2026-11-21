@@ -24,7 +24,7 @@ export function WorkView({ onBack }: { onBack: () => void }) {
         <h2 id="exp-heading">Where I've worked</h2>
         <ol className="timeline">
           {experience.map((item) => (
-            <li key={item.title} className="timeline-item" data-reveal>
+            <li key={item.title} className="timeline-item" data-reveal="left">
               <div className="timeline-head">
                 <h3>{item.title}</h3>
                 <span className="muted">{item.period}</span>
@@ -44,7 +44,12 @@ export function WorkView({ onBack }: { onBack: () => void }) {
         <h2 id="how-heading">How I work</h2>
         <div className="principles">
           {principles.map((p, i) => (
-            <div key={p.title} className="card" data-reveal>
+            <div
+              key={p.title}
+              className="card"
+              data-reveal="flip"
+              style={{ "--delay": `${i * 90}ms` } as React.CSSProperties}
+            >
               <span className="principle-num">0{i + 1}</span>
               <h3>{p.title}</h3>
               <p>{p.text}</p>
@@ -56,8 +61,13 @@ export function WorkView({ onBack }: { onBack: () => void }) {
       <section aria-labelledby="skills-heading">
         <h2 id="skills-heading">Skills</h2>
         <div className="skill-groups">
-          {skills.map((group) => (
-            <div key={group.group} className="card" data-reveal>
+          {skills.map((group, i) => (
+            <div
+              key={group.group}
+              className="card"
+              data-reveal="zoom"
+              style={{ "--delay": `${i * 80}ms` } as React.CSSProperties}
+            >
               <h3>{group.group}</h3>
               <ul className="chips">
                 {group.items.map((item) => (

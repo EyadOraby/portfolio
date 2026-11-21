@@ -62,7 +62,7 @@ function CaseStudy({ project }: { project: Project }) {
       style={{ "--accent": project.accent } as React.CSSProperties}
       aria-labelledby={`${project.slug}-title`}
     >
-      <div className="case-media">
+      <div className="case-media" data-reveal="left">
         {shot ? (
           <>
             <button
@@ -110,7 +110,7 @@ function CaseStudy({ project }: { project: Project }) {
         )}
       </div>
 
-      <div className="case-body">
+      <div className="case-body" data-reveal="right" style={{ "--delay": "120ms" } as React.CSSProperties}>
         <p className="case-meta">
           <span className="case-kind">{project.kind}</span>
           {project.context}

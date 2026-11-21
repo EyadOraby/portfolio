@@ -36,8 +36,11 @@ export function useReveal(deps: unknown[] = []) {
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            entry.target.classList.add("revealed");
-            observer.unobserve(entry.target);
+            const el = entry.target as HTMLElement;
+            el.classList.add("revealed");
+            observer.unobserve(el);
+            // Once it has appeared, drop the stagger so hover effects respond at once.
+            window.setTimeout(() => el.style.setProperty("--delay", "0ms"), 1400);
           }
         }
       },
