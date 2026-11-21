@@ -23,11 +23,9 @@ export function WorkView({ onBack, anchor }: { onBack: () => void; anchor: strin
         <a className="button button-ghost" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
           LinkedIn <ArrowIcon />
         </a>
-        {profile.cv && (
-          <a className="button button-ghost" href={profile.cv} download>
-            Download CV
-          </a>
-        )}
+        <a className="button button-ghost" href="#cv">
+              Download CV
+            </a>
         {profile.email && (
           <a className="button button-ghost" href={`mailto:${profile.email}`}>
             Email me

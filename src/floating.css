@@ -638,3 +638,175 @@ button.widget:hover {
 .home .pro .dock {
   display: none;
 }
+
+/* CV page: light paper on screen, clean A4 when printed. */
+.cv-page {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: 1.2rem 1rem 4rem;
+}
+
+.cv-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.cv {
+  background: #fff;
+  color: #1b1f27;
+  border-radius: 18px;
+  padding: clamp(1.4rem, 5vw, 3rem);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.8);
+}
+
+.cv a {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.cv-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #1b1f27;
+}
+
+.cv h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: #0b0d12;
+}
+
+.cv-role {
+  margin: 0.2rem 0 0;
+  color: #3b4252;
+  font-weight: 600;
+}
+
+.cv-contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  font-size: 0.85rem;
+}
+
+.cv section {
+  margin-top: 1.2rem;
+}
+
+.cv h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5b6475;
+  border-bottom: 1px solid #e3e6ec;
+  padding-bottom: 0.25rem;
+}
+
+.cv p {
+  margin: 0.3rem 0;
+}
+
+.cv-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.cv h3 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: #0b0d12;
+}
+
+.cv h3 span {
+  font-weight: 500;
+  color: #3b4252;
+}
+
+.cv-date {
+  white-space: nowrap;
+  color: #5b6475;
+  font-size: 0.82rem;
+}
+
+.cv ul {
+  margin: 0.3rem 0 0.7rem;
+  padding-left: 1.1rem;
+}
+
+.cv-projects {
+  padding-left: 1.1rem;
+}
+
+.cv-two {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .cv-contact {
+    text-align: left;
+  }
+
+  .cv-two {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm 12mm;
+  }
+
+  html.cv-mode,
+  html.cv-mode body {
+    background: #fff !important;
+  }
+
+  html.cv-mode body::before,
+  .cv-toolbar,
+  .palette-backdrop {
+    display: none !important;
+  }
+
+  .cv-page {
+    max-width: none;
+    padding: 0;
+  }
+
+  .cv {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    font-size: 8.6pt;
+    line-height: 1.38;
+  }
+
+  .cv h1 {
+    font-size: 20pt;
+  }
+
+  .cv section {
+    margin-top: 7pt;
+  }
+
+  .cv ul {
+    margin: 2pt 0 4pt;
+  }
+
+  .cv a {
+    color: #1b1f27;
+  }
+}

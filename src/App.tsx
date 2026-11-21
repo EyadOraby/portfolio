@@ -7,8 +7,10 @@ import { Home } from "./views/Home";
 import { OffDutyView } from "./views/OffDutyView";
 import { ProjectsView } from "./views/ProjectsView";
 import { WorkView } from "./views/WorkView";
+import { CvView } from "./views/CvView";
 
 const TITLES: Record<View, string> = {
+  cv: `CV · ${profile.name}`,
   home: `${profile.name} · Mobile & Web Engineer`,
   work: `Experience · ${profile.name}`,
   projects: `Projects · ${profile.name}`,
@@ -67,6 +69,7 @@ export default function App() {
   const actions = useMemo<Action[]>(
     () => [
       { id: "home", label: "Home", hint: "Page", run: () => go("#") },
+      { id: "cv", label: "CV", hint: "Page", keywords: "resume curriculum pdf download", run: () => go("#cv") },
       { id: "work", label: "Experience", hint: "Page", keywords: "work cv resume skills", run: () => go("#work") },
       { id: "projects", label: "Projects", hint: "Page", keywords: "case studies portfolio", run: () => go("#projects") },
       ...projects.map((p) => ({
@@ -116,6 +119,7 @@ export default function App() {
     <>
       {route.view === "home" && <Home onPalette={() => setPalette(true)} onUnlock={() => go("#off-duty")} />}
       {route.view === "work" && <WorkView onBack={back} anchor={route.anchor} />}
+      {route.view === "cv" && <CvView onBack={back} />}
       {route.view === "projects" && <ProjectsView onBack={back} anchor={route.anchor} />}
       {route.view === "off-duty" && (
         <OffDutyView onBack={back} slug={route.anchor} onOpen={openPastime} />

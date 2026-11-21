@@ -12,8 +12,6 @@ export const profile = {
   github: "https://github.com/EyadOraby",
   linkedin: "https://www.linkedin.com/in/eyad-oraby-30631b247/",
   /** Leave empty to hide the email button. */
-  /** Path to a CV in public/ (e.g. "/cv.pdf"). Leave empty to hide the button. */
-  cv: "",
   email: "eyadoraby99@gmail.com",
   location: "Giza, Egypt",
 };

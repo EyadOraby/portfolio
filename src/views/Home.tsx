@@ -63,11 +63,9 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             <a className="button button-ghost" href={profile.github} target="_blank" rel="noopener noreferrer">
               <GithubIcon /> GitHub
             </a>
-            {profile.cv && (
-              <a className="button button-ghost" href={profile.cv} download>
-                CV
-              </a>
-            )}
+            <a className="button button-ghost" href="#cv">
+              CV
+            </a>
             {profile.email && (
               <a className="button button-ghost" href={`mailto:${profile.email}`}>
                 <MailIcon /> Email

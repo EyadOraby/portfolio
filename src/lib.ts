@@ -1,8 +1,8 @@
 /** Small pure helpers, kept apart from the components so they are easy to test. */
 
-export type View = "home" | "work" | "projects" | "off-duty";
+export type View = "home" | "work" | "projects" | "off-duty" | "cv";
 
-const VIEWS: View[] = ["work", "projects", "off-duty"];
+const VIEWS: View[] = ["work", "projects", "off-duty", "cv"];
 
 /** "#projects/mini-shop" → { view: "projects", anchor: "mini-shop" }. */
 export function parseHash(hash: string): { view: View; anchor: string | null } {
