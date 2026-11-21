@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
+import { BackIcon } from "../components/Icons";
+import { useReveal } from "../components/hooks";
 
-/** Full-screen "app" with a back button, used by every view. */
+/** Page layout with a sticky back bar, used by every view. */
 export function ViewShell({
   title,
   kicker,
@@ -14,11 +16,12 @@ export function ViewShell({
   onBack: () => void;
   children: ReactNode;
 }) {
+  useReveal();
   return (
     <div className="view" style={{ "--view-accent": accent } as React.CSSProperties}>
       <header className="view-header">
         <button type="button" className="back" onClick={onBack}>
-          <span aria-hidden="true">‹</span> Home
+          <BackIcon /> Home
         </button>
         <span className="view-kicker">{kicker}</span>
       </header>

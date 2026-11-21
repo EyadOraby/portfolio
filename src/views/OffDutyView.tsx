@@ -5,12 +5,12 @@ export function OffDutyView({ onBack }: { onBack: () => void }) {
   return (
     <ViewShell title="Off the clock" kicker="You found it" accent="#4fd1a5" onBack={onBack}>
       <p className="lead">
-        Not many people pull down the status bar. Here is what I do when the
-        laptop is closed.
+        Most people only read the time. You held on long enough to clock out with me, so here is what I do when
+        the laptop is closed.
       </p>
       <ul className="hobbies">
-        {hobbies.map((hobby, i) => (
-          <li key={hobby.title} className="hobby" style={{ animationDelay: `${i * 90}ms` }}>
+        {hobbies.map((hobby) => (
+          <li key={hobby.title} className="hobby" data-reveal>
             <span className="hobby-emoji" aria-hidden="true">
               {hobby.emoji}
             </span>
