@@ -9,9 +9,9 @@ Tools: Vitest, TypeScript, ESLint, `flutter analyze`, `flutter test --coverage`,
 |---|---|---|---|---|
 | Portfolio (Vite, React) | typecheck clean | 21 / 21 pass (8 files) | – | ok, 3.1 s |
 | RSVP Studio (Next.js) | typecheck clean, ESLint 0 problems | 153 / 153 pass (61 suites) | – | ok, 11.4 s, 30 routes |
-| Mini Shop (Flutter) | 0 errors, 0 warnings, 36 infos | 22 / 22 pass | 42.5 % lines | web ok |
-| Tabkha (Flutter) | 0 errors, 0 warnings, @TABKHA_INFOS@ infos | @TABKHA_TESTS@ pass | @TABKHA_COV@ % lines | web ok, @TABKHA_BUILD@ s |
-| SANAD (Flutter) | 0 errors, 0 warnings (was 38), @SANAD_INFOS@ infos | @SANAD_TESTS@ pass (was 13) | @SANAD_COV@ % lines (was 6.6 %) | web ok, @SANAD_BUILD@ s |
+| Mini Shop (Flutter) | 0 errors, 0 warnings, 36 infos | 22 / 22 pass | 42.5 % lines | web ok, 31.6 s |
+| Tabkha (Flutter) | 0 errors, 0 warnings, 46 infos | 15 / 15 pass | 13.8 % lines | web ok, 47.7 s |
+| SANAD (Flutter) | 0 errors, 0 warnings (was 38), 58 infos | 85 / 85 pass (was 13) | 74.7 % lines (was 6.6 %) | web ok, 34.2 s |
 
 Every suite passes. No open pull requests were left behind except the ones listed under "Changes made during this run".
 
@@ -20,9 +20,9 @@ Every suite passes. No open pull requests were left behind except the ones liste
 | Project | Main script | Whole build |
 |---|---|---|
 | Portfolio | 331 KiB JS + 43 KiB CSS | 4.3 MiB (mostly images) |
-| Mini Shop web | @MS_JS@ MiB `main.dart.js` | @MS_TOTAL@ MiB |
-| Tabkha web | @TK_JS@ MiB `main.dart.js` | @TK_TOTAL@ MiB |
-| SANAD web | @SD_JS@ MiB `main.dart.js` | @SD_TOTAL@ MiB |
+| Mini Shop web | 3.4 MiB `main.dart.js` | 41.1 MiB |
+| Tabkha web | 3.6 MiB `main.dart.js` | 44.5 MiB |
+| SANAD web | 3.6 MiB `main.dart.js` | 43.6 MiB |
 
 Flutter web totals include the CanvasKit renderer and the Android/iOS-only assets that ship in `build/web`; the browser downloads about 3.2–3.8 MiB on first load (see transfer sizes below).
 
