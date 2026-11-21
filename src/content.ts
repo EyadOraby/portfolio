@@ -405,15 +405,18 @@ export const projects: Project[] = [
     approach:
       "BLoC/Cubit state over repositories, with pricing, promo codes and shipping in one tested CartSummary. Storage sits behind a small KeyValueStore (Hive in the app, memory in tests), and the catalog falls back from the API to a cached copy to a bundled one.",
     outcome:
-      "Wishlist, cart with undo, promo codes, a three-step checkout, order tracking and dark mode, on Android, iOS and the web, with 19 tests and CI that deploys the demo on every merge.",
+      "Wishlist, cart with undo, promo codes, a three-step checkout, order tracking, dark mode and an owner dashboard, on Android, iOS and the web, with 21 tests and CI that deploys the demo on every merge.",
     highlights: [
       "Three-step checkout with validation and an animated confirmation",
       "Order history with a processing, shipped and delivered timeline",
       "Works offline: API, then cached catalog, then bundled catalog",
+      "Owner dashboard: revenue, category sales, product and order tables",
     ],
     stack: ["Flutter", "Dart", "BLoC", "Dio", "Hive"],
     links: [
-      { label: "Live demo", href: "https://eyadoraby.github.io/Mini-Shop-App/?demo=1" },
+      { label: "Website", href: "https://eyadoraby.github.io/Mini-Shop-App/" },
+      { label: "Live demo", href: "https://eyadoraby.github.io/Mini-Shop-App/app/?demo=1" },
+      { label: "Dashboard", href: "https://eyadoraby.github.io/Mini-Shop-App/app/?screen=admin" },
       { label: "Code", href: "https://github.com/EyadOraby/Mini-Shop-App" },
     ],
     shots: [
