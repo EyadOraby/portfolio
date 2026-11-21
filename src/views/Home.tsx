@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Counter } from "../components/Counter";
 import { HoldClock } from "../components/HoldClock";
 import { ArrowIcon, BriefcaseIcon, GithubIcon, LayersIcon, MailIcon, SearchIcon } from "../components/Icons";
+import { Playground } from "../components/Playground";
 import { ShotCycler } from "../components/ShotCycler";
 import { spotlight } from "../components/hooks";
 import { experience, metrics, profile, projects, skills } from "../content";
@@ -13,7 +14,6 @@ const live = projects.flatMap((p) =>
 );
 
 const allSkills = skills.flatMap((g) => g.items);
-const rows = [allSkills.slice(0, Math.ceil(allSkills.length / 2)), allSkills.slice(Math.ceil(allSkills.length / 2))];
 
 export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock: () => void }) {
   const [paused, setPaused] = useState(false);
@@ -128,19 +128,14 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
         </section>
 
         <section className="widget widget-stack" onPointerMove={spotlight} aria-labelledby="stack-heading">
-          <h2 id="stack-heading" className="widget-label">
-            Toolbox
-          </h2>
-          <p className="sr-only">{allSkills.join(", ")}</p>
-          <div className="marquee" aria-hidden="true">
-            {rows.map((row, r) => (
-              <div key={r} className="marquee-row" data-reverse={r % 2 === 1}>
-                {[...row, ...row].map((skill, i) => (
-                  <span key={`${skill}-${i}`}>{skill}</span>
-                ))}
-              </div>
-            ))}
+          <div className="stack-head">
+            <h2 id="stack-heading" className="widget-label">
+              Toolbox
+            </h2>
+            <span className="stack-hint">Grab one and throw it</span>
           </div>
+          <p className="sr-only">{allSkills.join(", ")}</p>
+          <Playground />
         </section>
 
         <section className="widget widget-metrics" onPointerMove={spotlight} aria-label="Highlights">
