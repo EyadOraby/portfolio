@@ -13,7 +13,7 @@ const pick = (name: string) => shotsBySrc.get(`/shots/${name}.png`) ?? shotsBySr
 const pairs: [slug: string, wide: string, tall: string][] = [
   ["rsvp-studio", "rsvp-builder", "rsvp-mobile"],
   ["mini-shop", "shop-desktop", "shop-home"],
-  ["tabkha", "tabkha-desktop", "tabkha-home"],
+  ["tabkha", "tabkha-admin", "tabkha-home"],
   ["wedding-invitation", "rsvp-event-page", "rsvp-mobile-form"],
 ];
 
