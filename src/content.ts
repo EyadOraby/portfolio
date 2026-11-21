@@ -417,6 +417,7 @@ export const projects: Project[] = [
       { label: "Website", href: "https://eyadoraby.github.io/Mini-Shop-App/" },
       { label: "Live demo", href: "https://eyadoraby.github.io/Mini-Shop-App/app/?demo=1" },
       { label: "Dashboard", href: "https://eyadoraby.github.io/Mini-Shop-App/app/?screen=admin" },
+      { label: "Android app", href: "https://github.com/EyadOraby/Mini-Shop-App/releases/download/android/mini-shop.apk" },
       { label: "Code", href: "https://github.com/EyadOraby/Mini-Shop-App" },
     ],
     shots: [
@@ -426,6 +427,7 @@ export const projects: Project[] = [
       phone("shop-checkout", "Three-step checkout: delivery, payment and review", "jpg"),
       phone("shop-orders", "Order history with a delivery timeline", "jpg"),
       desktop("shop-desktop", "Mini Shop on the web with a wide product grid", "jpg"),
+      desktop("shop-dashboard", "Owner dashboard: revenue, orders, sales by category and recent orders", "jpg"),
     ],
     accent: "#4fb6a3",
   },
@@ -477,6 +479,7 @@ export const projects: Project[] = [
       { label: "Website", href: "https://eyadoraby.github.io/tabkha_app/" },
       { label: "Live demo", href: "https://eyadoraby.github.io/tabkha_app/app/?screen=home" },
       { label: "Restaurant console", href: "https://eyadoraby.github.io/tabkha_app/app/?screen=admin" },
+      { label: "Android app", href: "https://github.com/EyadOraby/tabkha_app/releases/download/android/tabkha.apk" },
       { label: "Code", href: "https://github.com/EyadOraby/tabkha_app" },
     ],
     shots: [
@@ -511,6 +514,7 @@ export const projects: Project[] = [
       { label: "Website", href: "https://eyadoraby.github.io/grad/" },
       { label: "Live demo", href: "https://eyadoraby.github.io/grad/app/?demo=1&screen=activity" },
       { label: "Staff portal", href: "https://eyadoraby.github.io/grad/app/?demo=1&screen=staff" },
+      { label: "Android app", href: "https://github.com/EyadOraby/grad/releases/download/android/sanad.apk" },
       { label: "Code", href: "https://github.com/EyadOraby/grad" },
     ],
     shots: [
