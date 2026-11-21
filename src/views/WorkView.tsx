@@ -1,5 +1,6 @@
+import { Frame } from "../components/Frame";
 import { ArrowIcon, GithubIcon } from "../components/Icons";
-import { experience, principles, profile, skills } from "../content";
+import { experience, principles, profile, skills, type ProApp } from "../content";
 import { ViewShell } from "./ViewShell";
 
 export function WorkView({ onBack }: { onBack: () => void }) {
@@ -13,6 +14,11 @@ export function WorkView({ onBack }: { onBack: () => void }) {
         <a className="button button-ghost" href="#projects">
           Case studies <ArrowIcon />
         </a>
+        {profile.cv && (
+          <a className="button button-ghost" href={profile.cv} download>
+            Download CV
+          </a>
+        )}
         {profile.email && (
           <a className="button button-ghost" href={`mailto:${profile.email}`}>
             Email me
@@ -35,6 +41,13 @@ export function WorkView({ onBack }: { onBack: () => void }) {
                   <li key={point}>{point}</li>
                 ))}
               </ul>
+              {item.apps && item.apps.length > 0 && (
+                <div className="pro-apps">
+                  {item.apps.map((app) => (
+                    <ProAppCard key={app.name} app={app} />
+                  ))}
+                </div>
+              )}
             </li>
           ))}
         </ol>
@@ -79,5 +92,37 @@ export function WorkView({ onBack }: { onBack: () => void }) {
         </div>
       </section>
     </ViewShell>
+  );
+}
+
+function ProAppCard({ app }: { app: ProApp }) {
+  const shot = app.shots[0];
+  return (
+    <article className="pro-app" data-reveal="up" style={{ "--accent": app.accent } as React.CSSProperties}>
+      {shot && (
+        <div className="pro-app-shot">
+          <Frame shot={shot} />
+        </div>
+      )}
+      <div className="pro-app-body">
+        <p className="pro-app-meta">
+          <span className="pill-status" data-status={app.status === "Live" ? "Active" : "Exploring"}>
+            {app.status}
+          </span>
+          {app.platforms.join(" · ")}
+        </p>
+        <h4>{app.name}</h4>
+        <p>{app.summary}</p>
+        {app.links.length > 0 && (
+          <div className="pro-app-links">
+            {app.links.map((link) => (
+              <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">
+                {link.label} <ArrowIcon />
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </article>
   );
 }

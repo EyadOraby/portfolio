@@ -45,6 +45,11 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             <a className="button button-ghost" href={profile.github} target="_blank" rel="noopener noreferrer">
               <GithubIcon /> GitHub
             </a>
+            {profile.cv && (
+              <a className="button button-ghost" href={profile.cv} download>
+                CV
+              </a>
+            )}
             {profile.email && (
               <a className="button button-ghost" href={`mailto:${profile.email}`}>
                 <MailIcon /> Email
@@ -109,7 +114,7 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
 
         <section className="widget widget-live" onPointerMove={spotlight} aria-labelledby="live-heading">
           <h2 id="live-heading" className="widget-label">
-            Live in production
+            Live now
           </h2>
           <ul className="live-list">
             {live.map((site) => (

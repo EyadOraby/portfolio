@@ -11,8 +11,20 @@ export const profile = {
     "Mobile-first software engineer. Most of my work is cross-platform apps in Flutter, from login to checkout, with clean architecture (BLoC, Riverpod), offline caching and Firebase. On the web I build with Next.js, TypeScript and Postgres, and ship to production with tests and CI.",
   github: "https://github.com/EyadOraby",
   /** Leave empty to hide the email button. */
+  /** Path to a CV in public/ (e.g. "/cv.pdf"). Leave empty to hide the button. */
+  cv: "",
   email: "eyadoraby99@gmail.com",
   location: "Giza, Egypt",
+};
+
+export type ProApp = {
+  name: string;
+  summary: string;
+  status: "Live" | "In development" | "Internal" | "Retired";
+  platforms: string[];
+  links: { label: string; href: string }[];
+  shots: Shot[];
+  accent: string;
 };
 
 export type Experience = {
@@ -20,6 +32,8 @@ export type Experience = {
   place: string;
   period: string;
   points: string[];
+  /** Apps shipped in this role, shown with screenshots on the Experience page. */
+  apps?: ProApp[];
 };
 
 /** Professional highlights, newest first. */
@@ -284,7 +298,11 @@ export const metrics: { value: number; suffix: string; label: string }[] = [
   { value: projects.length, suffix: "", label: "shipped projects" },
   { value: projects.filter((p) => p.kind === "Mobile").length, suffix: "", label: "Flutter apps" },
   { value: 150, suffix: "+", label: "automated tests" },
-  { value: 2, suffix: "", label: "live production apps" },
+  {
+    value: projects.filter((p) => p.links.some((l) => /live/i.test(l.label))).length,
+    suffix: "",
+    label: "apps you can open now",
+  },
 ];
 
 export type Pastime = {
