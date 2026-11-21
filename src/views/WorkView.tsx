@@ -1,3 +1,4 @@
+import { t } from "../i18n";
 import { useEffect } from "react";
 import { ProShowcase } from "../components/ProShowcase";
 import { ArrowIcon, GithubIcon } from "../components/Icons";
@@ -14,21 +15,21 @@ export function WorkView({ onBack, anchor }: { onBack: () => void; anchor: strin
   }, [anchor]);
 
   return (
-    <ViewShell title="Experience" kicker="Professional" accent="#7c8cff" onBack={onBack}>
+    <ViewShell title={t("Experience")} kicker={t("Professional")} accent="#7c8cff" onBack={onBack}>
       <p className="lead">{profile.summary}</p>
       <div className="actions">
         <a className="button" href={profile.github} target="_blank" rel="noopener noreferrer">
-          <GithubIcon /> GitHub
+          <GithubIcon /> {t("GitHub")}
         </a>
         <a className="button button-ghost" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-          LinkedIn <ArrowIcon />
+          {t("LinkedIn")} <ArrowIcon />
         </a>
         <a className="button button-ghost" href="#cv">
-              Download CV
+              {t("Download CV")}
             </a>
         {profile.email && (
           <a className="button button-ghost" href={`mailto:${profile.email}`}>
-            Email me
+            {t("Email me")}
           </a>
         )}
       </div>
@@ -36,7 +37,7 @@ export function WorkView({ onBack, anchor }: { onBack: () => void; anchor: strin
       <ProShowcase />
 
       <section aria-labelledby="exp-heading">
-        <h2 id="exp-heading">Where I've worked</h2>
+        <h2 id="exp-heading">{t("Where I've worked")}</h2>
         <ol className="timeline">
           {experience.map((item) => (
             <li key={`${item.place}-${item.period}`} className="timeline-item" data-reveal="left">
@@ -56,7 +57,7 @@ export function WorkView({ onBack, anchor }: { onBack: () => void; anchor: strin
       </section>
 
       <section aria-labelledby="how-heading">
-        <h2 id="how-heading">How I work</h2>
+        <h2 id="how-heading">{t("How I work")}</h2>
         <div className="principles">
           {principles.map((p, i) => (
             <div
@@ -74,7 +75,7 @@ export function WorkView({ onBack, anchor }: { onBack: () => void; anchor: strin
       </section>
 
       <section aria-labelledby="skills-heading">
-        <h2 id="skills-heading">Toolkit</h2>
+        <h2 id="skills-heading">{t("Toolkit")}</h2>
         <div className="skill-groups">
           {skills.map((group, i) => (
             <div
@@ -95,7 +96,7 @@ export function WorkView({ onBack, anchor }: { onBack: () => void; anchor: strin
       </section>
 
       <section aria-labelledby="edu-heading">
-        <h2 id="edu-heading">Education</h2>
+        <h2 id="edu-heading">{t("Education")}</h2>
         <div className="skill-groups">
           {education.map((e) => (
             <div key={e.school} className="card" data-reveal>

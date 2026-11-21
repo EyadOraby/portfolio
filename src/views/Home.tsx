@@ -1,8 +1,10 @@
+import { t } from "../i18n";
 import { useState } from "react";
 import { Counter } from "../components/Counter";
 import { HoldClock } from "../components/HoldClock";
 import { ArrowIcon, BriefcaseIcon, GithubIcon, LayersIcon, MailIcon, SearchIcon } from "../components/Icons";
 import { Playground } from "../components/Playground";
+import { LangToggle } from "../components/LangToggle";
 import { ProShowcase } from "../components/ProShowcase";
 import { ShotCycler } from "../components/ShotCycler";
 import { spotlight, useReveal } from "../components/hooks";
@@ -31,7 +33,7 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             </span>
             <span className="pill">
               <span className="pulse" aria-hidden="true" />
-              17 apps on the App Store &amp; Google Play
+              {t("17 apps on the App Store & Google Play")}
             </span>
           </div>
           <h1 id="name">{profile.name}</h1>
@@ -58,19 +60,20 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
           </div>
           <div className="intro-actions">
             <a className="button" href="#work">
-              See all my apps <ArrowIcon />
+              {t("See all my apps")} <ArrowIcon />
             </a>
             <a className="button button-ghost" href={profile.github} target="_blank" rel="noopener noreferrer">
-              <GithubIcon /> GitHub
+              <GithubIcon /> {t("GitHub")}
             </a>
             <a className="button button-ghost" href="#cv">
-              CV
+              {t("CV")}
             </a>
             {profile.email && (
               <a className="button button-ghost" href={`mailto:${profile.email}`}>
-                <MailIcon /> Email
+                <MailIcon /> {t("Email")}
               </a>
             )}
+            <LangToggle />
             <button type="button" className="kbd-hint" onClick={onPalette}>
               <SearchIcon /> <kbd>{isMac ? "⌘" : "Ctrl"}</kbd>
               <kbd>K</kbd>
@@ -82,10 +85,10 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
       <ProShowcase />
 
       <aside className="insight" aria-labelledby="side-heading" data-reveal="up">
-        <p className="insight-kicker">Beyond the day job</p>
-        <h2 id="side-heading">I also build open-source and freelance products.</h2>
+        <p className="insight-kicker">{t("Beyond the day job")}</p>
+        <h2 id="side-heading">{t("I also build open-source and freelance products.")}</h2>
         <p className="muted">
-          A multi-event RSVP builder live on Vercel, plus Flutter apps with web demos you can open right now.
+          {t("A multi-event RSVP builder live on Vercel, plus Flutter apps with web demos you can open right now.")}
         </p>
         <div className="insight-links">
           {projects.slice(0, 5).map((p) => (
@@ -95,12 +98,12 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             </a>
           ))}
           <a href="#projects" className="insight-all">
-            All case studies <ArrowIcon />
+            {t("All case studies")} <ArrowIcon />
           </a>
         </div>
       </aside>
 
-      <h2 className="home-more" data-reveal="up">More about me</h2>
+      <h2 className="home-more" data-reveal="up">{t("More about me")}</h2>
       <div className="bento">
 
         <a
@@ -111,15 +114,15 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
           onPointerLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
-          aria-label={`Projects: ${projects.length} case studies`}
+          aria-label={t("Projects")}
         >
           <div className="widget-head">
             <span className="app-icon app-icon-projects" aria-hidden="true">
               <LayersIcon />
             </span>
             <span>
-              <strong>Projects</strong>
-              <small>{projects.length} open-source &amp; freelance case studies</small>
+              <strong>{t("Projects")}</strong>
+              <small>{projects.length} {t("open-source & freelance case studies")}</small>
             </span>
             <span className="widget-go" aria-hidden="true">
               <ArrowIcon />
@@ -134,8 +137,8 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
               <BriefcaseIcon />
             </span>
             <span>
-              <strong>Experience</strong>
-              <small>17 store apps · 4 companies</small>
+              <strong>{t("Experience")}</strong>
+              <small>{t("17 store apps · 4 companies")}</small>
             </span>
             <span className="widget-go" aria-hidden="true">
               <ArrowIcon />
@@ -155,7 +158,7 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
 
         <section className="widget widget-live" onPointerMove={spotlight} aria-labelledby="live-heading">
           <h2 id="live-heading" className="widget-label">
-            Live now
+            {t("Live now")}
           </h2>
           <ul className="live-list">
             {live.map((site) => (
@@ -176,9 +179,9 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
         <section className="widget widget-stack" onPointerMove={spotlight} aria-labelledby="stack-heading">
           <div className="stack-head">
             <h2 id="stack-heading" className="widget-label">
-              Toolbox
+              {t("Toolbox")}
             </h2>
-            <span className="stack-hint">Grab one and throw it</span>
+            <span className="stack-hint">{t("Grab one and throw it")}</span>
           </div>
           <p className="sr-only">{allSkills.join(", ")}</p>
           <Playground />
@@ -194,9 +197,9 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
         </section>
       </div>
       <footer className="home-foot">
-        <span>Built with React, TypeScript and Vite · tested in CI</span>
+        <span>{t("Built with React, TypeScript and Vite · tested in CI")}</span>
         <a href={`${profile.github}/portfolio`} target="_blank" rel="noopener noreferrer">
-          Source <ArrowIcon />
+          {t("Source")} <ArrowIcon />
         </a>
       </footer>
     </main>

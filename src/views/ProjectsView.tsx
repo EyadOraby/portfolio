@@ -1,3 +1,4 @@
+import { t } from "../i18n";
 import { useEffect, useState } from "react";
 import { Frame } from "../components/Frame";
 import { ArrowIcon } from "../components/Icons";
@@ -23,15 +24,16 @@ export function ProjectsView({ onBack, anchor }: { onBack: () => void; anchor: s
   }, [anchor]);
 
   return (
-    <ViewShell title="Projects" kicker="Freelance & portfolio" accent="#ff8a65" onBack={onBack}>
+    <ViewShell title={t("Projects")} kicker={t("Freelance & portfolio")} accent="#ff8a65" onBack={onBack}>
       <p className="lead">
-        Client work, products and personal builds. Mostly Flutter apps, plus full-stack web products shipped to
-        production. Each one is written up as a short case study.
+        {t(
+          "Client work, products and personal builds. Mostly Flutter apps, plus full-stack web products shipped to production. Each one is written up as a short case study.",
+        )}
       </p>
       <div className="filters" role="group" aria-label="Filter projects">
         {FILTERS.map((f) => (
           <button key={f} type="button" aria-pressed={filter === f} onClick={() => setFilter(f)} className="filter">
-            {f}
+            {t(f)}
             <span>{f === "All" ? projects.length : projects.filter((p) => p.kind === f).length}</span>
           </button>
         ))}
@@ -42,7 +44,7 @@ export function ProjectsView({ onBack, anchor }: { onBack: () => void; anchor: s
           <CaseStudy key={project.slug} project={project} />
         ))}
       </div>
-      <p className="whisper">The clock on the home screen does more than tell the time.</p>
+      <p className="whisper">{t("The clock on the home screen does more than tell the time.")}</p>
     </ViewShell>
   );
 }
@@ -119,15 +121,15 @@ function CaseStudy({ project }: { project: Project }) {
         <p className="case-tagline">{project.tagline}</p>
         <dl className="case-story">
           <div>
-            <dt>Problem</dt>
+            <dt>{t("Problem")}</dt>
             <dd>{project.problem}</dd>
           </div>
           <div>
-            <dt>Approach</dt>
+            <dt>{t("Approach")}</dt>
             <dd>{project.approach}</dd>
           </div>
           <div>
-            <dt>Outcome</dt>
+            <dt>{t("Outcome")}</dt>
             <dd>{project.outcome}</dd>
           </div>
         </dl>

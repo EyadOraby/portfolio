@@ -1,3 +1,4 @@
+import { t } from "../i18n";
 import { useEffect, useRef } from "react";
 import { ArrowIcon, BackIcon, ChevronIcon } from "../components/Icons";
 import { useReveal } from "../components/hooks";
@@ -5,8 +6,8 @@ import { hobbies, interests, pastimes, profile, type Pastime } from "../content"
 import { wrapIndex } from "../lib";
 
 const groups = [
-  { title: "Away from the keyboard", items: hobbies },
-  { title: "Tech I explore", items: interests },
+  { title: t("Away from the keyboard"), items: hobbies },
+  { title: t("Tech I explore"), items: interests },
 ];
 
 /**
@@ -50,7 +51,7 @@ export function OffDutyView({
       <aside className="shell-side" aria-label="Off the clock">
         <div className="shell-brand">
           <button type="button" className="back" onClick={onBack}>
-            <BackIcon /> Home
+            <BackIcon /> {t("Home")}
           </button>
         </div>
         <button
@@ -62,7 +63,7 @@ export function OffDutyView({
           <span className="shell-glyph" aria-hidden="true">
             ☾
           </span>
-          <span className="shell-label">Overview</span>
+          <span className="shell-label">{t("Overview")}</span>
         </button>
         {groups.map((group) => (
           <nav key={group.title} className="shell-group" aria-label={group.title}>
@@ -88,14 +89,14 @@ export function OffDutyView({
           </nav>
         ))}
         <p className="shell-hint">
-          <kbd>←</kbd> <kbd>→</kbd> to flip through
+          <kbd>←</kbd> <kbd>→</kbd> {t("to flip through")}
         </p>
       </aside>
 
       <main ref={main} className="shell-main" key={current?.slug ?? "overview"}>
         <div className="shell-crumbs">
           <button type="button" onClick={() => onOpen(null)}>
-            Off the clock
+            {t("Off the clock")}
           </button>
           {current && (
             <>
@@ -114,10 +115,11 @@ function Overview({ onOpen }: { onOpen: (slug: string) => void }) {
   return (
     <div className="shell-page">
       <p className="shell-path">~/off-the-clock</p>
-      <h1 className="shell-title">Off the clock</h1>
+      <h1 className="shell-title">{t("Off the clock")}</h1>
       <p className="shell-lead">
-        You held on long enough to clock out with me. This is what I do when the laptop is closed, and the corners of
-        tech I explore just because I enjoy them.
+        {t(
+          "You held on long enough to clock out with me. This is what I do when the laptop is closed, and the corners of tech I explore just because I enjoy them.",
+        )}
       </p>
       {groups.map((group) => (
         <section key={group.title} className="shell-section">
@@ -143,7 +145,7 @@ function Overview({ onOpen }: { onOpen: (slug: string) => void }) {
                   <small>{item.tagline}</small>
                 </span>
                 <span className="library-status" data-status={item.status}>
-                  {item.status}
+                  {t(item.status)}
                 </span>
               </button>
             ))}
@@ -163,7 +165,7 @@ function Detail({ item, index, onOpen }: { item: Pastime; index: number; onOpen:
     <article className="shell-page" style={{ "--accent": item.accent } as React.CSSProperties}>
       <p className="shell-path">
         <span className="pill-status" data-status={item.status}>
-          {item.status}
+          {t(item.status)}
         </span>
         ~/off-the-clock/{item.slug}
       </p>
@@ -177,7 +179,7 @@ function Detail({ item, index, onOpen }: { item: Pastime; index: number; onOpen:
         <div className="feature-body">
           <p className="feature-kicker">
             <span className="status-dot" aria-hidden="true" />
-            {isHobby ? "Part of my week" : "Currently exploring"}
+            {isHobby ? t("Part of my week") : t("Currently exploring")}
           </p>
           <p>{item.overview}</p>
         </div>
@@ -199,7 +201,7 @@ function Detail({ item, index, onOpen }: { item: Pastime; index: number; onOpen:
 
       <section className="shell-section">
         <div className="shell-section-head">
-          <h2>Notes</h2>
+          <h2>{t("Notes")}</h2>
         </div>
         <ul className="notes">
           {item.notes.map((note, i) => (
@@ -213,19 +215,19 @@ function Detail({ item, index, onOpen }: { item: Pastime; index: number; onOpen:
       <nav className="pager" aria-label="More">
         <button type="button" onClick={() => onOpen(prev.slug)}>
           <small>
-            <ChevronIcon flip /> Previous
+            <ChevronIcon flip /> {t("Previous")}
           </small>
           <span>{prev.title}</span>
         </button>
         <button type="button" onClick={() => onOpen(next.slug)}>
           <small>
-            Next <ChevronIcon />
+            {t("Next")} <ChevronIcon />
           </small>
           <span>{next.title}</span>
         </button>
       </nav>
       <a className="shell-foot" href="#projects">
-        Back to the work <ArrowIcon />
+        {t("Back to the work")} <ArrowIcon />
       </a>
     </article>
   );

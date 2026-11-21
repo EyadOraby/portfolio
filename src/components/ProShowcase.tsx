@@ -1,3 +1,4 @@
+import { t } from "../i18n";
 import { ArrowIcon } from "./Icons";
 import { alsoDelivered, proApps, type ProApp } from "../content";
 
@@ -13,11 +14,12 @@ export function ProShowcase({ headingLevel = 2 }: { headingLevel?: 1 | 2 }) {
   return (
     <section aria-labelledby="apps-heading" className="pro">
       <Heading id="apps-heading" className="pro-title">
-        <span>17</span> apps shipped to the App Store and Google Play.
+        <span>17</span> {t("apps shipped to the App Store and Google Play.")}
       </Heading>
       <p className="muted pro-sub">
-        Built in Flutter for iOS and Android at Apes Solutions, Talento and Status Strong. Every screen below comes from
-        the app's own store listing.
+        {t(
+          "Built in Flutter for iOS and Android at Apes Solutions, Talento and Status Strong. Every screen below comes from the app's own store listing.",
+        )}
       </p>
       <div className="dock">
         {proApps.map((app, i) => (
@@ -39,13 +41,13 @@ export function ProShowcase({ headingLevel = 2 }: { headingLevel?: 1 | 2 }) {
         ))}
       </div>
 
-      <h3 className="track-title">And more on the stores</h3>
+      <h3 className="track-title">{t("And more on the stores")}</h3>
       <div className="track" tabIndex={0} role="region" aria-label="More shipped apps">
         {moreApps.map((app) => (
           <TrackCard key={app.slug} app={app} />
         ))}
       </div>
-      <p className="muted also">Also delivered: {alsoDelivered.join(", ")}.</p>
+      <p className="muted also">{t("Also delivered:")} {alsoDelivered.join(", ")}.</p>
     </section>
   );
 }
@@ -68,7 +70,7 @@ function Chapter({ app, index }: { app: ProApp; index: number }) {
         </p>
         <h3>{app.name}</h3>
         <p className="chapter-desc">{app.summary}</p>
-        {app.role && <p className="chapter-role">My role: {app.role}</p>}
+        {app.role && <p className="chapter-role">{t("My role:")} {app.role}</p>}
         {app.stat && (
           <p className="chapter-stat">
             <b>{app.stat.value}</b>
@@ -126,7 +128,7 @@ function TrackCard({ app }: { app: ProApp }) {
 }
 
 function StoreLinks({ app }: { app: ProApp }) {
-  if (app.status === "Retired") return <p className="store-off">Removed from the App Store</p>;
+  if (app.status === "Retired") return <p className="store-off">{t("Removed from the App Store")}</p>;
   return (
     <div className="store-links">
       {app.links.map((l) => (

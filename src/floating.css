@@ -97,8 +97,8 @@ button.widget:hover {
 }
 
 .metric + .metric {
-  border-left: 0;
-  padding-left: 0;
+  border-inline-start: 0;
+  padding-inline-start: 0;
 }
 
 .counter {
@@ -342,8 +342,8 @@ button.widget:hover {
 
 .chapter-role {
   margin: 1rem 0 0;
-  padding-left: 0.9rem;
-  border-left: 2px solid var(--c-accent);
+  padding-inline-start: 0.9rem;
+  border-inline-start: 2px solid var(--c-accent);
   color: #c9d0df;
   font-size: 0.93rem;
   max-width: 46ch;
@@ -693,7 +693,7 @@ button.widget:hover {
   list-style: none;
   margin: 0;
   padding: 0;
-  text-align: right;
+  text-align: end;
   font-size: 0.85rem;
 }
 
@@ -741,11 +741,11 @@ button.widget:hover {
 
 .cv ul {
   margin: 0.3rem 0 0.7rem;
-  padding-left: 1.1rem;
+  padding-inline-start: 1.1rem;
 }
 
 .cv-projects {
-  padding-left: 1.1rem;
+  padding-inline-start: 1.1rem;
 }
 
 .cv-two {
@@ -756,7 +756,7 @@ button.widget:hover {
 
 @media (max-width: 640px) {
   .cv-contact {
-    text-align: left;
+    text-align: start;
   }
 
   .cv-two {
@@ -808,5 +808,56 @@ button.widget:hover {
 
   .cv a {
     color: #1b1f27;
+  }
+}
+
+/* Language */
+.lang-toggle {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.4rem;
+  height: 2.4rem;
+  padding: 0 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font: 700 0.95rem/1 "IBM Plex Sans Arabic", Inter, sans-serif;
+  cursor: pointer;
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.lang-toggle:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.view-header-end {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+html[lang="ar"] body,
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] button {
+  font-family: "IBM Plex Sans Arabic", Inter, system-ui, sans-serif;
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .back svg,
+html[dir="rtl"] .widget-go svg,
+html[dir="rtl"] .button svg,
+html[dir="rtl"] .store-links svg,
+html[dir="rtl"] .pager svg {
+  transform: scaleX(-1);
+}
+
+@media print {
+  .lang-toggle {
+    display: none;
   }
 }

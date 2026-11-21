@@ -1,3 +1,4 @@
+import { t } from "../i18n";
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { holdProgress } from "../lib";
 import { spotlight, useNow } from "./hooks";
@@ -90,7 +91,7 @@ export function HoldClock({ onUnlock }: { onUnlock: () => void }) {
       </svg>
       <span className="clock-time">{time}</span>
       <span className="clock-day">{day}</span>
-      <span className="clock-hint">{progress > 0 ? "Keep holding…" : "Hold to clock out"}</span>
+      <span className="clock-hint">{progress > 0 ? t("Keep holding…") : t("Hold to clock out")}</span>
     </button>
   );
 }

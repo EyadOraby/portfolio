@@ -1,3 +1,4 @@
+import { t } from "./i18n";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { flushSync } from "react-dom";
 import { CommandPalette, type Action } from "./components/CommandPalette";
@@ -68,10 +69,10 @@ export default function App() {
 
   const actions = useMemo<Action[]>(
     () => [
-      { id: "home", label: "Home", hint: "Page", run: () => go("#") },
-      { id: "cv", label: "CV", hint: "Page", keywords: "resume curriculum pdf download", run: () => go("#cv") },
-      { id: "work", label: "Experience", hint: "Page", keywords: "work cv resume skills", run: () => go("#work") },
-      { id: "projects", label: "Projects", hint: "Page", keywords: "case studies portfolio", run: () => go("#projects") },
+      { id: "home", label: t("Home"), hint: t("Page"), run: () => go("#") },
+      { id: "cv", label: t("CV"), hint: t("Page"), keywords: "resume curriculum pdf download", run: () => go("#cv") },
+      { id: "work", label: t("Experience"), hint: t("Page"), keywords: "work cv resume skills", run: () => go("#work") },
+      { id: "projects", label: t("Projects"), hint: t("Page"), keywords: "case studies portfolio", run: () => go("#projects") },
       ...projects.map((p) => ({
         id: `p-${p.slug}`,
         label: p.name,
@@ -83,7 +84,7 @@ export default function App() {
         p.links.map((l) => ({
           id: `l-${l.href}`,
           label: `${p.name}: ${l.label}`,
-          hint: "Opens in a new tab",
+          hint: t("Opens in a new tab"),
           keywords: "link open",
           run: () => window.open(l.href, "_blank", "noopener,noreferrer"),
         })),
@@ -92,7 +93,7 @@ export default function App() {
         ? [
             {
               id: "email",
-              label: "Email me",
+              label: t("Email me"),
               hint: profile.email,
               keywords: "contact hire mail",
               run: () => {
@@ -103,8 +104,8 @@ export default function App() {
         : []),
       {
         id: "github",
-        label: "GitHub profile",
-        hint: "Opens in a new tab",
+        label: t("GitHub profile"),
+        hint: t("Opens in a new tab"),
         keywords: "code repos",
         run: () => window.open(profile.github, "_blank", "noopener,noreferrer"),
       },

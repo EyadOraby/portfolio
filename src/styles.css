@@ -168,7 +168,7 @@ kbd {
   border: 1px solid var(--line);
   background: linear-gradient(165deg, var(--surface-2), var(--surface));
   text-decoration: none;
-  text-align: left;
+  text-align: start;
   overflow: hidden;
   isolation: isolate;
   animation: rise 0.7s var(--ease) backwards;
@@ -405,7 +405,7 @@ a.widget:active {
 }
 
 .widget-go {
-  margin-left: auto;
+  margin-inline-start: auto;
   display: grid;
   place-items: center;
   width: 2rem;
@@ -607,7 +607,7 @@ a.widget:active {
   list-style: none;
   margin: 1.2rem 0 0;
   padding: 0 0 0 0.9rem;
-  border-left: 1px dashed var(--line-strong);
+  border-inline-start: 1px dashed var(--line-strong);
   display: grid;
   gap: 0.7rem;
 }
@@ -807,8 +807,8 @@ a.widget:active {
 }
 
 .metric + .metric {
-  border-left: 1px solid var(--line);
-  padding-left: 1.2rem;
+  border-inline-start: 1px solid var(--line);
+  padding-inline-start: 1.2rem;
 }
 
 .counter {
@@ -1047,7 +1047,7 @@ a.widget:active {
   list-style: none;
   margin: 0;
   padding: 0 0 0 1.4rem;
-  border-left: 1px solid var(--line-strong);
+  border-inline-start: 1px solid var(--line-strong);
 }
 
 .timeline-item {
@@ -1087,7 +1087,7 @@ a.widget:active {
 .timeline ul,
 .bullets {
   margin: 0.8rem 0 0;
-  padding-left: 1.1rem;
+  padding-inline-start: 1.1rem;
   color: #c9d0df;
   line-height: 1.7;
 }
@@ -1702,8 +1702,8 @@ a.widget:active {
   }
 
   .metric:nth-child(3) {
-    border-left: 0;
-    padding-left: 0;
+    border-inline-start: 0;
+    padding-inline-start: 0;
   }
 
   .kbd-hint {
@@ -1796,7 +1796,7 @@ a.widget:active {
   background: none;
   color: #c9d0df;
   font-size: 0.92rem;
-  text-align: left;
+  text-align: start;
   cursor: pointer;
   transition:
     background 0.25s var(--ease),
@@ -1980,7 +1980,7 @@ a.widget:active {
   border: 1px solid var(--line);
   border-radius: 20px;
   background: linear-gradient(165deg, var(--surface-2), var(--surface));
-  text-align: left;
+  text-align: start;
   overflow: hidden;
   cursor: pointer;
   transition:
@@ -2174,7 +2174,7 @@ a.widget:active {
   border: 1px solid transparent;
   border-radius: 14px;
   background: none;
-  text-align: left;
+  text-align: start;
   cursor: pointer;
   transition:
     background 0.25s var(--ease),
@@ -2183,7 +2183,7 @@ a.widget:active {
 
 .pager button:last-child {
   align-items: flex-end;
-  text-align: right;
+  text-align: end;
 }
 
 .pager button:hover {

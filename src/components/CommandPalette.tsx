@@ -1,3 +1,4 @@
+import { t } from "../i18n";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { filterCommands, wrapIndex, type Command } from "../lib";
 import { SearchIcon } from "./Icons";
@@ -51,7 +52,7 @@ export function CommandPalette({
           <input
             ref={input}
             value={query}
-            placeholder="Jump to a project, page or link…"
+            placeholder={t("Jump to a project, page or link…")}
             role="combobox"
             aria-expanded="true"
             aria-controls={listId}
@@ -89,7 +90,7 @@ export function CommandPalette({
               <small>{action.hint}</small>
             </li>
           ))}
-          {results.length === 0 && <li className="palette-empty">Nothing matches “{query}”.</li>}
+          {results.length === 0 && <li className="palette-empty">{t("Nothing matches")} “{query}”.</li>}
         </ul>
       </div>
     </div>

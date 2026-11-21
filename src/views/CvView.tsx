@@ -1,4 +1,6 @@
+import { t } from "../i18n";
 import { useEffect } from "react";
+import { LangToggle } from "../components/LangToggle";
 import { BackIcon } from "../components/Icons";
 import { alsoDelivered, education, experience, profile, proApps, projects, skills } from "../content";
 
@@ -19,18 +21,21 @@ export function CvView({ onBack }: { onBack: () => void }) {
     <div className="cv-page">
       <div className="cv-toolbar">
         <button type="button" className="back" onClick={onBack}>
-          <BackIcon /> Home
+          <BackIcon /> {t("Home")}
         </button>
-        <button type="button" className="button" onClick={() => window.print()}>
-          Download PDF
-        </button>
+        <span className="view-header-end">
+          <LangToggle />
+          <button type="button" className="button" onClick={() => window.print()}>
+            {t("Download PDF")}
+          </button>
+        </span>
       </div>
 
       <article className="cv" aria-label="Curriculum vitae">
         <header className="cv-head">
           <div>
             <h1>{profile.name}</h1>
-            <p className="cv-role">Flutter Software Engineer</p>
+            <p className="cv-role">{t("Flutter Software Engineer")}</p>
           </div>
           <ul className="cv-contact">
             {profile.location && <li>{profile.location}</li>}
@@ -54,12 +59,12 @@ export function CvView({ onBack }: { onBack: () => void }) {
         </header>
 
         <section>
-          <h2>Profile</h2>
+          <h2>{t("Profile")}</h2>
           <p>{profile.summary}</p>
         </section>
 
         <section>
-          <h2>Experience</h2>
+          <h2>{t("Experience")}</h2>
           {experience.map((e) => (
             <div key={`${e.place}-${e.period}`} className="cv-role-block">
               <div className="cv-row">
@@ -78,15 +83,15 @@ export function CvView({ onBack }: { onBack: () => void }) {
         </section>
 
         <section>
-          <h2>Shipped apps (17)</h2>
+          <h2>{t("Shipped apps (17)")}</h2>
           <p className="cv-apps">
-            {live.map((a) => `${a.name} (${a.year})`).join(" · ")} · Status Strong (iOS, retired) ·{" "}
+            {live.map((a) => `${a.name} (${a.year})`).join(" · ")} · {t("Status Strong (iOS, retired)")} ·{" "}
             {alsoDelivered.join(" · ")}
           </p>
         </section>
 
         <section>
-          <h2>Open-source and freelance</h2>
+          <h2>{t("Open-source and freelance")}</h2>
           <ul className="cv-projects">
             {projects.map((p) => (
               <li key={p.slug}>
@@ -98,7 +103,7 @@ export function CvView({ onBack }: { onBack: () => void }) {
 
         <section className="cv-two">
           <div>
-            <h2>Skills</h2>
+            <h2>{t("Skills")}</h2>
             {skills.map((g) => (
               <p key={g.group}>
                 <strong>{g.group}:</strong> {g.items.join(", ")}
@@ -106,7 +111,7 @@ export function CvView({ onBack }: { onBack: () => void }) {
             ))}
           </div>
           <div>
-            <h2>Education</h2>
+            <h2>{t("Education")}</h2>
             {education.map((e) => (
               <p key={e.school}>
                 <strong>{e.school}</strong>

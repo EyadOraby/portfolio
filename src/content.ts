@@ -1,3 +1,5 @@
+import * as ar from "./content.ar";
+import { isAr } from "./i18n";
 /**
  * Everything the portfolio says lives here, so updating it never means
  * touching the components.
@@ -733,3 +735,34 @@ export const interests: Pastime[] = [
 ];
 
 export const pastimes: Pastime[] = [...hobbies, ...interests];
+
+// Arabic: swap in the translations from content.ar.ts for this page load.
+if (isAr) {
+  Object.assign(profile, ar.profileAr);
+  experience.forEach((e, i) => Object.assign(e, ar.experienceAr[i] ?? {}));
+  education.forEach((e, i) => Object.assign(e, ar.educationAr[i] ?? {}));
+  principles.forEach((p, i) => Object.assign(p, ar.principlesAr[i] ?? {}));
+  skills.forEach((g, i) => {
+    g.group = ar.skillGroupsAr[i] ?? g.group;
+  });
+  metrics.forEach((m, i) => {
+    m.label = ar.metricsAr[i] ?? m.label;
+  });
+  for (const p of projects) {
+    Object.assign(p, ar.projectsAr[p.slug] ?? {});
+    for (const l of p.links) l.label = ar.labelsAr[l.label] ?? l.label;
+  }
+  for (const a of proApps) {
+    const x = ar.proAppsAr[a.slug];
+    if (x?.category) a.category = x.category;
+    if (x?.summary) a.summary = x.summary;
+    if (x?.role) a.role = x.role;
+    if (a.stat) a.stat.label = ar.labelsAr[a.stat.label] ?? a.stat.label;
+  }
+  for (const p of pastimes) {
+    const x = ar.pastimesAr[p.slug];
+    if (!x) continue;
+    Object.assign(p, { title: x.title, tagline: x.tagline, overview: x.overview, notes: x.notes });
+    p.tiles = p.tiles.map((tile, i) => ({ label: ar.labelsAr[tile.label] ?? tile.label, value: x.tiles[i] ?? tile.value }));
+  }
+}
