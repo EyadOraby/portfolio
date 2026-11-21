@@ -34,7 +34,8 @@ export function Counter({ value, suffix = "", decimals = 0 }: { value: number; s
   }, [reduced, value, decimals]);
 
   return (
-    <span ref={ref} className="counter" aria-label={`${value}${suffix}`}>
+    <span ref={ref} className="counter">
+      <span className="sr-only">{`${value}${suffix}`}</span>
       <span aria-hidden="true">
         {shown.toFixed(decimals)}
         {suffix}

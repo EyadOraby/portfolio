@@ -44,6 +44,10 @@ All apps adapt to phones, tablets and desktops: bottom navigation on phones, nav
 
 Tabkha's delivery data and SANAD's requests, bookings and applications are demo data saved on each device, behind small storage interfaces (`FoodStorage`, `SanadStorage`), so a Firebase backend can replace them without touching the screens.
 
+## Testing
+
+Full results, Lighthouse scores and open findings: [TEST_REPORT.md](TEST_REPORT.md) (22 Nov 2026). All suites pass; every Flutter app analyzes with 0 errors and 0 warnings.
+
 ## Waiting on Eyad
 
 - Tabkha web sign-in: add `eyadoraby.github.io` under Firebase Authentication → Authorized domains (the account signed in here has no access to that project)
