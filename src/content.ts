@@ -474,8 +474,9 @@ export const projects: Project[] = [
     ],
     stack: ["Flutter", "Riverpod", "Firebase Auth", "Hive", "REST", "i18n"],
     links: [
-      { label: "Live demo", href: "https://eyadoraby.github.io/tabkha_app/?screen=home" },
-      { label: "Restaurant console", href: "https://eyadoraby.github.io/tabkha_app/?screen=admin" },
+      { label: "Website", href: "https://eyadoraby.github.io/tabkha_app/" },
+      { label: "Live demo", href: "https://eyadoraby.github.io/tabkha_app/app/?screen=home" },
+      { label: "Restaurant console", href: "https://eyadoraby.github.io/tabkha_app/app/?screen=admin" },
       { label: "Code", href: "https://github.com/EyadOraby/tabkha_app" },
     ],
     shots: [
@@ -507,8 +508,9 @@ export const projects: Project[] = [
     ],
     stack: ["Flutter", "Dart 3", "Material 3", "Accessibility"],
     links: [
-      { label: "Live demo", href: "https://eyadoraby.github.io/grad/?demo=1&screen=activity" },
-      { label: "Staff portal", href: "https://eyadoraby.github.io/grad/?demo=1&screen=staff" },
+      { label: "Website", href: "https://eyadoraby.github.io/grad/" },
+      { label: "Live demo", href: "https://eyadoraby.github.io/grad/app/?demo=1&screen=activity" },
+      { label: "Staff portal", href: "https://eyadoraby.github.io/grad/app/?demo=1&screen=staff" },
       { label: "Code", href: "https://github.com/EyadOraby/grad" },
     ],
     shots: [
