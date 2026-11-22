@@ -125,6 +125,9 @@ The goal is work that looks designed by a person, not generated.
 - [x] Collector: search, a countries map shaded by count, and import of a collection.json export
 - [x] Explorations 04 (flinging a card with physics) and 05 (numbers inside Arabic, with layout tests that measure glyph positions)
 - [x] Tabkha, SANAD, The Maker's Market: moved off the deprecated Material import to material_ui, analyzer findings to zero in all three, and new flow tests. Coverage: Tabkha 51.3% to 69.7%, SANAD 81.9% to 88.7%, The Maker's Market 84.1% to 91.3%. Found and fixed: SANAD's request progress labels overflowed at 160% text; Tabkha's generated l10n delegates broke Arabic under material_ui
+- [x] Arabic for the Cars page and the 29-country travel text; a test fails if any hobby or interest is missing its Arabic
+- [x] Projects page: its code and first screenshot start loading at once (inline preload in index.html, kept in step by a test). Performance 81 to 85; the image's start delay 2.3 s to 0.3 s
+- [x] Tabkha admin consoles tested (accept an order, sold out, add a dish, approve a restaurant); found and fixed the add-dish dialog disposing its text fields while still closing. Coverage 72.0%
 - [ ] Optional: custom domain, and a Resend key for RSVP emails
 - [ ] Phone notifications: run `/config` in Claude Code on the computer
 
