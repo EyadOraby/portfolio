@@ -638,14 +638,31 @@ export const hobbies: Pastime[] = [
     status: "Active",
     tagline: "New cities, new food, new ways of doing things.",
     overview:
-      "Seeing how other places solve everyday problems, from transport to street food, is the best way I know to get fresh ideas.",
+      "29 countries and territories so far, from Portugal to Thailand and from Finland to the Bahamas. Seeing how other places solve everyday problems, from transport to street food, is the best way I know to get fresh ideas.",
     tiles: [
-      { label: "What I enjoy", value: "Cities and food" },
-      { label: "It teaches me", value: "Adapting quickly" },
-      { label: "Shows up in code as", value: "Designing for everyone" },
+      { label: "Countries and territories", value: "29" },
+      { label: "Continents", value: "4" },
+      { label: "Most visited", value: "Europe, 17 countries" },
     ],
     notes: ["Using apps in a new country and language is the fastest way to notice what makes software friendly."],
     accent: "#5b8def",
+  },
+  {
+    slug: "cars",
+    title: "Cars",
+    status: "Active",
+    tagline: "Mostly German: Golf R, Audi RS3, RS6 and Cupra.",
+    overview:
+      "Mostly German cars: the Golf R, Audi's RS3 and RS6, and Cupra, with a soft spot for Ferrari and the Ford Mustang. Supercars and hypercars for the engineering, Fast & Furious and Need for Speed for the fun.",
+    tiles: [
+      { label: "Favourites", value: "Golf R, Audi RS3 and RS6, Cupra" },
+      { label: "On screen", value: "Fast & Furious, Need for Speed" },
+      { label: "Shows up in code as", value: "Caring about speed" },
+    ],
+    notes: [
+      "A good car and a good app want the same thing: whatever you touch answers straight away.",
+    ],
+    accent: "#e5484d",
   },
   {
     slug: "coins-and-banknotes",

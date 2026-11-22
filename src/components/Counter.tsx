@@ -2,7 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "./hooks";
 
 /** Counts up to a number the first time it scrolls into view. */
-export function Counter({ value, suffix = "", decimals = 0 }: { value: number; suffix?: string; decimals?: number }) {
+export function Counter({
+  value,
+  suffix = "",
+  decimals = 0,
+}: {
+  value: number;
+  suffix?: string;
+  decimals?: number;
+}) {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
   const [shown, setShown] = useState(reduced ? value : 0);

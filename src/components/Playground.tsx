@@ -17,7 +17,14 @@ import {
   siVite,
   siVitest,
 } from "simple-icons";
-import { defaultWorld, hitTest, isAtRest, repel, step, type Body } from "../physics";
+import {
+  defaultWorld,
+  hitTest,
+  isAtRest,
+  repel,
+  step,
+  type Body,
+} from "../physics";
 import { useReducedMotion } from "./hooks";
 
 type Icon = { title: string; hex: string; path: string };
@@ -44,7 +51,9 @@ const ICONS: Icon[] = [
 /** Dark brand colours would vanish on the dark card, so they render white. */
 function readable(hex: string): string {
   const n = parseInt(hex, 16);
-  const lum = (0.299 * ((n >> 16) & 255) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255;
+  const lum =
+    (0.299 * ((n >> 16) & 255) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) /
+    255;
   return lum < 0.35 ? "#eef1f7" : `#${hex}`;
 }
 
@@ -72,7 +81,13 @@ export function Playground() {
     let startedAt = 0;
     let visible = false;
     let hover = -1;
-    let drag: { index: number; dx: number; dy: number; vx: number; vy: number } | null = null;
+    let drag: {
+      index: number;
+      dx: number;
+      dy: number;
+      vx: number;
+      vy: number;
+    } | null = null;
     let pointer: { x: number; y: number; t: number } | null = null;
 
     const radius = () => Math.max(18, Math.min(32, width / 21));
@@ -132,7 +147,9 @@ export function Playground() {
         ctx.translate(b.x, b.y);
         ctx.beginPath();
         ctx.arc(0, 0, b.r, 0, Math.PI * 2);
-        ctx.fillStyle = lifted ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.05)";
+        ctx.fillStyle = lifted
+          ? "rgba(255,255,255,0.12)"
+          : "rgba(255,255,255,0.05)";
         ctx.fill();
         ctx.lineWidth = 1;
         ctx.strokeStyle = lifted ? `${b.color}aa` : "rgba(255,255,255,0.10)";
@@ -171,7 +188,12 @@ export function Playground() {
         b.vx = drag.vx;
         b.vy = drag.vy;
       }
-      step(active, world, dt, (i) => drag !== null && active[i] === balls[drag.index]);
+      step(
+        active,
+        world,
+        dt,
+        (i) => drag !== null && active[i] === balls[drag.index],
+      );
       draw();
       const allIn = active.length === balls.length;
       if (!visible || (allIn && !drag && isAtRest(balls))) {

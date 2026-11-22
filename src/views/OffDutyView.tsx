@@ -1,5 +1,8 @@
 import { t } from "../i18n";
 import { HobbyIcon } from "../components/HobbyIcon";
+import { TravelMap } from "../components/TravelMap";
+import { Garage } from "../components/Garage";
+import { CollectionShowcase } from "../components/CollectionShowcase";
 import { useEffect, useRef } from "react";
 import { ArrowIcon, BackIcon, ChevronIcon } from "../components/Icons";
 import { useReveal } from "../components/hooks";
@@ -239,6 +242,10 @@ function Detail({
           <p>{item.overview}</p>
         </div>
       </div>
+
+      {item.slug === "travelling" && <TravelMap />}
+      {item.slug === "cars" && <Garage />}
+      {item.slug === "coins-and-banknotes" && <CollectionShowcase />}
 
       <div className="tiles">
         {item.tiles.map((tile, i) => (

@@ -48,7 +48,12 @@ The goal is work that looks designed by a person, not generated.
   - [x] `Character` component and `CharacterArt` for use inside other SVGs
 - [x] Tried a 3D relief of the real photo on the hire card (depth and normals from Sapiens); Eyad preferred the cartoon, so the hire card shows the suit character
 - [x] Fixed the report findings: Smash Padel card contrast (5.5:1), Arabic heading layout shift (Arabic font loads with display=optional)
-- [ ] Personalise the hobby details in `src/content.ts`
+- [x] Personal details on Off the clock:
+  - [x] Travelling: a world map (Natural Earth, public domain) lighting up the 29 countries and territories Eyad has visited, flight lines from Egypt, region filters and passport stamps
+  - [x] Cars: a new page with a 3D showroom (three.js, loaded only there) of a Golf R, Audi RS3, RS6 Avant and Cupra Formentor, each modelled from scratch from a side profile (no logos), with paint colours, plus a drag strip reaction game using the same cars
+  - [x] Coins and banknotes: a spinning coin, the new Collector app (github.com/EyadOraby/collector) and a cabinet that reads `public/collection.json` exported from the app
+- [ ] Fill the cabinet: scan pieces in Collector (with an Anthropic API key in its Settings), export, and drop the file in as `public/collection.json`
+- [ ] Hobby details still general: chess, martial arts, basketball, football
 - [x] Designed background: the hero scene (phone of shipped apps, laptop, the character pointing), plus the room, hire card and Say hello
 - [x] Professional part (with the suit character on the card): a bright "hire card" (white shirt on the dark suit) with an Open to work status on Experience, plus an Open to work badge on the home hero
 - [x] Personal part: one corner per interest in the room (tech, travel, cars and motorbikes, sports, gaming, reading)

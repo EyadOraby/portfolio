@@ -1,5 +1,11 @@
 import { t } from "../i18n";
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+} from "react";
 import { holdProgress } from "../lib";
 import { spotlight, useNow } from "./hooks";
 
@@ -51,8 +57,15 @@ export function HoldClock({ onUnlock }: { onUnlock: () => void }) {
     if (e.key === " " || e.key === "Enter") stop();
   };
 
-  const time = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  const day = now.toLocaleDateString([], { weekday: "long", month: "short", day: "numeric" });
+  const time = now.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const day = now.toLocaleDateString([], {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+  });
 
   return (
     <button
@@ -91,7 +104,9 @@ export function HoldClock({ onUnlock }: { onUnlock: () => void }) {
       </svg>
       <span className="clock-time">{time}</span>
       <span className="clock-day">{day}</span>
-      <span className="clock-hint">{progress > 0 ? t("Keep holding…") : t("Hold to clock out")}</span>
+      <span className="clock-hint">
+        {progress > 0 ? t("Keep holding…") : t("Hold to clock out")}
+      </span>
     </button>
   );
 }

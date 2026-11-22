@@ -19,7 +19,10 @@ export function CommandPalette({
   const [active, setActive] = useState(0);
   const input = useRef<HTMLInputElement>(null);
   const listId = useId();
-  const results = useMemo(() => filterCommands(actions, query), [actions, query]);
+  const results = useMemo(
+    () => filterCommands(actions, query),
+    [actions, query],
+  );
 
   useEffect(() => {
     if (!open) return;
@@ -56,7 +59,9 @@ export function CommandPalette({
             role="combobox"
             aria-expanded="true"
             aria-controls={listId}
-            aria-activedescendant={results[active] ? `${listId}-${results[active].id}` : undefined}
+            aria-activedescendant={
+              results[active] ? `${listId}-${results[active].id}` : undefined
+            }
             onChange={(e) => {
               setQuery(e.target.value);
               setActive(0);
@@ -64,7 +69,12 @@ export function CommandPalette({
             onKeyDown={(e) => {
               if (e.key === "ArrowDown" || e.key === "ArrowUp") {
                 e.preventDefault();
-                setActive((i) => wrapIndex(i + (e.key === "ArrowDown" ? 1 : -1), results.length));
+                setActive((i) =>
+                  wrapIndex(
+                    i + (e.key === "ArrowDown" ? 1 : -1),
+                    results.length,
+                  ),
+                );
               } else if (e.key === "Enter") {
                 e.preventDefault();
                 run(results[active]);
@@ -90,7 +100,11 @@ export function CommandPalette({
               <small>{action.hint}</small>
             </li>
           ))}
-          {results.length === 0 && <li className="palette-empty">{t("Nothing matches")} “{query}”.</li>}
+          {results.length === 0 && (
+            <li className="palette-empty">
+              {t("Nothing matches")} “{query}”.
+            </li>
+          )}
         </ul>
       </div>
     </div>

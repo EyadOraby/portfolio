@@ -67,7 +67,7 @@ export const stops = (): Stop[] => [
       "Model cars, motorbikes and a frame of coins and banknotes from around the world.",
     ),
     hint: t("Give the car a push"),
-    links: ["coins-and-banknotes"],
+    links: ["cars", "coins-and-banknotes"],
     view: [840, 150, 400, 225],
   },
   {

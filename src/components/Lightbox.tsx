@@ -34,8 +34,10 @@ export function Lightbox({
       if (e.key === "Escape") {
         e.stopImmediatePropagation();
         onClose();
-      } else if (e.key === "ArrowRight") onChange(wrapIndex(index + 1, shots.length));
-      else if (e.key === "ArrowLeft") onChange(wrapIndex(index - 1, shots.length));
+      } else if (e.key === "ArrowRight")
+        onChange(wrapIndex(index + 1, shots.length));
+      else if (e.key === "ArrowLeft")
+        onChange(wrapIndex(index - 1, shots.length));
     };
     window.addEventListener("keydown", onKey, true);
     return () => window.removeEventListener("keydown", onKey, true);
@@ -44,7 +46,13 @@ export function Lightbox({
   if (!shot) return null;
 
   return createPortal(
-    <div className="lightbox" role="dialog" aria-modal="true" aria-label={shot.alt} onClick={onClose}>
+    <div
+      className="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label={shot.alt}
+      onClick={onClose}
+    >
       <img
         key={shot.src}
         src={shot.src}
@@ -61,7 +69,13 @@ export function Lightbox({
           </span>
         )}
       </p>
-      <button ref={close} type="button" className="lightbox-btn lightbox-close" aria-label="Close" onClick={onClose}>
+      <button
+        ref={close}
+        type="button"
+        className="lightbox-btn lightbox-close"
+        aria-label="Close"
+        onClick={onClose}
+      >
         <CloseIcon />
       </button>
       {shots.length > 1 && (

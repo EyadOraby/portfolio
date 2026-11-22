@@ -30,7 +30,13 @@ export function ProShowcase({ headingLevel = 2 }: { headingLevel?: 1 | 2 }) {
             title={app.name}
             style={{ "--delay": `${(i % 8) * -0.7}s` } as React.CSSProperties}
           >
-            <img src={appIcon(app.slug)} alt={app.name} width={64} height={64} loading="lazy" />
+            <img
+              src={appIcon(app.slug)}
+              alt={app.name}
+              width={64}
+              height={64}
+              loading="lazy"
+            />
           </a>
         ))}
       </div>
@@ -42,35 +48,60 @@ export function ProShowcase({ headingLevel = 2 }: { headingLevel?: 1 | 2 }) {
       </div>
 
       <h3 className="track-title">{t("And more on the stores")}</h3>
-      <div className="track" tabIndex={0} role="region" aria-label="More shipped apps">
+      <div
+        className="track"
+        tabIndex={0}
+        role="region"
+        aria-label="More shipped apps"
+      >
         {moreApps.map((app) => (
           <TrackCard key={app.slug} app={app} />
         ))}
       </div>
-      <p className="muted also">{t("Also delivered:")} {alsoDelivered.join(", ")}.</p>
+      <p className="muted also">
+        {t("Also delivered:")} {alsoDelivered.join(", ")}.
+      </p>
     </section>
   );
 }
 
 function Chapter({ app, index }: { app: ProApp; index: number }) {
-  const shots = Array.from({ length: app.shots }, (_, i) => appShot(app.slug, i + 1));
+  const shots = Array.from({ length: app.shots }, (_, i) =>
+    appShot(app.slug, i + 1),
+  );
   return (
     <article
       id={`app-${app.slug}`}
       className="chapter"
-      style={{ "--c-bg": app.colors.bg, "--c-accent": app.colors.accent } as React.CSSProperties}
+      style={
+        {
+          "--c-bg": app.colors.bg,
+          "--c-accent": app.colors.accent,
+        } as React.CSSProperties
+      }
     >
       <div className="chapter-text" data-reveal="left">
         <p className="chapter-kicker">
-          <img src={appIcon(app.slug)} alt="" width={48} height={48} loading="lazy" />
+          <img
+            src={appIcon(app.slug)}
+            alt=""
+            width={48}
+            height={48}
+            loading="lazy"
+          />
           <span>
-            {String(index + 1).padStart(2, "0")} / {String(featuredApps.length).padStart(2, "0")} · {app.category} ·{" "}
+            {String(index + 1).padStart(2, "0")} /{" "}
+            {String(featuredApps.length).padStart(2, "0")} · {app.category} ·{" "}
             {app.year}
           </span>
         </p>
         <h3>{app.name}</h3>
         <p className="chapter-desc">{app.summary}</p>
-        {app.role && <p className="chapter-role">{t("My role:")} {app.role}</p>}
+        {app.role && (
+          <p className="chapter-role">
+            {t("My role:")} {app.role}
+          </p>
+        )}
         {app.stat && (
           <p className="chapter-stat">
             <b>{app.stat.value}</b>
@@ -84,7 +115,11 @@ function Chapter({ app, index }: { app: ProApp; index: number }) {
         </ul>
         <StoreLinks app={app} />
       </div>
-      <div className="deck" data-reveal="zoom" style={{ "--n": shots.length } as React.CSSProperties}>
+      <div
+        className="deck"
+        data-reveal="zoom"
+        style={{ "--n": shots.length } as React.CSSProperties}
+      >
         {shots.map((src, i) => (
           <img
             key={src}
@@ -105,10 +140,22 @@ function TrackCard({ app }: { app: ProApp }) {
     <article
       id={`app-${app.slug}`}
       className="tcard"
-      style={{ "--t-bg": app.colors.bg, "--t-ink": app.colors.ink, "--t-accent": app.colors.accent } as React.CSSProperties}
+      style={
+        {
+          "--t-bg": app.colors.bg,
+          "--t-ink": app.colors.ink,
+          "--t-accent": app.colors.accent,
+        } as React.CSSProperties
+      }
     >
       <header>
-        <img src={appIcon(app.slug)} alt="" width={52} height={52} loading="lazy" />
+        <img
+          src={appIcon(app.slug)}
+          alt=""
+          width={52}
+          height={52}
+          loading="lazy"
+        />
         <div>
           <h4>{app.name}</h4>
           <span>
@@ -119,7 +166,13 @@ function TrackCard({ app }: { app: ProApp }) {
       <p>{app.summary}</p>
       <div className="tshots">
         {Array.from({ length: app.shots }, (_, i) => (
-          <img key={i} src={appShot(app.slug, i + 1)} alt={`${app.name} screen ${i + 1}`} loading="lazy" decoding="async" />
+          <img
+            key={i}
+            src={appShot(app.slug, i + 1)}
+            alt={`${app.name} screen ${i + 1}`}
+            loading="lazy"
+            decoding="async"
+          />
         ))}
       </div>
       <StoreLinks app={app} />
@@ -128,7 +181,8 @@ function TrackCard({ app }: { app: ProApp }) {
 }
 
 function StoreLinks({ app }: { app: ProApp }) {
-  if (app.status === "Retired") return <p className="store-off">{t("Removed from the App Store")}</p>;
+  if (app.status === "Retired")
+    return <p className="store-off">{t("Removed from the App Store")}</p>;
   return (
     <div className="store-links">
       {app.links.map((l) => (
