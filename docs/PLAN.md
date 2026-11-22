@@ -99,7 +99,7 @@ The goal is work that looks designed by a person, not generated.
 - [x] Source rebuilt from the March 2026 PDF (no `.tex` was sent); kept in the private `EyadOraby/cv` repo, built with Tectonic
 - [x] ATS-safe layout: one A4 page, single column, standard headings, no icons or tables, no hyphenation, dates on the role line
 - [x] Content refreshed: AISU and Arab Steel Summit added, SANAD and RSVP Studio projects, GitHub and portfolio links, location Giza
-- [ ] Eyad to confirm: Talento end date (CV Jan 2025, portfolio Feb 2025), "Status" vs "Status Strong", and whether to add the Gameball, MEGA and eTax internships
+- [x] Decided by Claude (Eyad can override): Talento Dec 2024 – Jan 2025 (matches the portfolio), "Status Strong" (matches the app and portfolio), internships added as one line; Soft Skills row dropped to keep one page
 - [x] Local extraction check (`ats_check.py`): 14/14 pass; the old PDF failed 3 (no GitHub, no clickable links, a skill label glued to its values)
 - [ ] Online ATS checker: tried ResumeGo (their server returned errors) and Enhancv (needs a real drag-and-drop); Eyad to upload the PDF from the CV page once by hand
 - [ ] An Arabic version, if wanted
