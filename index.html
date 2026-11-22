@@ -16,6 +16,20 @@
     <!-- Arabic loads with display=optional: it is used when it arrives in time, so the Arabic page never shifts after first paint. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=optional" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=optional" /></noscript>
+    <script>
+      // Opened straight on Projects: start its first screenshot before the app loads.
+      // Kept in step with the first case study by src/__tests__/preload.test.ts.
+      if (/^#projects(\/|$)/.test(location.hash)) {
+        var l = document.createElement("link");
+        l.rel = "preload";
+        l.as = "image";
+        l.href = "/shots/rsvp-builder.webp";
+        l.setAttribute("imagesrcset", "/shots/rsvp-builder-640.webp 640w, /shots/rsvp-builder.webp 1280w");
+        l.setAttribute("imagesizes", "(max-width: 760px) 92vw, 640px");
+        l.setAttribute("fetchpriority", "high");
+        document.head.appendChild(l);
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
