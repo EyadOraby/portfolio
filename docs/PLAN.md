@@ -97,7 +97,7 @@ The goal is work that looks designed by a person, not generated.
 - [ ] Pin the six repos on the profile (GitHub's site only: Customize your pins)
 - [ ] Profile name, bio, location and website (GitHub settings; the CLI token can't change them)
 - [x] README per project: screenshots now in all five; refresh them after the redesigns
-- [ ] Ongoing, real activity: every piece of this plan lands as small PRs, giving a steady, honest history. Add an `explorations` repo for small experiments (Flutter animations, Rive, accessibility, RTL) as they happen. No backdated or filler commits: reviewers spot them, and they undo the trust the profile is meant to build.
+- [x] Explorations repo started (github.com/EyadOraby/explorations, live at eyadoraby.github.io/explorations): a gallery app with CI and a web demo; experiments 01 staggered entrances, 02 mirroring a layout for Arabic, 03 text at 200%, each landed as its own PR. Keep adding one when something is worth trying; no backdated or filler commits
 - [x] Old repos: `academy-app` made private (client planning files), empty `dashboard` archived
 
 ### 6. CV: ATS-friendly, in LaTeX
@@ -113,7 +113,7 @@ The goal is work that looks designed by a person, not generated.
 ### 7. Smaller items carried over
 - [x] RSVP Studio: theme chips pick text colour by contrast ratio
 - [x] Flutter first load on mobile: branded web splash (first paint 5–10 s → about 1 s) and trimmed fonts (−830 / −220 / −170 KiB)
-- [ ] Next if needed: deferred loading for the admin and staff areas, or the Wasm build (needs cross-origin isolation headers that GitHub Pages can't set)
+- [x] Deferred loading on the web: Tabkha's restaurant, courier and platform consoles (main.dart.js 3.86 to 3.74 MB, 1.13 to 1.09 MB gzipped) and SANAD's staff portal (3.42 to 3.37 MB, 983 to 970 KB gzipped). Small wins: the consoles share most of their code with the customer app. Next step if load time matters more: the Wasm build, which needs cross-origin isolation headers GitHub Pages can't set
 - [ ] Optional: custom domain, and a Resend key for RSVP emails
 - [ ] Phone notifications: run `/config` in Claude Code on the computer
 
