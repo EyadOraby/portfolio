@@ -39,7 +39,7 @@ The goal is work that looks designed by a person, not generated.
 ### 1. Portfolio: clean, well furnished
 - [ ] Direction board: refined palette, type pair (Latin + Arabic), spacing scale, motion rules
 - [ ] Redesign pass on every section with more whitespace, an aligned grid and fewer competing elements
-- [ ] Illustrated character (see `CHARACTER_PLAN.md`)
+- [x] Illustrated character (see `CHARACTER_PLAN.md`)
   - [x] Eyad sent 12 photos (suit, hoodie, travel); used as reference only, not stored in any repo
   - [x] Drawn by hand as vector shapes (no image generator): `src/components/Character.tsx`, three outfits (suit, hoodie, travel/sport) and three poses (stand, wave, point)
   - [x] Scenes: one per corner of the room, plus the suit pose on the hire card
@@ -53,7 +53,7 @@ The goal is work that looks designed by a person, not generated.
 - [x] Personal part: one corner per interest in the room (tech, travel, cars and motorbikes, sports, gaming, reading)
 - [x] Guided room tour ("Explore the room" on Off the clock): six corners (travel, desk, gaming, collector's shelf, sports, reading) with a tap moment at each, keyboard arrows, reduced-motion cuts, EN and AR
 - [x] Character walks the room tour: waves in the whole-room view and points at each corner, in the outfit that fits it
-- [ ] New screenshots of the redesigned apps
+- [x] New screenshots of the redesigned apps
 
 ### 2. Tabkha: full UI/UX redesign
 - [x] Brand (docs/BRAND.md in the repo): herb green and tomato on cream, Young Serif + Nunito with Lalezar + Baloo Bhaijaan 2, ingredient doodles (decided by Claude per Eyad's go-ahead)
