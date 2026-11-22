@@ -126,4 +126,6 @@ export const uiArabic: Record<string, string> = {
   "Open to work": "متاح للعمل",
   "Flutter engineer, ready for the next team.": "مهندس Flutter، جاهز للفريق القادم.",
   "Eyad in a suit, ready for work": "إياد ببدلة، جاهز للعمل",
+  "Say hello": "قل مرحبًا",
+  "Hiring, or building something? Let's talk.": "تبحث عن موظف، أو تبني شيئًا؟ لنتحدث.",
 };

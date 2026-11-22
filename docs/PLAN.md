@@ -43,7 +43,7 @@ The goal is work that looks designed by a person, not generated.
   - [x] Eyad sent 12 photos (suit, hoodie, travel); used as reference only, not stored in any repo
   - [x] Drawn by hand as vector shapes (no image generator): `src/components/Character.tsx`, three outfits (suit, hoodie, travel/sport) and three poses (stand, wave, point)
   - [x] Scenes: one per corner of the room, plus the suit pose on the hire card
-  - [ ] Still to place: a small wave on the home hero and a pointing pose by the contact links
+  - [x] Home hero tile: a waving head-and-shoulders portrait; Say hello section: pointing at the contact links
   - [x] Pure vector (a few KB), with still poses for reduced motion
   - [x] `Character` component and `CharacterArt` for use inside other SVGs
 - [x] Fixed the report findings: Smash Padel card contrast (5.5:1), Arabic heading layout shift (Arabic font loads with display=optional)

@@ -1,5 +1,6 @@
 import { t } from "../i18n";
 import { useState } from "react";
+import { Character } from "../components/Character";
 import { Counter } from "../components/Counter";
 import { HoldClock } from "../components/HoldClock";
 import {
@@ -52,8 +53,8 @@ export function Home({
           aria-labelledby="name"
         >
           <div className="intro-top">
-            <span className="monogram" aria-hidden="true">
-              EO
+            <span className="monogram monogram-me" aria-hidden="true">
+              <Character outfit="suit" pose="wave" viewBox="28 6 160 160" />
             </span>
             <span className="intro-pills">
               <span className="pill pill-hire">
@@ -276,6 +277,40 @@ export function Home({
           ))}
         </section>
       </div>
+      <section
+        className="say-hello"
+        aria-labelledby="hello-heading"
+        data-reveal="up"
+      >
+        <Character outfit="suit" pose="point" className="say-hello-me" />
+        <div className="say-hello-body">
+          <h2 id="hello-heading">{t("Say hello")}</h2>
+          <p>{t("Hiring, or building something? Let's talk.")}</p>
+          <div className="actions">
+            {profile.email && (
+              <a className="button" href={`mailto:${profile.email}`}>
+                <MailIcon /> {t("Email")}
+              </a>
+            )}
+            <a
+              className="button button-ghost"
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("LinkedIn")} <ArrowIcon />
+            </a>
+            <a
+              className="button button-ghost"
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <GithubIcon /> {t("GitHub")}
+            </a>
+          </div>
+        </div>
+      </section>
       <footer className="home-foot">
         <span>{t("Built with React, TypeScript and Vite · tested in CI")}</span>
         <a

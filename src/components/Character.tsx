@@ -296,16 +296,19 @@ export function Character({
   pose = "stand",
   className,
   label,
+  viewBox = "0 0 200 350",
 }: {
   outfit: Outfit;
   pose?: Pose;
   className?: string;
   label?: string;
+  /** Crop, e.g. "28 6 160 160" for head and shoulders. */
+  viewBox?: string;
 }) {
   return (
     <svg
       className={className}
-      viewBox="0 0 200 350"
+      viewBox={viewBox}
       role={label ? "img" : undefined}
       aria-label={label}
       aria-hidden={label ? undefined : true}
