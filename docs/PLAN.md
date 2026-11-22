@@ -72,7 +72,7 @@ The goal is work that looks designed by a person, not generated.
 - [x] Brand (docs/BRAND.md in the repo): deep teal and sand, Atkinson Hyperlegible + Noto Sans Arabic, geometric emblems drawn in code, new wordmark (decided by Claude per Eyad's go-ahead)
 - [x] Government pages on one layout (actions, your requests, real tracking by reference); new card form in three steps; one provider page for all medical providers (removed about 3,000 lines of duplicated widgets)
 - [x] Staff portal: request details, Open/Closed/All filter, confirm before rejecting
-- [ ] Accessibility settings review
+- [x] Accessibility settings reviewed; Reset to defaults added (keeps the language)
 - [x] Older form pages rebuilt (EN and AR, phone and desktop)
 - [x] Tablet width (820 × 1180) added to every screen test in all three apps; no overflows
 - [x] Emblems for every service area and the What's new banner
