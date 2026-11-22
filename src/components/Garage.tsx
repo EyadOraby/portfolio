@@ -1,143 +1,113 @@
-import { Suspense, lazy, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { t } from "../i18n";
-import {
-  carModels,
-  glassPath,
-  profilePath,
-  type CarModel,
-} from "../data/carModels";
+import { cars, type Car } from "../data/cars";
 
-const Showroom3D = lazy(() => import("./Showroom3D"));
-
-function hasWebGL() {
-  try {
-    const c = document.createElement("canvas");
-    return !!(c.getContext("webgl2") || c.getContext("webgl"));
-  } catch {
-    return false;
-  }
-}
-
-/** The same car, flat: drawn from the profile the 3D model is built from. */
-export function CarArt({
+/** A car photo; `face` turns it to point that way (for the drag strip). */
+function CarPhoto({
   car,
-  paint = car.paints[0].hex,
+  face,
+  className = "",
   spinning = false,
 }: {
-  car: CarModel;
-  paint?: string;
+  car: Car;
+  face?: "left" | "right";
+  className?: string;
   spinning?: boolean;
 }) {
-  const r = car.wheelRadius * 42;
+  const flip = face !== undefined && face !== car.facing;
   return (
-    <svg
-      viewBox="0 0 220 80"
-      className={`car-art${spinning ? " is-spinning" : ""}`}
-      aria-hidden="true"
-    >
-      <ellipse
-        cx={5 + (car.length * 42) / 2}
-        cy="76"
-        rx={(car.length * 42) / 2}
-        ry="3.5"
-        className="car-shadow"
-      />
-      <path d={profilePath(car)} fill={paint} />
-      <path d={glassPath(car)} className="car-glass" />
-      {car.wheels.map((x) => {
-        const cx = 5 + x * 42;
-        const cy = 74 - r;
-        return (
-          <g
-            key={x}
-            className="car-wheel"
-            style={{ transformOrigin: `${cx}px ${cy}px` }}
-          >
-            <circle cx={cx} cy={cy} r={r} className="car-tyre" />
-            <circle cx={cx} cy={cy} r={r * 0.62} fill={car.rim} />
-            <path
-              d={`M${cx - r * 0.6} ${cy}H${cx + r * 0.6}M${cx} ${cy - r * 0.6}V${cy + r * 0.6}`}
-              className="car-spoke"
-            />
-          </g>
-        );
-      })}
-    </svg>
+    <img
+      src={car.image}
+      alt=""
+      className={`car-photo${flip ? " is-flipped" : ""}${spinning ? " is-moving" : ""} ${className}`}
+      loading="lazy"
+      decoding="async"
+      draggable={false}
+    />
   );
 }
 
 function Showroom() {
-  const [car, setCar] = useState(carModels[0]);
-  const [paint, setPaint] = useState(carModels[0].paints[0].hex);
-  const [webgl] = useState(hasWebGL);
+  const [car, setCar] = useState(cars[0]);
+  const stage = useRef<HTMLDivElement>(null);
 
-  const pick = (m: CarModel) => {
-    setCar(m);
-    setPaint(m.paints[0].hex);
+  // A gentle tilt towards the pointer, like walking round the car.
+  const tilt = (e: React.PointerEvent) => {
+    const el = stage.current;
+    if (!el || e.pointerType !== "mouse") return;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    el.style.setProperty("--rx", `${(-y * 4).toFixed(2)}deg`);
+    el.style.setProperty("--ry", `${(x * 8).toFixed(2)}deg`);
   };
-
-  const flat = (
-    <div className="showroom-flat">
-      <CarArt car={car} paint={paint} />
-    </div>
-  );
+  const reset = () => {
+    stage.current?.style.setProperty("--rx", "0deg");
+    stage.current?.style.setProperty("--ry", "0deg");
+  };
 
   return (
     <div className="showroom">
-      <div className="showroom-stage">
-        {webgl ? (
-          <Suspense fallback={flat}>
-            <Showroom3D car={car} paint={paint} />
-          </Suspense>
-        ) : (
-          flat
-        )}
+      <div
+        ref={stage}
+        className="showroom-stage"
+        onPointerMove={tilt}
+        onPointerLeave={reset}
+      >
         <div className="showroom-label" aria-live="polite">
           <span>{car.maker}</span>
           <strong>{car.name}</strong>
           <small>{t(car.line)}</small>
         </div>
-        {webgl && <span className="showroom-hint">{t("Drag to turn")}</span>}
+        <figure key={car.id} className="showroom-car">
+          <img
+            src={car.image}
+            alt={`${car.maker} ${car.name}`}
+            className="showroom-photo"
+            decoding="async"
+            draggable={false}
+          />
+          <img
+            src={car.image}
+            alt=""
+            aria-hidden="true"
+            className="showroom-reflection"
+            draggable={false}
+          />
+          <span className="showroom-shadow" aria-hidden="true" />
+        </figure>
       </div>
-
-      <div className="showroom-controls">
-        <div className="showroom-tabs" role="tablist" aria-label={t("Cars")}>
-          {carModels.map((m) => (
-            <button
-              key={m.id}
-              type="button"
-              role="tab"
-              aria-selected={car.id === m.id}
-              onClick={() => pick(m)}
-            >
-              <CarArt car={m} />
-              <span>
-                <small>{m.maker}</small> {m.name}
-              </span>
-            </button>
-          ))}
-        </div>
-        <div
-          className="showroom-paints"
-          role="radiogroup"
-          aria-label={t("Paint")}
+      <p className="showroom-credit">
+        {t("Photo")}:{" "}
+        <a href={car.credit.source} target="_blank" rel="noopener noreferrer">
+          {car.credit.artist}
+        </a>
+        ,{" "}
+        <a
+          href={car.credit.licenseUrl}
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          {car.paints.map((p) => (
-            <button
-              key={p.hex}
-              type="button"
-              role="radio"
-              aria-checked={paint === p.hex}
-              title={p.name}
-              aria-label={p.name}
-              style={{ "--swatch": p.hex } as React.CSSProperties}
-              onClick={() => setPaint(p.hex)}
-            />
-          ))}
-          <span className="showroom-paint-name">
-            {car.paints.find((p) => p.hex === paint)?.name}
-          </span>
-        </div>
+          {car.credit.license}
+        </a>
+        , {t("background removed")}
+      </p>
+
+      <div className="showroom-tabs" role="tablist" aria-label={t("Cars")}>
+        {cars.map((c) => (
+          <button
+            key={c.id}
+            type="button"
+            role="tab"
+            aria-selected={car.id === c.id}
+            onClick={() => setCar(c)}
+          >
+            <CarPhoto car={c} />
+            <span>
+              <small>{c.maker}</small> {c.name}
+            </span>
+          </button>
+        ))}
       </div>
     </div>
   );
@@ -159,7 +129,7 @@ function readBest(): number | null {
  * reaction time counts; the rival reacts somewhere between 0.20 and 0.45 s.
  */
 function DragStrip() {
-  const [pick, setPick] = useState(carModels[0].id);
+  const [pick, setPick] = useState(cars[0].id);
   const [phase, setPhase] = useState<Phase>("idle");
   const [amber, setAmber] = useState(0);
   const [result, setResult] = useState<{ you: number; rival: number } | null>(
@@ -168,8 +138,8 @@ function DragStrip() {
   const [best, setBest] = useState<number | null>(readBest);
   const greenAt = useRef(0);
   const timers = useRef<number[]>([]);
-  const you = carModels.find((c) => c.id === pick)!;
-  const rivalCar = carModels.find((c) => c.id !== pick)!;
+  const you = cars.find((c) => c.id === pick)!;
+  const rivalCar = cars.find((c) => c.id !== pick)!;
 
   const clear = () => {
     timers.current.forEach((id) => window.clearTimeout(id));
@@ -243,7 +213,7 @@ function DragStrip() {
         role="radiogroup"
         aria-label={t("Pick your car")}
       >
-        {carModels.map((c) => (
+        {cars.map((c) => (
           <button
             key={c.id}
             type="button"
@@ -258,7 +228,7 @@ function DragStrip() {
               setResult(null);
             }}
           >
-            <CarArt car={c} />
+            <CarPhoto car={c} face="right" />
             <span>{c.name}</span>
           </button>
         ))}
@@ -290,7 +260,7 @@ function DragStrip() {
                   : undefined
               }
             >
-              <CarArt car={car} spinning={phase === "running"} />
+              <CarPhoto car={car} face="right" spinning={phase === "running"} />
             </div>
           </div>
         ))}
@@ -337,9 +307,7 @@ export function Garage() {
     <section className="garage" aria-labelledby="garage-heading">
       <h2 id="garage-heading">{t("The garage")}</h2>
       <p className="muted garage-lead">
-        {t(
-          "Mostly German: a Golf R, Audi's RS3 and RS6, and a Cupra. Each one modelled from scratch for this page.",
-        )}
+        {t("Mostly German: a Golf R, Audi's RS3 and RS6, and a Cupra.")}
       </p>
       <Showroom />
       <div className="garage-screen">

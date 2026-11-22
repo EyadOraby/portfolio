@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { readPieces } from "../components/CollectionShowcase";
-import { carModels, profilePath } from "../data/carModels";
+import { cars } from "../data/cars";
 import { home, regions, visited } from "../data/travel";
 
 describe("travel", () => {
@@ -17,18 +17,21 @@ describe("travel", () => {
 });
 
 describe("cars", () => {
-  it("draws every car with both wheel arches inside its length", () => {
-    for (const car of carModels) {
-      const arches = car.profile.filter((op) => op[0] === "ARCH");
-      expect(arches.map((op) => op[1]).sort((a, b) => a - b)).toEqual(
-        [...car.wheels].sort((a, b) => a - b),
+  it("points every car at a real photo with a full credit", () => {
+    const files = Object.keys(import.meta.glob("../../public/cars/*.webp")).map(
+      (f) => f.replace("../../public", ""),
+    );
+    expect(new Set(cars.map((c) => c.id)).size).toBe(cars.length);
+    for (const car of cars) {
+      expect(files).toContain(car.image);
+      expect(car.credit.artist).not.toBe("");
+      expect(car.credit.license).toMatch(/^CC BY-SA /);
+      expect(car.credit.licenseUrl).toMatch(
+        /^https:\/\/creativecommons\.org\//,
       );
-      for (const x of car.wheels) {
-        expect(x).toBeGreaterThan(car.wheelRadius);
-        expect(x).toBeLessThan(car.length - car.wheelRadius);
-      }
-      expect(profilePath(car)).toMatch(/^M.*Z$/);
-      expect(car.paints.length).toBeGreaterThan(0);
+      expect(car.credit.source).toMatch(
+        /^https:\/\/commons\.wikimedia\.org\/wiki\/File:/,
+      );
     }
   });
 });

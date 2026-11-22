@@ -200,4 +200,7 @@ export const uiArabic: Record<string, string> = {
   "The cabinet": "الخزانة",
   "Empty for now: pieces show up here once they are scanned and exported from the app.": "فارغة حاليًا: تظهر القطع هنا بعد مسحها وتصديرها من التطبيق.",
   "Unnamed piece": "قطعة بلا اسم",
+  Photo: "صورة",
+  "background removed": "مع إزالة الخلفية",
+  "Mostly German: a Golf R, Audi's RS3 and RS6, and a Cupra.": "ألمانية في الغالب: جولف R، وأودي RS3 وRS6، وكوبرا.",
 };
