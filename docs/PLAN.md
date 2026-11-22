@@ -1,6 +1,6 @@
 # Master plan
 
-Everything discussed and not yet done, in one place. Tick items as they land. Updated 2026-11-22.
+Everything discussed and not yet done, in one place. Tick items as they land. Updated 2026-11-22 (night).
 
 ## Decisions so far (22 Nov 2026)
 
@@ -62,7 +62,7 @@ The goal is work that looks designed by a person, not generated.
 - [ ] Doodles on onboarding and order success
 - [x] Landing page restyled in the new brand
 - [ ] New app icon and splash screen
-- [ ] Screen smoke tests (same pattern as SANAD)
+- [x] Screen smoke tests (EN/AR, phone/desktop): 43 tests, coverage 13.8% to 51.5%
 - [ ] Waiting on Eyad: Firebase authorised domain for web sign-in
 
 ### 3. SANAD: full UI/UX redesign
@@ -80,7 +80,7 @@ The goal is work that looks designed by a person, not generated.
 - [x] Brand (docs/BRAND.md in the repo): arch logo, clay/indigo/sand palette, Fraunces + Work Sans with Amiri + Readex Pro, Material outlined icons, product art drawn in code (decided by Claude per Eyad's go-ahead)
 - [x] First redesign pass: storefront, makers banner, product page with maker card, cart, checkout, dashboard restyled, EN and AR, phone and desktop
 - [x] Arabic product names, makers, regions and descriptions (tool/catalog_ar.py)
-- [ ] Screen smoke tests to lift coverage past 42.5%
+- [x] Screen smoke tests (EN/AR, phone/desktop): 50 tests, coverage 42.5% to 84.1%
 
 ### 5. GitHub profile
 - [x] Profile README repo (`EyadOraby/EyadOraby`): intro, shipped apps, open-source table, current focus (CV link to add once the new CV is out)

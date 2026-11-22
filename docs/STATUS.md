@@ -2,6 +2,16 @@
 
 Where everything stands, so work can resume from any machine. The full to-do list and workflow are in [PLAN.md](PLAN.md). Updated 2026-11-22 (evening).
 
+## Latest (22 Nov 2026)
+
+- **CV:** rebuilt in LaTeX for ATS parsing. The source is in the private `EyadOraby/cv` repo; the PDF is on the CV page and the GitHub profile.
+- **GitHub profile:** README live, repo descriptions and topics set; `academy-app` made private, `dashboard` archived.
+- **Mini Shop is now The Maker's Market** (repo `makers-market`): Egyptian crafts catalogue in English and Arabic, product art drawn in code, new brand, 84% test coverage.
+- **Tabkha:** warm home-kitchen redesign (herb green and tomato, Young Serif and Nunito, ingredient doodles); coverage 51.5%.
+- **SANAD:** calm civic redesign (teal and sand, Atkinson Hyperlegible, geometric emblems, wordmark).
+- **Portfolio:** "Explore the room" guided tour on Off the clock, contrast and Arabic layout-shift fixes, fresh screenshots of every app.
+- Brand guides live in each app's `docs/BRAND.md`. Everything still open is in [PLAN.md](PLAN.md).
+
 ## Projects
 
 | Project | Repo | Live | What's there |
