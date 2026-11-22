@@ -91,21 +91,25 @@ export function CharacterArt({
         )}
         {outfit === "hoodie" && (
           <>
-            {/* Hood behind the neck, zip with a red pull, chest logo */}
+            {/* Open zip hoodie over a blue tee, with drawstrings */}
+            <path d="M88 104 h24 l-4 104 h-16 z" fill="#2f5fd0" />
             <path
               d="M84 104 q16 14 32 0 q-4 10 -16 12 q-12 -2 -16 -12z"
               fill="#1a1c22"
             />
-            <line
-              x1={100}
-              y1={112}
-              x2={100}
-              y2={210}
-              stroke="#3b3f4a"
-              strokeWidth={2}
+            <path
+              d="M89 108 l3 100 M111 108 l-3 100"
+              stroke="#8c919c"
+              strokeWidth={1.6}
+              strokeDasharray="2 2"
             />
-            <rect x={98} y={130} width={4} height={10} rx={2} fill="#d23b3b" />
-            <path d="M108 160 l6 0 l-2 8 l-6 0 z" fill="#d7d9de" />
+            <path
+              d="M91 110 l-1 30 M109 110 l1 30"
+              stroke="#e9e9e4"
+              strokeWidth={1.8}
+              strokeLinecap="round"
+            />
+            <path d="M118 160 l7 0 l-2 8 l-7 0 z" fill="#d7d9de" />
           </>
         )}
         {(outfit === "travel" || outfit === "sport") && (
@@ -129,7 +133,7 @@ export function CharacterArt({
 
         {/* Neck and head */}
         <rect x={92} y={88} width={16} height={18} rx={5} fill={SKIN_SHADE} />
-        <Head sunglasses={outfit === "travel"} />
+        <Head sunglasses={outfit === "travel"} fullBeard={outfit !== "suit"} />
       </g>
     </g>
   );
@@ -167,7 +171,13 @@ function Arm({
   );
 }
 
-function Head({ sunglasses }: { sunglasses: boolean }) {
+function Head({
+  sunglasses,
+  fullBeard,
+}: {
+  sunglasses: boolean;
+  fullBeard: boolean;
+}) {
   return (
     <g className="char-head">
       {/* Ears */}
@@ -178,26 +188,49 @@ function Head({ sunglasses }: { sunglasses: boolean }) {
         d="M79 62 q0 -26 21 -26 q21 0 21 26 q0 20 -8 28 q-6 7 -13 7 q-7 0 -13 -7 q-8 -8 -8 -28 z"
         fill={SKIN}
       />
-      {/* Light beard along the jaw and a faint moustache */}
-      <path
-        d="M80 72 q2 20 20 24 q18 -4 20 -24 q-3 14 -20 17 q-17 -3 -20 -17 z"
-        fill={INK}
-        opacity={0.17}
-      />
-      <path
-        d="M92 80 q8 -3 16 0"
-        fill="none"
-        stroke={INK}
-        strokeOpacity={0.2}
-        strokeWidth={2}
-        strokeLinecap="round"
-      />
+      {fullBeard ? (
+        <>
+          {/* Full, short beard and moustache (casual photos) */}
+          <path
+            d="M79 64 q0 26 21 34 q21 -8 21 -34 q-3 8 -6 12 q-4 6 -15 7 q-11 -1 -15 -7 q-3 -4 -6 -12 z"
+            fill={HAIR}
+          />
+          <path d="M91 80.5 q9 -4 18 0 q-9 1.5 -18 0 z" fill={HAIR} />
+        </>
+      ) : (
+        <>
+          {/* Light stubble along the jaw and a faint moustache */}
+          <path
+            d="M80 72 q2 20 20 24 q18 -4 20 -24 q-3 14 -20 17 q-17 -3 -20 -17 z"
+            fill={INK}
+            opacity={0.2}
+          />
+          <path
+            d="M92 80 q8 -3 16 0"
+            fill="none"
+            stroke={INK}
+            strokeOpacity={0.25}
+            strokeWidth={2}
+            strokeLinecap="round"
+          />
+        </>
+      )}
       {/* Hair: short, fuller on top, high at the temples */}
       <path
         d="M80 57 q-3 -26 20 -27 q25 -2 22 27 q-3 -10 -9 -13 q-6 -3 -13 -3 q-8 0 -13 3 q-5 4 -7 13 z"
         fill={HAIR}
       />
       <path d="M86 38 q9 -9 24 -4 q-11 -1 -18 5 z" fill="#332b25" />
+      {/* Waves on top */}
+      {[84, 91, 98, 105, 112].map((x, i) => (
+        <circle
+          key={x}
+          cx={x}
+          cy={i === 0 || i === 4 ? 37 : 33}
+          r={4.6}
+          fill={HAIR}
+        />
+      ))}
       {/* Short sides above the ears */}
       <path
         d="M79.5 56 q-1 7 0.5 13 l2.4 0 q-0.8 -7 0.4 -13 z M120.5 56 q1 7 -0.5 13 l-2.4 0 q0.8 -7 -0.4 -13 z"
@@ -256,7 +289,15 @@ function Head({ sunglasses }: { sunglasses: boolean }) {
   );
 }
 
-function clothes(outfit: Outfit) {
+function clothes(outfit: Outfit): {
+  top: string;
+  sleeve: string;
+  legs: string;
+  shoes: string;
+  shorts: boolean;
+  shortSleeve: boolean;
+  stripe?: string;
+} {
   switch (outfit) {
     case "suit":
       return {
@@ -275,7 +316,6 @@ function clothes(outfit: Outfit) {
         shoes: "#e9e9e4",
         shorts: false,
         shortSleeve: false,
-        stripe: "#d23b3b",
       };
     case "travel":
     case "sport":

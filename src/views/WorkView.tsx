@@ -1,4 +1,3 @@
-import { Character } from "../components/Character";
 import { t } from "../i18n";
 import { useEffect } from "react";
 import { ProShowcase } from "../components/ProShowcase";
@@ -31,10 +30,13 @@ export function WorkView({
       onBack={onBack}
     >
       <div className="hire-card" data-reveal>
-        <Character
-          outfit="suit"
-          className="hire-me"
-          label={t("Eyad in a suit, ready for work")}
+        <img
+          className="hire-photo"
+          src="/me/eyad-professional.jpg"
+          alt={t("Eyad Oraby, Flutter engineer")}
+          width={522}
+          height={556}
+          loading="eager"
         />
         <span className="hire-status">
           <span className="hire-dot" aria-hidden="true" />
