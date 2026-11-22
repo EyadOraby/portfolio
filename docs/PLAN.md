@@ -106,7 +106,7 @@ The goal is work that looks designed by a person, not generated.
 - [x] Decided by Claude (Eyad can override): Talento Dec 2024 – Jan 2025 (matches the portfolio), "Status Strong" (matches the app and portfolio), internships added as one line; Soft Skills row dropped to keep one page
 - [x] Local extraction check (`ats_check.py`): 14/14 pass; the old PDF failed 3 (no GitHub, no clickable links, a skill label glued to its values)
 - [ ] Online ATS checker: tried ResumeGo (their server returned errors) and Enhancv (needs a real drag-and-drop); Eyad to upload the PDF from the CV page once by hand
-- [ ] An Arabic version, if wanted
+- [x] Arabic version (one page, Amiri, right to left); the portfolio's CV page serves it in Arabic mode. For ATS use the English one: Arabic PDFs extract in visual order
 - [x] PDF on the portfolio (CV page, Download PDF) and linked from the GitHub profile
 
 ### 7. Smaller items carried over

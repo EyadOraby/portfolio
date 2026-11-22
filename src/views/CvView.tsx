@@ -1,8 +1,16 @@
-import { t } from "../i18n";
+import { isAr, t } from "../i18n";
 import { useEffect } from "react";
 import { LangToggle } from "../components/LangToggle";
 import { BackIcon } from "../components/Icons";
-import { alsoDelivered, education, experience, profile, proApps, projects, skills } from "../content";
+import {
+  alsoDelivered,
+  education,
+  experience,
+  profile,
+  proApps,
+  projects,
+  skills,
+} from "../content";
 
 /**
  * A one-page CV built from the same content as the site. "Download PDF"
@@ -25,7 +33,11 @@ export function CvView({ onBack }: { onBack: () => void }) {
         </button>
         <span className="view-header-end">
           <LangToggle />
-          <a className="button" href="/Eyad_Oraby_CV.pdf" download="Eyad_Oraby_CV.pdf">
+          <a
+            className="button"
+            href={isAr ? "/Eyad_Oraby_CV_ar.pdf" : "/Eyad_Oraby_CV.pdf"}
+            download={isAr ? "Eyad_Oraby_CV_ar.pdf" : "Eyad_Oraby_CV.pdf"}
+          >
             {t("Download PDF")}
           </a>
         </span>
@@ -85,8 +97,8 @@ export function CvView({ onBack }: { onBack: () => void }) {
         <section>
           <h2>{t("Shipped apps (17)")}</h2>
           <p className="cv-apps">
-            {live.map((a) => `${a.name} (${a.year})`).join(" · ")} · {t("Status Strong (iOS, retired)")} ·{" "}
-            {alsoDelivered.join(" · ")}
+            {live.map((a) => `${a.name} (${a.year})`).join(" · ")} ·{" "}
+            {t("Status Strong (iOS, retired)")} · {alsoDelivered.join(" · ")}
           </p>
         </section>
 
