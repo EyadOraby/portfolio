@@ -86,13 +86,14 @@ The goal is work that looks designed by a person, not generated.
 - [x] Old repos: `academy-app` made private (client planning files), empty `dashboard` archived
 
 ### 6. CV: ATS-friendly, in LaTeX
-- [ ] Eyad sends the existing `.tex` source (not found on this computer; only a March 2023 PDF on the Desktop)
-- [ ] Rebuild on an ATS-safe layout: single column, standard section names (Experience, Education, Skills, Projects), no tables, icons or images for key data, real text (no ligature tricks), `\pdfgentounicode=1` and `glyphtounicode` so the text extracts cleanly
-- [ ] Update the content to match the portfolio (roles, dates, projects, links)
-- [ ] Extraction check: run `pdftotext` and an open-source resume parser locally, then confirm name, email, phone, titles, dates, skills and education come out correctly
-- [ ] Online ATS checker (approved by Eyad) after the local checks pass
+- [x] Source rebuilt from the March 2026 PDF (no `.tex` was sent); kept in the private `EyadOraby/cv` repo, built with Tectonic
+- [x] ATS-safe layout: one A4 page, single column, standard headings, no icons or tables, no hyphenation, dates on the role line
+- [x] Content refreshed: AISU and Arab Steel Summit added, SANAD and RSVP Studio projects, GitHub and portfolio links, location Giza
+- [ ] Eyad to confirm: Talento end date (CV Jan 2025, portfolio Feb 2025), "Status" vs "Status Strong", and whether to add the Gameball, MEGA and eTax internships
+- [x] Local extraction check (`ats_check.py`): 14/14 pass; the old PDF failed 3 (no GitHub, no clickable links, a skill label glued to its values)
+- [ ] Online ATS checker: tried ResumeGo (their server returned errors) and Enhancv (needs a real drag-and-drop); Eyad to upload the PDF from the CV page once by hand
 - [ ] An Arabic version, if wanted
-- [ ] Put the PDF on the portfolio and in the GitHub profile
+- [x] PDF on the portfolio (CV page, Download PDF) and linked from the GitHub profile
 
 ### 7. Smaller items carried over
 - [ ] RSVP Studio: theme-chip label contrast
