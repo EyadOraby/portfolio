@@ -8,7 +8,7 @@ Where everything stands, so work can resume from any machine. The full to-do lis
 | --- | --- | --- | --- |
 | Portfolio | EyadOraby/portfolio | portfolio-alpha-sepia-82.vercel.app | Professional apps first (17 store apps), case studies, Off the clock, printable CV at `#cv`. English and Arabic (`?lang=ar`). Vercel deploys on merge |
 | RSVP Studio | EyadOraby/wedding-rsvp | wedding-rsvp-tau-five.vercel.app | Multi-event RSVP builder; see its `docs/WORKFLOW.md` |
-| Mini Shop | EyadOraby/Mini-Shop-App | eyadoraby.github.io/Mini-Shop-App (app at `/app/`) | Shop, wishlist, cart with promo codes, checkout, orders, dark mode, admin dashboard (`?screen=admin`), offline catalog; English and Arabic |
+| The Maker's Market (was Mini Shop) | EyadOraby/makers-market | eyadoraby.github.io/makers-market (app at `/app/`) | Shop, wishlist, cart with promo codes, checkout, orders, dark mode, admin dashboard (`?screen=admin`), offline catalog; English and Arabic |
 | Tabkha | EyadOraby/tabkha_app | eyadoraby.github.io/tabkha_app (app at `/app/`) | Food delivery, ratings and recipes; sign-in with one-tap demo accounts (customer, restaurant admin, super admin); restaurant console (`?screen=admin`) and platform console (`?screen=superadmin`); English and Arabic |
 | SANAD (graduation) | EyadOraby/grad | eyadoraby.github.io/grad (app at `/app/`) | Login with guest and demo accounts (citizen, staff), bookings, request tracking, job applications, Activity, accessibility settings, staff portal (`?screen=staff`); desktop portal layout; English and Arabic |
 
@@ -18,7 +18,7 @@ Each Flutter repo has a landing page at its root and the app under `/app/`. CI a
 
 The apps need current stable Flutter (3.50 at the time). The old 3.16 beta in `C:\src\flutter` cannot build them, so a separate stable SDK lives in `X:\tools\flutter`. CI uses `subosito/flutter-action` on the stable channel. Web builds use `--pwa-strategy=none` so browsers never serve an old cached build.
 
-Every app opens any screen on the web with `?screen=`, and `?demo=1` fills in sample data (Mini Shop and SANAD). That is how the portfolio screenshots are taken.
+Every app opens any screen on the web with `?screen=`, and `?demo=1` fills in sample data (The Maker's Market and SANAD). That is how the portfolio screenshots are taken.
 
 ## Portfolio screenshots
 
@@ -28,13 +28,13 @@ Every app opens any screen on the web with `?screen=`, and `?demo=1` fills in sa
 
 Every project has English and Arabic with right-to-left layouts. `?lang=ar` or `?lang=en` opens a language directly, and the choice is remembered. Strings are keyed by their English text with `t()` / `context.t()` falling back to English:
 - Portfolio: `src/i18n.ar.ts` (interface) and `src/content.ar.ts` (content)
-- Mini Shop: `lib/app/strings.dart`; Tabkha: `lib/Features/Food/food_strings.dart` plus the ARB files; SANAD: `lib/l10n/sanad_strings.dart`
+- The Maker's Market: `lib/app/strings.dart`; Tabkha: `lib/Features/Food/food_strings.dart` plus the ARB files; SANAD: `lib/l10n/sanad_strings.dart`
 
 ## Demo access
 
 - Tabkha sign-in: Continue as guest, or Customer / Restaurant admin / Super admin demo accounts
 - SANAD login: Continue as guest, or Citizen / Staff demo accounts (`?demo=1` seeds the citizen's activity)
-- Mini Shop: `?demo=1` fills the cart, wishlist and orders
+- The Maker's Market: `?demo=1` fills the cart, wishlist and orders
 
 ## Layouts
 

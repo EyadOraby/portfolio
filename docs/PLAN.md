@@ -71,9 +71,10 @@ The goal is work that looks designed by a person, not generated.
 
 ### 4. Mini Shop: rename and full redesign
 - [x] New name and focus: The Maker's Market, Egyptian handmade crafts and home goods
-- [ ] Rename everywhere: app name, package and bundle IDs, repo, Pages URL, landing page, portfolio entry and README
-- [ ] Brand: logo, palette, type pair, icon family, product photography and illustration style
-- [ ] Redesign the storefront, product, cart, checkout and dashboard, EN and AR, all sizes
+- [x] Renamed everywhere: package `makers_market`, app ID `com.eyadoraby.makersmarket`, repo `makers-market`, Pages URL, landing page, portfolio entry, README
+- [x] Brand (docs/BRAND.md in the repo): arch logo, clay/indigo/sand palette, Fraunces + Work Sans with Amiri + Readex Pro, Material outlined icons, product art drawn in code (decided by Claude per Eyad's go-ahead)
+- [x] First redesign pass: storefront, makers banner, product page with maker card, cart, checkout, dashboard restyled, EN and AR, phone and desktop
+- [ ] Arabic product names and maker names in the catalogue (currently English data in both languages)
 - [ ] Screen smoke tests to lift coverage past 42.5%
 
 ### 5. GitHub profile

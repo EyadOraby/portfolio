@@ -9,7 +9,7 @@ My portfolio: a home screen of interactive widgets that leads to real, shipped w
 - **Experience** covers roles, how I work and skills.
 - **Off the clock**, the personal side, is hidden: press and hold the clock widget until its ring fills (Space or Enter works too). It opens a small app with a sidebar of hobbies and tech interests and a page for each (`#off-duty/chess`); the arrow keys flip through them.
 - **Quick jump**: press Ctrl+K, ⌘K or `/` to search pages, projects and links.
-- Every view has its own URL (`#work`, `#projects/mini-shop`, `#off-duty`), and pages change with a view transition where the browser supports it.
+- Every view has its own URL (`#work`, `#projects/makers-market`, `#off-duty`), and pages change with a view transition where the browser supports it.
 - Motion is subtle and turns off for people who prefer reduced motion.
 
 ## Stack

@@ -4,7 +4,7 @@ export type View = "home" | "work" | "projects" | "off-duty" | "cv";
 
 const VIEWS: View[] = ["work", "projects", "off-duty", "cv"];
 
-/** "#projects/mini-shop" → { view: "projects", anchor: "mini-shop" }. */
+/** "#projects/makers-market" → { view: "projects", anchor: "makers-market" }. */
 export function parseHash(hash: string): { view: View; anchor: string | null } {
   const [first = "", anchor = ""] = hash.replace(/^#\/?/, "").split("/");
   const view = VIEWS.includes(first as View) ? (first as View) : "home";
