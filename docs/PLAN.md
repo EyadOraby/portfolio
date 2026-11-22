@@ -4,12 +4,15 @@ Everything discussed and not yet done, in one place. Tick items as they land. Up
 
 ## Decisions so far (22 Nov 2026)
 
-- **Mini Shop:** becomes a shop for Egyptian handmade crafts and home goods. The look is earthy, patterned and story-led. Name to be chosen.
+- **Mini Shop → The Maker's Market:** a shop for Egyptian handmade crafts and home goods, with products from named makers. The look is earthy, patterned and story-led.
 - **Tabkha:** warm home kitchen. Cream, terracotta and herb green, hand-drawn ingredient illustrations, a friendly rounded serif.
 - **SANAD:** calm civic. Deep teal and sand, generous spacing, simple geometric illustrations, very high legibility.
 - **Portfolio:** keep the current concept and animations, and add a designed background that the animated character lives in.
   - *Professional part:* suit and white-shirt style. Bright and energetic, even in dark mode, saying "open to work, ready for anything".
   - *Personal part:* a mix of interests where each space or corner is one interest or hobby, possibly with a small mini game as a showcase.
+  - *Corners:* computers and tech, travel, a collector's area for cars and motorbikes, sports and fitness, gaming, reading and learning.
+  - *Mini game:* explore an illustrated room through guided navigation. The visitor moves between set points rather than roaming freely, with short interactive moments between stops. Each stop opens one interest.
+- **CV:** local extraction checks first, then an online ATS checker (approved by Eyad).
 
 ## How work runs (workflow)
 
@@ -44,6 +47,10 @@ The goal is work that looks designed by a person, not generated.
   - [ ] `Character` component, placed per the plan, light and dark mode checked
 - [ ] Fix the open report findings: Smash Padel card contrast, Arabic heading layout shift
 - [ ] Personalise the hobby details in `src/content.ts`
+- [ ] Designed background in the current concept, with the character blending into the existing animations
+- [ ] Professional part: white shirt and suit look, bright and energetic in both themes, "open to work" message
+- [ ] Personal part: one corner per interest (tech, travel, cars and motorbikes collection, sports, gaming, reading)
+- [ ] Guided room-exploration mini game: set waypoints, short interactions between stops, works with touch and keyboard, with a skip and reduced-motion version
 - [ ] New screenshots of the redesigned apps
 
 ### 2. Tabkha: full UI/UX redesign
@@ -63,7 +70,7 @@ The goal is work that looks designed by a person, not generated.
 - [ ] New app icon, splash screen and landing page
 
 ### 4. Mini Shop: rename and full redesign
-- [ ] Pick the new name and what the shop sells (Eyad decides)
+- [x] New name and focus: The Maker's Market, Egyptian handmade crafts and home goods
 - [ ] Rename everywhere: app name, package and bundle IDs, repo, Pages URL, landing page, portfolio entry and README
 - [ ] Brand: logo, palette, type pair, icon family, product photography and illustration style
 - [ ] Redesign the storefront, product, cart, checkout and dashboard, EN and AR, all sizes
@@ -81,7 +88,7 @@ The goal is work that looks designed by a person, not generated.
 - [ ] Rebuild on an ATS-safe layout: single column, standard section names (Experience, Education, Skills, Projects), no tables, icons or images for key data, real text (no ligature tricks), `\pdfgentounicode=1` and `glyphtounicode` so the text extracts cleanly
 - [ ] Update the content to match the portfolio (roles, dates, projects, links)
 - [ ] Extraction check: run `pdftotext` and an open-source resume parser locally, then confirm name, email, phone, titles, dates, skills and education come out correctly
-- [ ] Online ATS checker: only with Eyad's go-ahead, because it uploads personal data to a third party
+- [ ] Online ATS checker (approved by Eyad) after the local checks pass
 - [ ] An Arabic version, if wanted
 - [ ] Put the PDF on the portfolio and in the GitHub profile
 
