@@ -13,6 +13,7 @@ Where everything stands, so work can resume from any machine. The full to-do lis
 - **Later on 22 Nov:** SANAD government and medical pages rebuilt (shared layouts, real request tracking, one provider page); Tabkha order flow (dish sheet, kitchen note) and a new Courier role; splash screens and trimmed fonts in all three apps; tablet size in every screen test; illustrated character on the portfolio (hero, hire card, room, Say hello); Arabic CV.
 - **Off the clock, made personal:** a world map of the 29 countries visited, a 3D garage (Golf R, Audi RS3 and RS6, Cupra Formentor) with a drag strip game, and a coin cabinet fed by the new Collector app.
 - **Collector** (new repo): scan a coin or banknote, identify it with Claude using your own key, keep notes; Flutter for Android and the web.
+- **Browser tests:** Playwright covers the main flows (home, Experience, command palette, Arabic, travel map, garage, drag strip, coin cabinet) on desktop and phone, in CI on every pull request (`npm run e2e` locally).
 - Brand guides live in each app's `docs/BRAND.md`. Everything still open is in [PLAN.md](PLAN.md).
 
 ## Projects

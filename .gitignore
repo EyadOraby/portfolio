@@ -4,3 +4,5 @@ dist
 .vercel
 .claude
 *.tsbuildinfo
+test-results/
+playwright-report/
