@@ -1,6 +1,13 @@
 # Status across projects
 
-Where everything stands, so work can resume from any machine. The full to-do list and workflow are in [PLAN.md](PLAN.md). Updated 2026-11-22 (evening).
+Where everything stands, so work can resume from any machine. The full to-do list and workflow are in [PLAN.md](PLAN.md). Updated 2026-11-23.
+
+## Latest (23 Nov 2026)
+
+- **Garage:** real car photos (Golf R, Audi RS3, RS6 Avant, Cupra Formentor VZ5) from Wikimedia Commons under CC BY-SA, credited on the page, backgrounds removed; the 3D models and three.js are gone.
+- **Speed and accessibility:** Lighthouse performance 85 to 93 on the home page and 59 to 88 on Cars; accessibility 100 on the pages checked.
+- **Tests everywhere:** Playwright browser tests in the portfolio's CI; the three Flutter apps have zero analyzer findings and higher coverage (Tabkha 69.7%, SANAD 88.7%, The Maker's Market 91.3%).
+- **Collector** gained search, a countries map and import; **Explorations** has five experiments.
 
 ## Latest (22 Nov 2026)
 

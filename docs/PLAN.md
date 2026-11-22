@@ -119,6 +119,12 @@ The goal is work that looks designed by a person, not generated.
 - [x] RSVP Studio: theme chips pick text colour by contrast ratio
 - [x] Flutter first load on mobile: branded web splash (first paint 5–10 s → about 1 s) and trimmed fonts (−830 / −220 / −170 KiB)
 - [x] Deferred loading on the web: Tabkha's restaurant, courier and platform consoles (main.dart.js 3.86 to 3.74 MB, 1.13 to 1.09 MB gzipped) and SANAD's staff portal (3.42 to 3.37 MB, 983 to 970 KB gzipped). Small wins: the consoles share most of their code with the customer app. Next step if load time matters more: the Wasm build, which needs cross-origin isolation headers GitHub Pages can't set
+- [x] Arabic for the travel map, garage, drag strip and coin cabinet (country names, regions, car lines)
+- [x] Lighthouse pass (mobile): screenshots to WebP with half-width copies and srcset (2.66 MB to 1.22 MB), non-blocking font stylesheets, eager first case image, Projects / Off the clock / CV loaded on demand, contrast and accessible-name fixes. Performance: home 85 to 93, Experience 86 to 92, Projects 78 to 81, Cars 59 to 88; accessibility 100 on all four
+- [x] Browser tests with Playwright on desktop and phone (home, Experience, command palette, Arabic, travel map, garage, drag strip, coin cabinet), in CI on every pull request
+- [x] Collector: search, a countries map shaded by count, and import of a collection.json export
+- [x] Explorations 04 (flinging a card with physics) and 05 (numbers inside Arabic, with layout tests that measure glyph positions)
+- [x] Tabkha, SANAD, The Maker's Market: moved off the deprecated Material import to material_ui, analyzer findings to zero in all three, and new flow tests. Coverage: Tabkha 51.3% to 69.7%, SANAD 81.9% to 88.7%, The Maker's Market 84.1% to 91.3%. Found and fixed: SANAD's request progress labels overflowed at 160% text; Tabkha's generated l10n delegates broke Arabic under material_ui
 - [ ] Optional: custom domain, and a Resend key for RSVP emails
 - [ ] Phone notifications: run `/config` in Claude Code on the computer
 
