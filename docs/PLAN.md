@@ -58,7 +58,7 @@ The goal is work that looks designed by a person, not generated.
 ### 2. Tabkha: full UI/UX redesign
 - [x] Brand (docs/BRAND.md in the repo): herb green and tomato on cream, Young Serif + Nunito with Lalezar + Baloo Bhaijaan 2, ingredient doodles (decided by Claude per Eyad's go-ahead)
 - [x] Order flow pass: dish sheet with quantity, menu steppers, basket note for the kitchen (shown to the restaurant), arrival estimate, real dish descriptions
-- [ ] Admin and courier views review
+- [x] Courier role added (deliveries to pick up and drop off, cash collected); admin colours warmed
 - [ ] Redesign every screen for phone, tablet and desktop, in English and Arabic
 - [x] Ingredient doodles on Discover, sign-in and empty states
 - [x] Doodles on onboarding (replacing 1.4 MB of stock photos) and on order tracking
@@ -71,9 +71,10 @@ The goal is work that looks designed by a person, not generated.
 ### 3. SANAD: full UI/UX redesign
 - [x] Brand (docs/BRAND.md in the repo): deep teal and sand, Atkinson Hyperlegible + Noto Sans Arabic, geometric emblems drawn in code, new wordmark (decided by Claude per Eyad's go-ahead)
 - [x] Government pages on one layout (actions, your requests, real tracking by reference); new card form in three steps; one provider page for all medical providers (removed about 3,000 lines of duplicated widgets)
-- [ ] Staff portal and accessibility settings review
+- [x] Staff portal: request details, Open/Closed/All filter, confirm before rejecting
+- [ ] Accessibility settings review
 - [x] Older form pages rebuilt (EN and AR, phone and desktop)
-- [ ] Tablet layouts check across the remaining screens
+- [x] Tablet width (820 × 1180) added to every screen test in all three apps; no overflows
 - [x] Emblems for every service area and the What's new banner
 - [x] Emblems in the Activity empty states; new wordmark on the sign-in screen
 - [x] Landing page restyled
