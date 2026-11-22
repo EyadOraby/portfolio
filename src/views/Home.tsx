@@ -2,13 +2,27 @@ import { t } from "../i18n";
 import { useState } from "react";
 import { Counter } from "../components/Counter";
 import { HoldClock } from "../components/HoldClock";
-import { ArrowIcon, BriefcaseIcon, GithubIcon, LayersIcon, MailIcon, SearchIcon } from "../components/Icons";
+import {
+  ArrowIcon,
+  BriefcaseIcon,
+  GithubIcon,
+  LayersIcon,
+  MailIcon,
+  SearchIcon,
+} from "../components/Icons";
 import { Playground } from "../components/Playground";
 import { LangToggle } from "../components/LangToggle";
 import { ProShowcase } from "../components/ProShowcase";
 import { ShotCycler } from "../components/ShotCycler";
 import { spotlight, useReveal } from "../components/hooks";
-import { experience, metrics, proApps, profile, projects, skills } from "../content";
+import {
+  experience,
+  metrics,
+  proApps,
+  profile,
+  projects,
+  skills,
+} from "../content";
 
 const live = projects.flatMap((p) =>
   p.links
@@ -18,7 +32,13 @@ const live = projects.flatMap((p) =>
 
 const allSkills = skills.flatMap((g) => g.items);
 
-export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock: () => void }) {
+export function Home({
+  onPalette,
+  onUnlock,
+}: {
+  onPalette: () => void;
+  onUnlock: () => void;
+}) {
   useReveal();
   const [paused, setPaused] = useState(false);
   const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
@@ -26,20 +46,32 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
   return (
     <main className="home">
       <div className="hero">
-        <section className="widget widget-intro hero-intro" onPointerMove={spotlight} aria-labelledby="name">
+        <section
+          className="widget widget-intro hero-intro"
+          onPointerMove={spotlight}
+          aria-labelledby="name"
+        >
           <div className="intro-top">
             <span className="monogram" aria-hidden="true">
               EO
             </span>
-            <span className="pill">
-              <span className="pulse" aria-hidden="true" />
-              {t("17 apps on the App Store & Google Play")}
+            <span className="intro-pills">
+              <span className="pill pill-hire">
+                <span className="hire-dot" aria-hidden="true" />
+                {t("Open to work")}
+              </span>
+              <span className="pill">
+                <span className="pulse" aria-hidden="true" />
+                {t("17 apps on the App Store & Google Play")}
+              </span>
             </span>
           </div>
           <h1 id="name">{profile.name}</h1>
           <p className="role">
             {profile.role}
-            {profile.location && <span className="location"> · {profile.location}</span>}
+            {profile.location && (
+              <span className="location"> · {profile.location}</span>
+            )}
           </p>
           <p className="tagline">{profile.tagline}</p>
           <div className="intro-dock" aria-label="Shipped apps">
@@ -51,7 +83,12 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
                 className="dock-icon"
                 style={{ "--delay": `${i * -0.8}s` } as React.CSSProperties}
               >
-                <img src={`/pro/${app.slug}-icon.webp`} alt={app.name} width={44} height={44} />
+                <img
+                  src={`/pro/${app.slug}-icon.webp`}
+                  alt={app.name}
+                  width={44}
+                  height={44}
+                />
               </a>
             ))}
             <a href="#work" className="intro-dock-more">
@@ -62,14 +99,22 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             <a className="button" href="#work">
               {t("See all my apps")} <ArrowIcon />
             </a>
-            <a className="button button-ghost" href={profile.github} target="_blank" rel="noopener noreferrer">
+            <a
+              className="button button-ghost"
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <GithubIcon /> {t("GitHub")}
             </a>
             <a className="button button-ghost" href="#cv">
               {t("CV")}
             </a>
             {profile.email && (
-              <a className="button button-ghost" href={`mailto:${profile.email}`}>
+              <a
+                className="button button-ghost"
+                href={`mailto:${profile.email}`}
+              >
                 <MailIcon /> {t("Email")}
               </a>
             )}
@@ -84,15 +129,27 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
 
       <ProShowcase />
 
-      <aside className="insight" aria-labelledby="side-heading" data-reveal="up">
+      <aside
+        className="insight"
+        aria-labelledby="side-heading"
+        data-reveal="up"
+      >
         <p className="insight-kicker">{t("Beyond the day job")}</p>
-        <h2 id="side-heading">{t("I also build open-source and freelance products.")}</h2>
+        <h2 id="side-heading">
+          {t("I also build open-source and freelance products.")}
+        </h2>
         <p className="muted">
-          {t("A multi-event RSVP builder live on Vercel, plus Flutter apps with web demos you can open right now.")}
+          {t(
+            "A multi-event RSVP builder live on Vercel, plus Flutter apps with web demos you can open right now.",
+          )}
         </p>
         <div className="insight-links">
           {projects.slice(0, 5).map((p) => (
-            <a key={p.slug} href={`#projects/${p.slug}`} style={{ "--accent": p.accent } as React.CSSProperties}>
+            <a
+              key={p.slug}
+              href={`#projects/${p.slug}`}
+              style={{ "--accent": p.accent } as React.CSSProperties}
+            >
               <span className="insight-dot" aria-hidden="true" />
               {p.name}
             </a>
@@ -103,9 +160,10 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
         </div>
       </aside>
 
-      <h2 className="home-more" data-reveal="up">{t("More about me")}</h2>
+      <h2 className="home-more" data-reveal="up">
+        {t("More about me")}
+      </h2>
       <div className="bento">
-
         <a
           className="widget widget-projects"
           href="#projects"
@@ -122,7 +180,9 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
             </span>
             <span>
               <strong>{t("Projects")}</strong>
-              <small>{projects.length} {t("open-source & freelance case studies")}</small>
+              <small>
+                {projects.length} {t("open-source & freelance case studies")}
+              </small>
             </span>
             <span className="widget-go" aria-hidden="true">
               <ArrowIcon />
@@ -131,7 +191,11 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
           <ShotCycler paused={paused} />
         </a>
 
-        <a className="widget widget-work" href="#work" onPointerMove={spotlight}>
+        <a
+          className="widget widget-work"
+          href="#work"
+          onPointerMove={spotlight}
+        >
           <div className="widget-head">
             <span className="app-icon app-icon-work" aria-hidden="true">
               <BriefcaseIcon />
@@ -156,7 +220,11 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
 
         <HoldClock onUnlock={onUnlock} />
 
-        <section className="widget widget-live" onPointerMove={spotlight} aria-labelledby="live-heading">
+        <section
+          className="widget widget-live"
+          onPointerMove={spotlight}
+          aria-labelledby="live-heading"
+        >
           <h2 id="live-heading" className="widget-label">
             {t("Live now")}
           </h2>
@@ -176,7 +244,11 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
           </ul>
         </section>
 
-        <section className="widget widget-stack" onPointerMove={spotlight} aria-labelledby="stack-heading">
+        <section
+          className="widget widget-stack"
+          onPointerMove={spotlight}
+          aria-labelledby="stack-heading"
+        >
           <div className="stack-head">
             <h2 id="stack-heading" className="widget-label">
               {t("Toolbox")}
@@ -187,10 +259,18 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
           <Playground />
         </section>
 
-        <section className="widget widget-metrics" onPointerMove={spotlight} aria-label="Highlights">
+        <section
+          className="widget widget-metrics"
+          onPointerMove={spotlight}
+          aria-label="Highlights"
+        >
           {metrics.map((m) => (
             <div key={m.label} className="metric">
-              <Counter value={m.value} suffix={m.suffix} decimals={m.decimals} />
+              <Counter
+                value={m.value}
+                suffix={m.suffix}
+                decimals={m.decimals}
+              />
               <span>{m.label}</span>
             </div>
           ))}
@@ -198,7 +278,11 @@ export function Home({ onPalette, onUnlock }: { onPalette: () => void; onUnlock:
       </div>
       <footer className="home-foot">
         <span>{t("Built with React, TypeScript and Vite · tested in CI")}</span>
-        <a href={`${profile.github}/portfolio`} target="_blank" rel="noopener noreferrer">
+        <a
+          href={`${profile.github}/portfolio`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {t("Source")} <ArrowIcon />
         </a>
       </footer>

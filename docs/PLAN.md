@@ -48,7 +48,7 @@ The goal is work that looks designed by a person, not generated.
 - [x] Fixed the report findings: Smash Padel card contrast (5.5:1), Arabic heading layout shift (Arabic font loads with display=optional)
 - [ ] Personalise the hobby details in `src/content.ts`
 - [ ] Designed background in the current concept, with the character blending into the existing animations
-- [ ] Professional part: white shirt and suit look, bright and energetic in both themes, "open to work" message
+- [x] Professional part: a bright "hire card" (white shirt on the dark suit) with an Open to work status on Experience, plus an Open to work badge on the home hero
 - [x] Personal part: one corner per interest in the room (tech, travel, cars and motorbikes, sports, gaming, reading)
 - [x] Guided room tour ("Explore the room" on Off the clock): six corners (travel, desk, gaming, collector's shelf, sports, reading) with a tap moment at each, keyboard arrows, reduced-motion cuts, EN and AR
 - [ ] Put the illustrated character into the room once the photos arrive

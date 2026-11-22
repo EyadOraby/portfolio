@@ -5,33 +5,65 @@ import { ArrowIcon, GithubIcon } from "../components/Icons";
 import { education, experience, principles, profile, skills } from "../content";
 import { ViewShell } from "./ViewShell";
 
-export function WorkView({ onBack, anchor }: { onBack: () => void; anchor: string | null }) {
+export function WorkView({
+  onBack,
+  anchor,
+}: {
+  onBack: () => void;
+  anchor: string | null;
+}) {
   useEffect(() => {
     if (!anchor) return;
     const el = document.getElementById(`app-${anchor}`);
     if (!el) return;
-    el.querySelectorAll("[data-reveal]").forEach((n) => n.classList.add("revealed"));
+    el.querySelectorAll("[data-reveal]").forEach((n) =>
+      n.classList.add("revealed"),
+    );
     requestAnimationFrame(() => el.scrollIntoView({ block: "center" }));
   }, [anchor]);
 
   return (
-    <ViewShell title={t("Experience")} kicker={t("Professional")} accent="#7c8cff" onBack={onBack}>
-      <p className="lead">{profile.summary}</p>
-      <div className="actions">
-        <a className="button" href={profile.github} target="_blank" rel="noopener noreferrer">
-          <GithubIcon /> {t("GitHub")}
-        </a>
-        <a className="button button-ghost" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
-          {t("LinkedIn")} <ArrowIcon />
-        </a>
-        <a className="button button-ghost" href="#cv">
-              {t("Download CV")}
-            </a>
-        {profile.email && (
-          <a className="button button-ghost" href={`mailto:${profile.email}`}>
-            {t("Email me")}
+    <ViewShell
+      title={t("Experience")}
+      kicker={t("Professional")}
+      accent="#7c8cff"
+      onBack={onBack}
+    >
+      <div className="hire-card" data-reveal>
+        <span className="hire-status">
+          <span className="hire-dot" aria-hidden="true" />
+          {t("Open to work")}
+        </span>
+        <p className="hire-title">
+          {t("Flutter engineer, ready for the next team.")}
+        </p>
+        <p className="hire-lead">{profile.summary}</p>
+        <div className="actions">
+          <a
+            className="button"
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GithubIcon /> {t("GitHub")}
           </a>
-        )}
+          <a
+            className="button button-ghost"
+            href={profile.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t("LinkedIn")} <ArrowIcon />
+          </a>
+          <a className="button button-ghost" href="#cv">
+            {t("Download CV")}
+          </a>
+          {profile.email && (
+            <a className="button button-ghost" href={`mailto:${profile.email}`}>
+              {t("Email me")}
+            </a>
+          )}
+        </div>
       </div>
 
       <ProShowcase />
@@ -40,7 +72,11 @@ export function WorkView({ onBack, anchor }: { onBack: () => void; anchor: strin
         <h2 id="exp-heading">{t("Where I've worked")}</h2>
         <ol className="timeline">
           {experience.map((item) => (
-            <li key={`${item.place}-${item.period}`} className="timeline-item" data-reveal="left">
+            <li
+              key={`${item.place}-${item.period}`}
+              className="timeline-item"
+              data-reveal="left"
+            >
               <div className="timeline-head">
                 <h3>{item.title}</h3>
                 <span className="muted">{item.period}</span>
