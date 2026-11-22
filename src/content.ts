@@ -260,12 +260,13 @@ export const experience: Experience[] = [
       "Led the UI revamp of the Arab Steel Summit app for the 19th Summit in Cairo (Nov 2026).",
       "Design REST contracts with backend engineers; integrate Firebase Auth, FCM push, Paymob payments and Strapi CMS.",
       "Build data-heavy screens: vendor dashboards, KPI views, maps and charts.",
+      "Monitor and fix production errors in live apps, and run technical planning: implementation strategy, task breakdowns and delivery timelines.",
     ],
   },
   {
     title: "Flutter Developer",
     place: "Talento · Remote",
-    period: "Dec 2024 – Feb 2025",
+    period: "Dec 2024 – Jan 2025",
     points: [
       "Built a reusable UI component library that kept screens consistent and sped up feature delivery.",
       "Reworked API handling and caching to lower response times and improve reliability.",
@@ -331,7 +332,7 @@ export const skills: { group: string; items: string[] }[] = [
     group: "Backend & services",
     items: ["REST APIs", "Dio", "Firebase Auth", "Firestore", "FCM push", "Paymob", "Strapi"],
   },
-  { group: "Data & dashboards", items: ["Power BI", "SAP BusinessObjects", "SQL", "R", "Flutter charts"] },
+  { group: "Data & dashboards", items: ["Power BI", "SAP BusinessObjects", "SQL", "Python", "Streamlit", "R", "Flutter charts"] },
   {
     group: "Web & delivery",
     items: ["Next.js", "TypeScript", "Git", "GitHub Actions", "Patrol", "Maestro", "Postman", "Figma"],
