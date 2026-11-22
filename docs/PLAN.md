@@ -61,7 +61,8 @@ The goal is work that looks designed by a person, not generated.
 - [x] Ingredient doodles on Discover, sign-in and empty states
 - [ ] Doodles on onboarding and order success
 - [x] Landing page restyled in the new brand
-- [ ] New app icon and splash screen
+- [x] New app icon (Android, iOS, web) from assets/app_icon.png
+- [ ] Splash screen in the new brand
 - [x] Screen smoke tests (EN/AR, phone/desktop): 43 tests, coverage 13.8% to 51.5%
 - [ ] Waiting on Eyad: Firebase authorised domain for web sign-in
 
@@ -72,7 +73,8 @@ The goal is work that looks designed by a person, not generated.
 - [x] Emblems for every service area and the What's new banner
 - [ ] Emblems in empty states
 - [x] Landing page restyled
-- [ ] New app icon and splash screen
+- [x] New app icon (Android, iOS, web) from assets/app_icon.png
+- [ ] Splash screen in the new brand
 
 ### 4. Mini Shop: rename and full redesign
 - [x] New name and focus: The Maker's Market, Egyptian handmade crafts and home goods
