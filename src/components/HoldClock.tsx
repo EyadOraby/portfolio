@@ -72,7 +72,7 @@ export function HoldClock({ onUnlock }: { onUnlock: () => void }) {
       type="button"
       className="widget widget-clock"
       data-holding={progress > 0}
-      aria-label={`${time}, ${day}. Press and hold to clock out.`}
+      aria-label={`${time} ${day} ${t("Hold to clock out")}`}
       onPointerMove={spotlight}
       onPointerDown={(e) => {
         // Keeps the hold going if the finger drifts off the widget.

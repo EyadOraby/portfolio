@@ -16,7 +16,7 @@ const shotsBySrc = new Map(
   projects.flatMap((p) => p.shots.map((s) => [s.src, s] as const)),
 );
 const pick = (name: string) =>
-  shotsBySrc.get(`/shots/${name}.png`) ?? shotsBySrc.get(`/shots/${name}.jpg`);
+  shotsBySrc.get(`/shots/${name}.webp`);
 
 /** Pairs a desktop screenshot with a phone one, so each scene shows both sides of a product. */
 const pairs: [slug: string, wide: string, tall: string][] = [

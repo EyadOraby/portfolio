@@ -361,8 +361,8 @@ export type Project = {
   accent: string;
 };
 
-const desktop = (src: string, alt: string, ext = "png"): Shot => ({ src: `/shots/${src}.${ext}`, alt, device: "desktop" });
-const phone = (src: string, alt: string, ext = "png"): Shot => ({ src: `/shots/${src}.${ext}`, alt, device: "phone" });
+const desktop = (src: string, alt: string): Shot => ({ src: `/shots/${src}.webp`, alt, device: "desktop" });
+const phone = (src: string, alt: string): Shot => ({ src: `/shots/${src}.webp`, alt, device: "phone" });
 
 export const projects: Project[] = [
   {
@@ -422,14 +422,14 @@ export const projects: Project[] = [
       { label: "Code", href: "https://github.com/EyadOraby/makers-market" },
     ],
     shots: [
-      phone("mm-home", "The Maker's Market shop: the makers banner, craft categories and handmade pieces", "jpg"),
-      phone("mm-detail", "An Akhmim hand-woven throw with its price, perks and description", "jpg"),
-      phone("mm-arabic", "The shop in Arabic, laid out right to left", "jpg"),
-      phone("mm-cart", "Cart with steppers, promo code and order summary in Egyptian pounds", "jpg"),
-      phone("mm-checkout", "Three-step checkout: delivery, payment and review", "jpg"),
-      phone("mm-orders", "Order history with a delivery timeline", "jpg"),
-      desktop("mm-desktop", "The Maker's Market on the web with a wide grid of crafts", "jpg"),
-      desktop("mm-dashboard", "Owner's dashboard: revenue, orders and sales by craft", "jpg"),
+      phone("mm-home", "The Maker's Market shop: the makers banner, craft categories and handmade pieces"),
+      phone("mm-detail", "An Akhmim hand-woven throw with its price, perks and description"),
+      phone("mm-arabic", "The shop in Arabic, laid out right to left"),
+      phone("mm-cart", "Cart with steppers, promo code and order summary in Egyptian pounds"),
+      phone("mm-checkout", "Three-step checkout: delivery, payment and review"),
+      phone("mm-orders", "Order history with a delivery timeline"),
+      desktop("mm-desktop", "The Maker's Market on the web with a wide grid of crafts"),
+      desktop("mm-dashboard", "Owner's dashboard: revenue, orders and sales by craft"),
     ],
     accent: "#b5532c",
   },
@@ -485,12 +485,12 @@ export const projects: Project[] = [
       { label: "Code", href: "https://github.com/EyadOraby/tabkha_app" },
     ],
     shots: [
-      phone("tabkha-home", "Tabkha: restaurants near you with ratings, cuisines and delivery times", "jpg"),
-      phone("tabkha-restaurant", "A restaurant page with its menu by section", "jpg"),
-      desktop("tabkha-admin", "Restaurant console on the web: KPIs and orders that need attention", "jpg"),
-      desktop("tabkha-super", "Platform console: live restaurants, approvals, orders and gross sales", "jpg"),
-      phone("tabkha-recipe", "A recipe with its ingredients and steps", "jpg"),
-      desktop("tabkha-desktop", "Tabkha recipes on the web", "jpg"),
+      phone("tabkha-home", "Tabkha: restaurants near you with ratings, cuisines and delivery times"),
+      phone("tabkha-restaurant", "A restaurant page with its menu by section"),
+      desktop("tabkha-admin", "Restaurant console on the web: KPIs and orders that need attention"),
+      desktop("tabkha-super", "Platform console: live restaurants, approvals, orders and gross sales"),
+      phone("tabkha-recipe", "A recipe with its ingredients and steps"),
+      desktop("tabkha-desktop", "Tabkha recipes on the web"),
     ],
     accent: "#2a8056",
   },
@@ -521,9 +521,9 @@ export const projects: Project[] = [
     ],
     shots: [
       phone("sanad-home", "SANAD home: services in a modern government style"),
-      phone("sanad-activity", "Activity: an appointment, tracked government requests and a job application", "jpg"),
-      desktop("sanad-staff", "Staff portal on the web: open requests, appointments and requests by status", "jpg"),
-      phone("sanad-accessibility", "Accessibility settings: text size, high contrast, bold text and reduced motion", "jpg"),
+      phone("sanad-activity", "Activity: an appointment, tracked government requests and a job application"),
+      desktop("sanad-staff", "Staff portal on the web: open requests, appointments and requests by status"),
+      phone("sanad-accessibility", "Accessibility settings: text size, high contrast, bold text and reduced motion"),
       phone("sanad-doctors", "Doctors with specialties, hours, ratings and booking"),
       phone("sanad-medical", "Medical services by category"),
     ],

@@ -40,8 +40,8 @@ export function ProjectsView({ onBack, anchor }: { onBack: () => void; anchor: s
       </div>
 
       <div className="cases">
-        {shown.map((project) => (
-          <CaseStudy key={project.slug} project={project} />
+        {shown.map((project, i) => (
+          <CaseStudy key={project.slug} project={project} first={i === 0} />
         ))}
       </div>
       <p className="whisper">{t("The clock on the home screen does more than tell the time.")}</p>
@@ -49,7 +49,7 @@ export function ProjectsView({ onBack, anchor }: { onBack: () => void; anchor: s
   );
 }
 
-function CaseStudy({ project }: { project: Project }) {
+function CaseStudy({ project, first = false }: { project: Project; first?: boolean }) {
   const [selected, setSelected] = useState(0);
   const [zoom, setZoom] = useState<number | null>(null);
   const shot = project.shots[selected];
@@ -74,7 +74,7 @@ function CaseStudy({ project }: { project: Project }) {
               onClick={() => setZoom(selected)}
               aria-label={`Enlarge: ${shot.alt}`}
             >
-              <Frame shot={shot} url={shot.device === "desktop" ? liveUrl : undefined} />
+              <Frame shot={shot} url={shot.device === "desktop" ? liveUrl : undefined} eager={first && selected === 0} />
             </button>
             {project.shots.length > 1 && (
               <div className="thumbs" role="group" aria-label={`${project.name} screenshots`}>

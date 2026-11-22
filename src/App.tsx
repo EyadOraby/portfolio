@@ -1,14 +1,20 @@
 import { t } from "./i18n";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from "react";
 import { flushSync } from "react-dom";
 import { CommandPalette, type Action } from "./components/CommandPalette";
 import { profile, projects } from "./content";
 import { parseHash, type View } from "./lib";
 import { Home } from "./views/Home";
-import { OffDutyView } from "./views/OffDutyView";
-import { ProjectsView } from "./views/ProjectsView";
 import { WorkView } from "./views/WorkView";
-import { CvView } from "./views/CvView";
+
+// Pages most visitors open later load on demand, keeping the first download small.
+const OffDutyView = lazy(() =>
+  import("./views/OffDutyView").then((m) => ({ default: m.OffDutyView })),
+);
+const ProjectsView = lazy(() =>
+  import("./views/ProjectsView").then((m) => ({ default: m.ProjectsView })),
+);
+const CvView = lazy(() => import("./views/CvView").then((m) => ({ default: m.CvView })));
 
 const TITLES: Record<View, string> = {
   cv: `CV · ${profile.name}`,
@@ -120,11 +126,13 @@ export default function App() {
     <>
       {route.view === "home" && <Home onPalette={() => setPalette(true)} onUnlock={() => go("#off-duty")} />}
       {route.view === "work" && <WorkView onBack={back} anchor={route.anchor} />}
-      {route.view === "cv" && <CvView onBack={back} />}
-      {route.view === "projects" && <ProjectsView onBack={back} anchor={route.anchor} />}
-      {route.view === "off-duty" && (
-        <OffDutyView onBack={back} slug={route.anchor} onOpen={openPastime} />
-      )}
+      <Suspense fallback={null}>
+        {route.view === "cv" && <CvView onBack={back} />}
+        {route.view === "projects" && <ProjectsView onBack={back} anchor={route.anchor} />}
+        {route.view === "off-duty" && (
+          <OffDutyView onBack={back} slug={route.anchor} onOpen={openPastime} />
+        )}
+      </Suspense>
       <CommandPalette actions={actions} open={palette} onClose={() => setPalette(false)} />
     </>
   );

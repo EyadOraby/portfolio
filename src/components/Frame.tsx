@@ -37,7 +37,7 @@ export function Frame({
         <span />
         <span />
         <span />
-        {url && <em>{url.replace(/^https:\/\//, "")}</em>}
+        {url && <em data-url={url.replace(/^https:\/\//, "")} />}
       </div>
       {img}
     </div>

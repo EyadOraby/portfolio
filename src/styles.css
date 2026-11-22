@@ -562,7 +562,7 @@ a.widget:active {
   padding: 0.12rem 0.8rem;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.05);
-  color: var(--faint);
+  color: var(--muted);
   font: 500 0.66rem/1.4 Inter, sans-serif;
   font-style: normal;
   white-space: nowrap;
@@ -3627,4 +3627,9 @@ a.widget:active {
 [dir="rtl"] .stamp-region {
   letter-spacing: 0;
   text-transform: none;
+}
+
+/* The URL is drawn from an attribute so it stays out of button names. */
+.frame-bar em::after {
+  content: attr(data-url);
 }

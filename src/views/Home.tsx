@@ -171,7 +171,6 @@ export function Home({
           onPointerLeave={() => setPaused(false)}
           onFocus={() => setPaused(true)}
           onBlur={() => setPaused(false)}
-          aria-label={t("Projects")}
         >
           <div className="widget-head">
             <span className="app-icon app-icon-projects" aria-hidden="true">

@@ -40,7 +40,7 @@ describe("content", () => {
   });
 
   it("points every screenshot at a real file with alt text", () => {
-    const files = Object.keys(import.meta.glob("../../public/shots/*.{png,jpg}")).map((f) =>
+    const files = Object.keys(import.meta.glob("../../public/shots/*.webp")).map((f) =>
       f.replace("../../public", ""),
     );
     for (const shot of projects.flatMap((p) => p.shots)) {
