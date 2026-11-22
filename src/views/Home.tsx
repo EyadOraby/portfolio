@@ -1,6 +1,7 @@
 import { t } from "../i18n";
 import { useState } from "react";
 import { Character } from "../components/Character";
+import { HeroScene } from "../components/HeroScene";
 import { Counter } from "../components/Counter";
 import { HoldClock } from "../components/HoldClock";
 import {
@@ -52,6 +53,7 @@ export function Home({
           onPointerMove={spotlight}
           aria-labelledby="name"
         >
+          <HeroScene />
           <div className="intro-top">
             <span className="monogram monogram-me" aria-hidden="true">
               <Character outfit="suit" pose="wave" viewBox="28 6 160 160" />

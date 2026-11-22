@@ -37,7 +37,7 @@ The goal is work that looks designed by a person, not generated.
 ## To-do list
 
 ### 1. Portfolio: clean, well furnished
-- [ ] Direction board: refined palette, type pair (Latin + Arabic), spacing scale, motion rules
+- [x] Direction board: docs/DESIGN.md (palette, type, spacing, the character's rules, motion)
 - [ ] Redesign pass on every section with more whitespace, an aligned grid and fewer competing elements
 - [x] Illustrated character (see `CHARACTER_PLAN.md`)
   - [x] Eyad sent 12 photos (suit, hoodie, travel); used as reference only, not stored in any repo
@@ -48,7 +48,7 @@ The goal is work that looks designed by a person, not generated.
   - [x] `Character` component and `CharacterArt` for use inside other SVGs
 - [x] Fixed the report findings: Smash Padel card contrast (5.5:1), Arabic heading layout shift (Arabic font loads with display=optional)
 - [ ] Personalise the hobby details in `src/content.ts`
-- [ ] Designed background in the current concept, with the character blending into the existing animations
+- [x] Designed background: the hero scene (phone of shipped apps, laptop, the character pointing), plus the room, hire card and Say hello
 - [x] Professional part (with the suit character on the card): a bright "hire card" (white shirt on the dark suit) with an Open to work status on Experience, plus an Open to work badge on the home hero
 - [x] Personal part: one corner per interest in the room (tech, travel, cars and motorbikes, sports, gaming, reading)
 - [x] Guided room tour ("Explore the room" on Off the clock): six corners (travel, desk, gaming, collector's shelf, sports, reading) with a tap moment at each, keyboard arrows, reduced-motion cuts, EN and AR
