@@ -1097,11 +1097,18 @@ a.widget:active {
   color: var(--accent);
 }
 
+/* Two even columns, so four items never leave one alone on a row. */
 .principles,
 .skill-groups {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+}
+@media (max-width: 640px) {
+  .principles,
+  .skill-groups {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
@@ -1972,6 +1979,13 @@ a.widget:active {
   gap: 1rem;
 }
 
+/* Groups of four sit two by two instead of three plus one. */
+@media (min-width: 641px) {
+  .library[data-even] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .library-card {
   position: relative;
   display: flex;
@@ -2010,6 +2024,7 @@ a.widget:active {
 
 .library-art span {
   font-size: 3.4rem;
+  color: color-mix(in srgb, var(--accent) 35%, #fff);
   filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.45));
   transition: transform 0.6s var(--ease);
 }
@@ -2084,6 +2099,7 @@ a.widget:active {
   position: relative;
   z-index: 1;
   font-size: 5rem;
+  color: color-mix(in srgb, var(--accent) 35%, #fff);
   filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.5));
   animation: bob 5s ease-in-out infinite;
 }
@@ -2661,6 +2677,7 @@ a.widget:active {
 .intro-pills {
   display: inline-flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
   justify-content: flex-end;
 }
@@ -2778,7 +2795,7 @@ a.widget:active {
   display: flex;
   align-items: flex-end;
   gap: 24px;
-  margin-top: 1.6rem;
+  margin-top: 2.75rem;
   padding: 24px 28px 0;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -2845,4 +2862,10 @@ a.widget:active {
   .hero-scene-phone {
     animation: none;
   }
+}
+
+.hobby-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
 }

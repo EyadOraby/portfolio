@@ -512,8 +512,16 @@ button.widget:hover {
     order: 0;
   }
 
+  .deck {
+    height: 19rem;
+  }
+
   .deck img {
-    height: 80%;
+    height: 86%;
+  }
+
+  .chapters {
+    gap: 4.5rem;
   }
 }
 

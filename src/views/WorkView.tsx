@@ -76,8 +76,6 @@ export function WorkView({
         </div>
       </div>
 
-      <ProShowcase />
-
       <section aria-labelledby="exp-heading">
         <h2 id="exp-heading">{t("Where I've worked")}</h2>
         <ol className="timeline">
@@ -153,6 +151,8 @@ export function WorkView({
           ))}
         </div>
       </section>
+
+      <ProShowcase />
     </ViewShell>
   );
 }

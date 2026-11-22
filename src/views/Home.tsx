@@ -63,10 +63,11 @@ export function Home({
                 <span className="hire-dot" aria-hidden="true" />
                 {t("Open to work")}
               </span>
-              <span className="pill">
-                <span className="pulse" aria-hidden="true" />
-                {t("17 apps on the App Store & Google Play")}
-              </span>
+              <LangToggle />
+              <button type="button" className="kbd-hint" onClick={onPalette}>
+                <SearchIcon /> <kbd>{isMac ? "⌘" : "Ctrl"}</kbd>
+                <kbd>K</kbd>
+              </button>
             </span>
           </div>
           <h1 id="name">{profile.name}</h1>
@@ -102,6 +103,9 @@ export function Home({
             <a className="button" href="#work">
               {t("See all my apps")} <ArrowIcon />
             </a>
+            <a className="button button-ghost" href="#cv">
+              {t("CV")}
+            </a>
             <a
               className="button button-ghost"
               href={profile.github}
@@ -109,9 +113,6 @@ export function Home({
               rel="noopener noreferrer"
             >
               <GithubIcon /> {t("GitHub")}
-            </a>
-            <a className="button button-ghost" href="#cv">
-              {t("CV")}
             </a>
             {profile.email && (
               <a
@@ -121,11 +122,6 @@ export function Home({
                 <MailIcon /> {t("Email")}
               </a>
             )}
-            <LangToggle />
-            <button type="button" className="kbd-hint" onClick={onPalette}>
-              <SearchIcon /> <kbd>{isMac ? "⌘" : "Ctrl"}</kbd>
-              <kbd>K</kbd>
-            </button>
           </div>
         </section>
       </div>

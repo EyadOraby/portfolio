@@ -557,7 +557,6 @@ export const metrics: { value: number; decimals?: number; suffix: string; label:
 export type Pastime = {
   slug: string;
   title: string;
-  emoji: string;
   status: "Active" | "Exploring";
   tagline: string;
   overview: string;
@@ -571,7 +570,6 @@ export const hobbies: Pastime[] = [
   {
     slug: "chess",
     title: "Chess",
-    emoji: "♟️",
     status: "Active",
     tagline: "Thinking a few moves ahead.",
     overview:
@@ -590,7 +588,6 @@ export const hobbies: Pastime[] = [
   {
     slug: "martial-arts",
     title: "Martial arts",
-    emoji: "🥋",
     status: "Active",
     tagline: "Discipline, on the mat and off it.",
     overview:
@@ -609,7 +606,6 @@ export const hobbies: Pastime[] = [
   {
     slug: "basketball",
     title: "Basketball",
-    emoji: "🏀",
     status: "Active",
     tagline: "Fast breaks and reading the court.",
     overview:
@@ -625,7 +621,6 @@ export const hobbies: Pastime[] = [
   {
     slug: "football",
     title: "Football",
-    emoji: "⚽",
     status: "Active",
     tagline: "Playing with friends, watching the big matches.",
     overview: "Football is where I switch off: a match with friends during the week and the big games at the weekend.",
@@ -640,7 +635,6 @@ export const hobbies: Pastime[] = [
   {
     slug: "travelling",
     title: "Travelling",
-    emoji: "✈️",
     status: "Active",
     tagline: "New cities, new food, new ways of doing things.",
     overview:
@@ -656,7 +650,6 @@ export const hobbies: Pastime[] = [
   {
     slug: "coins-and-banknotes",
     title: "Coins and banknotes",
-    emoji: "💵",
     status: "Active",
     tagline: "A small history lesson in every piece.",
     overview:
@@ -676,7 +669,6 @@ export const interests: Pastime[] = [
   {
     slug: "devops",
     title: "DevOps",
-    emoji: "⚙️",
     status: "Exploring",
     tagline: "The machinery that gets code to users safely.",
     overview:
@@ -692,7 +684,6 @@ export const interests: Pastime[] = [
   {
     slug: "networking",
     title: "Networking",
-    emoji: "🌐",
     status: "Exploring",
     tagline: "What happens between a tap and a response.",
     overview: "TCP/IP, DNS, routing and CDNs: the path a request takes from a phone to a server and back.",
@@ -707,7 +698,6 @@ export const interests: Pastime[] = [
   {
     slug: "cybersecurity",
     title: "Cybersecurity",
-    emoji: "🔐",
     status: "Exploring",
     tagline: "Building things that are harder to break.",
     overview: "Threat models, secure defaults and how real attacks work, so the apps I build protect the people using them.",
@@ -722,7 +712,6 @@ export const interests: Pastime[] = [
   {
     slug: "computer-architecture",
     title: "Computer architecture",
-    emoji: "🧮",
     status: "Exploring",
     tagline: "The layer underneath every abstraction.",
     overview: "CPUs, pipelines, memory hierarchies and caches: how the hardware actually runs the code we write.",

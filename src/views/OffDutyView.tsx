@@ -1,8 +1,15 @@
 import { t } from "../i18n";
+import { HobbyIcon } from "../components/HobbyIcon";
 import { useEffect, useRef } from "react";
 import { ArrowIcon, BackIcon, ChevronIcon } from "../components/Icons";
 import { useReveal } from "../components/hooks";
-import { hobbies, interests, pastimes, profile, type Pastime } from "../content";
+import {
+  hobbies,
+  interests,
+  pastimes,
+  profile,
+  type Pastime,
+} from "../content";
 import { Room } from "../components/Room";
 import { wrapIndex } from "../lib";
 
@@ -36,10 +43,17 @@ export function OffDutyView({
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.altKey || e.metaKey || e.ctrlKey) return;
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.altKey ||
+        e.metaKey ||
+        e.ctrlKey
+      )
+        return;
       if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
         const step = e.key === "ArrowRight" ? 1 : -1;
-        const next = pastimes[wrapIndex((index < 0 ? -1 : index) + step, pastimes.length)];
+        const next =
+          pastimes[wrapIndex((index < 0 ? -1 : index) + step, pastimes.length)];
         onOpen(next.slug);
       }
     };
@@ -67,7 +81,11 @@ export function OffDutyView({
           <span className="shell-label">{t("Overview")}</span>
         </button>
         {groups.map((group) => (
-          <nav key={group.title} className="shell-group" aria-label={group.title}>
+          <nav
+            key={group.title}
+            className="shell-group"
+            aria-label={group.title}
+          >
             <h2>{group.title}</h2>
             <ul>
               {group.items.map((item) => (
@@ -79,10 +97,14 @@ export function OffDutyView({
                     onClick={() => onOpen(item.slug)}
                   >
                     <span className="shell-glyph" aria-hidden="true">
-                      {item.emoji}
+                      <HobbyIcon slug={item.slug} />
                     </span>
                     <span className="shell-label">{item.title}</span>
-                    <span className="shell-dot" data-status={item.status} title={item.status} />
+                    <span
+                      className="shell-dot"
+                      data-status={item.status}
+                      title={item.status}
+                    />
                   </button>
                 </li>
               ))}
@@ -106,7 +128,11 @@ export function OffDutyView({
             </>
           )}
         </div>
-        {current ? <Detail item={current} index={index} onOpen={onOpen} /> : <Overview onOpen={onOpen} />}
+        {current ? (
+          <Detail item={current} index={index} onOpen={onOpen} />
+        ) : (
+          <Overview onOpen={onOpen} />
+        )}
       </main>
     </div>
   );
@@ -129,18 +155,32 @@ function Overview({ onOpen }: { onOpen: (slug: string) => void }) {
             <h2>{group.title}</h2>
             <span>{group.items.length}</span>
           </div>
-          <div className="library">
+          <div
+            className="library"
+            data-even={
+              group.items.length % 2 === 0 && group.items.length % 3 !== 0
+                ? ""
+                : undefined
+            }
+          >
             {group.items.map((item, i) => (
               <button
                 key={item.slug}
                 type="button"
                 className="library-card"
                 data-reveal="zoom"
-                style={{ "--accent": item.accent, "--delay": `${i * 60}ms` } as React.CSSProperties}
+                style={
+                  {
+                    "--accent": item.accent,
+                    "--delay": `${i * 60}ms`,
+                  } as React.CSSProperties
+                }
                 onClick={() => onOpen(item.slug)}
               >
                 <span className="library-art" aria-hidden="true">
-                  <span>{item.emoji}</span>
+                  <span>
+                    <HobbyIcon slug={item.slug} />
+                  </span>
                 </span>
                 <span className="library-meta">
                   <strong>{item.title}</strong>
@@ -158,13 +198,24 @@ function Overview({ onOpen }: { onOpen: (slug: string) => void }) {
   );
 }
 
-function Detail({ item, index, onOpen }: { item: Pastime; index: number; onOpen: (slug: string) => void }) {
+function Detail({
+  item,
+  index,
+  onOpen,
+}: {
+  item: Pastime;
+  index: number;
+  onOpen: (slug: string) => void;
+}) {
   const prev = pastimes[wrapIndex(index - 1, pastimes.length)];
   const next = pastimes[wrapIndex(index + 1, pastimes.length)];
   const isHobby = hobbies.includes(item);
 
   return (
-    <article className="shell-page" style={{ "--accent": item.accent } as React.CSSProperties}>
+    <article
+      className="shell-page"
+      style={{ "--accent": item.accent } as React.CSSProperties}
+    >
       <p className="shell-path">
         <span className="pill-status" data-status={item.status}>
           {t(item.status)}
@@ -176,7 +227,9 @@ function Detail({ item, index, onOpen }: { item: Pastime; index: number; onOpen:
 
       <div className="feature" data-reveal="up">
         <div className="feature-art" aria-hidden="true">
-          <span>{item.emoji}</span>
+          <span>
+            <HobbyIcon slug={item.slug} />
+          </span>
         </div>
         <div className="feature-body">
           <p className="feature-kicker">
@@ -207,7 +260,11 @@ function Detail({ item, index, onOpen }: { item: Pastime; index: number; onOpen:
         </div>
         <ul className="notes">
           {item.notes.map((note, i) => (
-            <li key={note} data-reveal="left" style={{ "--delay": `${i * 80}ms` } as React.CSSProperties}>
+            <li
+              key={note}
+              data-reveal="left"
+              style={{ "--delay": `${i * 80}ms` } as React.CSSProperties}
+            >
               {note}
             </li>
           ))}

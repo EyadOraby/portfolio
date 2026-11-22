@@ -18,7 +18,6 @@ export const uiArabic: Record<string, string> = {
   "Jump to a project, page or link…": "انتقل إلى مشروع أو صفحة أو رابط…",
   "Nothing matches": "لا توجد نتائج لـ",
   // Home
-  "17 apps on the App Store & Google Play": "17 تطبيقًا على App Store وGoogle Play",
   "See all my apps": "كل تطبيقاتي",
   "Beyond the day job": "خارج العمل اليومي",
   "I also build open-source and freelance products.": "أبني أيضًا منتجات مفتوحة المصدر ومشاريع حرة.",

@@ -38,7 +38,7 @@ The goal is work that looks designed by a person, not generated.
 
 ### 1. Portfolio: clean, well furnished
 - [x] Direction board: docs/DESIGN.md (palette, type, spacing, the character's rules, motion)
-- [ ] Redesign pass on every section with more whitespace, an aligned grid and fewer competing elements
+- [x] Redesign pass: one Open to work pill and four hero buttons (language and search moved to the top row), Experience leads with the work history and puts the app showcase last, even two-column grids for principles, toolkit and groups of four, drawn line icons instead of emoji on Off the clock, tighter app decks on phones
 - [x] Illustrated character (see `CHARACTER_PLAN.md`)
   - [x] Eyad sent 12 photos (suit, hoodie, travel); used as reference only, not stored in any repo
   - [x] Drawn by hand as vector shapes (no image generator): `src/components/Character.tsx`, three outfits (suit, hoodie, travel/sport) and three poses (stand, wave, point)
