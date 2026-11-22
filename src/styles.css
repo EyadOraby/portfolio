@@ -2316,3 +2316,278 @@ a.widget:active {
     transform: none;
   }
 }
+
+/* Explore the room: the guided tour on the Off the clock overview. */
+.room {
+  margin: 28px 0 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+.room-stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #161b2c;
+}
+.room-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.room-camera {
+  transform-origin: 0 0;
+  transition: transform 1.1s var(--ease);
+}
+.room-intro {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 28px;
+  background: linear-gradient(to top, rgba(8, 9, 13, 0.92), rgba(8, 9, 13, 0));
+}
+.room-intro h2 {
+  font-size: clamp(22px, 3vw, 30px);
+  margin: 2px 0 6px;
+}
+.room-intro p {
+  color: var(--muted);
+  max-width: 460px;
+  margin-bottom: 14px;
+}
+.room-eyebrow,
+.room-step {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.room-panel {
+  padding: 20px 24px 24px;
+  outline: none;
+}
+.room-panel h3 {
+  font-size: 22px;
+  margin: 4px 0 6px;
+}
+.room-panel > p {
+  color: var(--muted);
+  max-width: 620px;
+}
+.room-hint {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--accent) !important;
+}
+.room-hint[data-done] {
+  color: #7ee0a8 !important;
+}
+.room-progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.room-progress span {
+  height: 4px;
+  flex: 1;
+  border-radius: 4px;
+  background: var(--line-strong);
+  transition: background 0.4s;
+}
+.room-progress span[data-on] {
+  background: var(--accent);
+}
+.room-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.room-chip {
+  border: 1px solid var(--line-strong);
+  background: var(--surface-2);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.room-chip:hover {
+  border-color: var(--accent);
+}
+.room-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* Tappable objects glow softly once the camera arrives. */
+.room-hot {
+  cursor: default;
+  outline: none;
+}
+.room-hot.is-live {
+  cursor: pointer;
+  animation: room-glow 2.4s ease-in-out infinite;
+}
+.room-hot.is-live:focus-visible {
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+@keyframes room-glow {
+  50% {
+    filter: drop-shadow(0 0 5px rgba(142, 162, 255, 0.7));
+  }
+}
+
+/* The little moments at each stop. */
+.room-flight {
+  stroke-dashoffset: 400;
+  opacity: 0.25;
+}
+.room-plane {
+  offset-path: path("M190 210 Q 300 110 420 170");
+  offset-distance: 0%;
+  opacity: 0;
+}
+[data-played~="travel"] .room-flight {
+  animation: room-draw 1.6s var(--ease) forwards;
+}
+[data-played~="travel"] .room-plane {
+  animation: room-fly 1.6s var(--ease) forwards;
+}
+@keyframes room-draw {
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+@keyframes room-fly {
+  0% {
+    opacity: 1;
+    offset-distance: 0%;
+  }
+  100% {
+    opacity: 1;
+    offset-distance: 100%;
+  }
+}
+.room-term-line,
+.room-cursor {
+  opacity: 0;
+}
+[data-played~="desk"] .room-term-line {
+  animation: room-type 0.5s steps(6) forwards;
+  transform-box: fill-box;
+  transform-origin: left;
+}
+[data-played~="desk"] .l2 {
+  animation-delay: 0.45s;
+}
+[data-played~="desk"] .l3 {
+  animation-delay: 0.9s;
+}
+[data-played~="desk"] .room-cursor {
+  animation: room-blink 0.8s 1.4s steps(2) infinite;
+}
+@keyframes room-type {
+  from {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes room-blink {
+  50% {
+    opacity: 1;
+  }
+}
+.room-game {
+  opacity: 0;
+}
+[data-played~="gaming"] .room-game {
+  animation: room-on 0.4s forwards;
+}
+[data-played~="gaming"] .room-hero {
+  animation: room-jump 0.9s 0.4s ease-in-out 2;
+}
+@keyframes room-on {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes room-jump {
+  50% {
+    transform: translate(60px, -40px);
+  }
+}
+[data-played~="collector"] .room-car {
+  animation: room-roll 2s var(--ease);
+}
+@keyframes room-roll {
+  45% {
+    transform: translateX(150px);
+  }
+}
+[data-played~="sports"] .room-ball {
+  animation: room-shot 1.5s ease-in forwards;
+}
+@keyframes room-shot {
+  40% {
+    transform: translate(150px, -260px);
+  }
+  70% {
+    transform: translate(275px, -190px);
+  }
+  100% {
+    transform: translate(275px, -110px);
+    opacity: 0.9;
+  }
+}
+.room-page {
+  transform-box: fill-box;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+[data-played~="reading"] .room-page {
+  animation: room-open 0.8s var(--ease) forwards;
+}
+[data-played~="reading"] .room-knight {
+  animation: room-hop 0.9s 0.5s ease-in-out;
+}
+@keyframes room-open {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes room-hop {
+  50% {
+    transform: translate(-40px, -46px);
+  }
+  100% {
+    transform: translate(-56px, -28px);
+  }
+}
+
+@media (max-width: 640px) {
+  .room-intro {
+    position: static;
+    background: var(--surface);
+    padding: 18px;
+  }
+  .room-panel {
+    padding: 16px 18px 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .room-camera {
+    transition: none;
+  }
+  .room-hot.is-live {
+    animation: none;
+  }
+}

@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { ArrowIcon, BackIcon, ChevronIcon } from "../components/Icons";
 import { useReveal } from "../components/hooks";
 import { hobbies, interests, pastimes, profile, type Pastime } from "../content";
+import { Room } from "../components/Room";
 import { wrapIndex } from "../lib";
 
 const groups = [
@@ -121,6 +122,7 @@ function Overview({ onOpen }: { onOpen: (slug: string) => void }) {
           "You held on long enough to clock out with me. This is what I do when the laptop is closed, and the corners of tech I explore just because I enjoy them.",
         )}
       </p>
+      <Room onOpen={onOpen} />
       {groups.map((group) => (
         <section key={group.title} className="shell-section">
           <div className="shell-section-head">

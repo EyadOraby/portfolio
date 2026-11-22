@@ -49,8 +49,9 @@ The goal is work that looks designed by a person, not generated.
 - [ ] Personalise the hobby details in `src/content.ts`
 - [ ] Designed background in the current concept, with the character blending into the existing animations
 - [ ] Professional part: white shirt and suit look, bright and energetic in both themes, "open to work" message
-- [ ] Personal part: one corner per interest (tech, travel, cars and motorbikes collection, sports, gaming, reading)
-- [ ] Guided room-exploration mini game: set waypoints, short interactions between stops, works with touch and keyboard, with a skip and reduced-motion version
+- [x] Personal part: one corner per interest in the room (tech, travel, cars and motorbikes, sports, gaming, reading)
+- [x] Guided room tour ("Explore the room" on Off the clock): six corners (travel, desk, gaming, collector's shelf, sports, reading) with a tap moment at each, keyboard arrows, reduced-motion cuts, EN and AR
+- [ ] Put the illustrated character into the room once the photos arrive
 - [ ] New screenshots of the redesigned apps
 
 ### 2. Tabkha: full UI/UX redesign
