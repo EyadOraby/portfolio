@@ -1,5 +1,20 @@
 import type { Shot } from "../content";
 
+/**
+ * Responsive sources for a screenshot: each has a half-width copy for phones
+ * and small frames (`-640.webp` desktop, `-390.webp` phone).
+ */
+export function shotSources(shot: Shot) {
+  const phone = shot.device === "phone";
+  const small = shot.src.replace(/\.webp$/, phone ? "-390.webp" : "-640.webp");
+  return {
+    srcSet: `${small} ${phone ? 390 : 640}w, ${shot.src} ${phone ? 780 : 1280}w`,
+    sizes: phone
+      ? "(max-width: 760px) 60vw, 300px"
+      : "(max-width: 760px) 92vw, 640px",
+  };
+}
+
 /** A screenshot inside a phone or browser frame. */
 export function Frame({
   shot,
@@ -11,17 +26,12 @@ export function Frame({
   eager?: boolean;
 }) {
   const phone = shot.device === "phone";
-  // Each screenshot has a half-width copy for phones and small frames.
-  const small = shot.src.replace(/\.webp$/, phone ? "-390.webp" : "-640.webp");
+  const { srcSet, sizes } = shotSources(shot);
   const img = (
     <img
       src={shot.src}
-      srcSet={`${small} ${phone ? 390 : 640}w, ${shot.src} ${phone ? 780 : 1280}w`}
-      sizes={
-        phone
-          ? "(max-width: 760px) 60vw, 300px"
-          : "(max-width: 760px) 92vw, 640px"
-      }
+      srcSet={srcSet}
+      sizes={sizes}
       alt={shot.alt}
       width={phone ? 780 : 1280}
       height={phone ? 1688 : 800}
