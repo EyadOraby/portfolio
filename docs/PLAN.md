@@ -40,18 +40,18 @@ The goal is work that looks designed by a person, not generated.
 - [ ] Direction board: refined palette, type pair (Latin + Arabic), spacing scale, motion rules
 - [ ] Redesign pass on every section with more whitespace, an aligned grid and fewer competing elements
 - [ ] Illustrated character (see `CHARACTER_PLAN.md`)
-  - [ ] Eyad sends 1–2 clear front photos
-  - [ ] Choose the tool (paid or free) and lock a character sheet (front, side, expressions)
+  - [x] Eyad sent 12 photos (suit, hoodie, travel); used as reference only, not stored in any repo
+  - [x] Drawn by hand as vector shapes (no image generator): `src/components/Character.tsx`, three outfits (suit, hoodie, travel/sport) and three poses (stand, wave, point)
   - [ ] Scenes: hero wave, desk (freelance), video call (professional), one per hobby, footer point
   - [ ] Clean up as vector or WebP, keep stills under 120 KB, add a still pose for reduced motion
   - [ ] `Character` component, placed per the plan, light and dark mode checked
 - [x] Fixed the report findings: Smash Padel card contrast (5.5:1), Arabic heading layout shift (Arabic font loads with display=optional)
 - [ ] Personalise the hobby details in `src/content.ts`
 - [ ] Designed background in the current concept, with the character blending into the existing animations
-- [x] Professional part: a bright "hire card" (white shirt on the dark suit) with an Open to work status on Experience, plus an Open to work badge on the home hero
+- [x] Professional part (with the suit character on the card): a bright "hire card" (white shirt on the dark suit) with an Open to work status on Experience, plus an Open to work badge on the home hero
 - [x] Personal part: one corner per interest in the room (tech, travel, cars and motorbikes, sports, gaming, reading)
 - [x] Guided room tour ("Explore the room" on Off the clock): six corners (travel, desk, gaming, collector's shelf, sports, reading) with a tap moment at each, keyboard arrows, reduced-motion cuts, EN and AR
-- [ ] Put the illustrated character into the room once the photos arrive
+- [x] Character walks the room tour: waves in the whole-room view and points at each corner, in the outfit that fits it
 - [ ] New screenshots of the redesigned apps
 
 ### 2. Tabkha: full UI/UX redesign

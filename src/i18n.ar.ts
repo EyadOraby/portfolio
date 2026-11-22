@@ -125,4 +125,5 @@ export const uiArabic: Record<string, string> = {
   "The book": "الكتاب",
   "Open to work": "متاح للعمل",
   "Flutter engineer, ready for the next team.": "مهندس Flutter، جاهز للفريق القادم.",
+  "Eyad in a suit, ready for work": "إياد ببدلة، جاهز للعمل",
 };

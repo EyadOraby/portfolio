@@ -1,3 +1,4 @@
+import { Character } from "../components/Character";
 import { t } from "../i18n";
 import { useEffect } from "react";
 import { ProShowcase } from "../components/ProShowcase";
@@ -30,6 +31,11 @@ export function WorkView({
       onBack={onBack}
     >
       <div className="hire-card" data-reveal>
+        <Character
+          outfit="suit"
+          className="hire-me"
+          label={t("Eyad in a suit, ready for work")}
+        />
         <span className="hire-status">
           <span className="hire-dot" aria-hidden="true" />
           {t("Open to work")}
