@@ -215,7 +215,7 @@ export const proApps: ProApp[] = [
     tags: ["Coaches", "Packages"],
     links: store("smash-padel/id1662258177"),
     shots: 3,
-    colors: { bg: "#0e92d5", ink: "#FFFFFF", accent: "#FFE36B" },
+    colors: { bg: "#0a6fa3", ink: "#FFFFFF", accent: "#FFE36B" },
     status: "Live",
   },
   {
