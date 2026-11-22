@@ -69,3 +69,15 @@ The Flutter apps get no performance score because they paint into a canvas, so L
 - Web projects: `npm run typecheck`, `npm run lint` (RSVP), `npx vitest run`, `npm run build`.
 - Flutter apps: `flutter analyze`, `flutter test --coverage`, `flutter build web --release`.
 - Lighthouse: `npx lighthouse <url> --preset=desktop` (omit the preset for mobile).
+
+## Update: mobile first load (22 Nov 2026, afternoon)
+
+After adding a branded web splash and trimming the bundled fonts (Lighthouse mobile, `/app/` pages):
+
+| App | First contentful paint | Speed index | Transfer |
+|---|---|---|---|
+| The Maker's Market | 6.8 s → 0.9 s | 9.8 s → 9.2 s | 3,767 → 2,935 KiB |
+| Tabkha | 9.7 s → 1.1 s | 10.2 s → 12.0 s | 3,529 → 3,308 KiB |
+| SANAD | 4.7 s → 1.2 s | 8.4 s → 9.0 s | 3,235 → 3,063 KiB |
+
+The splash removes the blank screen. The time until the app itself is drawn is still dominated by CanvasKit and `main.dart.js` compiling on a throttled phone CPU; speed index moves a few seconds between runs.

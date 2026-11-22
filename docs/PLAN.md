@@ -60,10 +60,10 @@ The goal is work that looks designed by a person, not generated.
 - [ ] UX review of the order flow (browse, item, cart, checkout, tracking) and the admin and courier views
 - [ ] Redesign every screen for phone, tablet and desktop, in English and Arabic
 - [x] Ingredient doodles on Discover, sign-in and empty states
-- [ ] Doodles on onboarding and order success
+- [x] Doodles on onboarding (replacing 1.4 MB of stock photos) and on order tracking
 - [x] Landing page restyled in the new brand
 - [x] App icon: keeps Tabkha's original pot-and-hands logo (decided by Claude: it already fits the warm kitchen brand)
-- [ ] Splash screen in the new brand
+- [x] Splash screen in the new brand (Android, iOS, web)
 - [x] Screen smoke tests (EN/AR, phone/desktop): 43 tests, coverage 13.8% to 51.5%
 - [ ] Waiting on Eyad: Firebase authorised domain for web sign-in
 
@@ -72,10 +72,10 @@ The goal is work that looks designed by a person, not generated.
 - [ ] UX review: services, applications, appointments, Activity, accessibility settings, staff portal
 - [ ] Redesign every screen (the older form pages are the weakest), phone, tablet and desktop, EN and AR
 - [x] Emblems for every service area and the What's new banner
-- [ ] Emblems in empty states
+- [x] Emblems in the Activity empty states; new wordmark on the sign-in screen
 - [x] Landing page restyled
 - [x] New app icon (Android, iOS, web) from assets/app_icon.png
-- [ ] Splash screen in the new brand
+- [x] Splash screen in the new brand (Android, iOS, web)
 
 ### 4. Mini Shop: rename and full redesign
 - [x] New name and focus: The Maker's Market, Egyptian handmade crafts and home goods
@@ -107,7 +107,8 @@ The goal is work that looks designed by a person, not generated.
 
 ### 7. Smaller items carried over
 - [x] RSVP Studio: theme chips pick text colour by contrast ratio
-- [ ] Flutter first load on mobile: deferred loading, trimming assets, trying the Wasm build
+- [x] Flutter first load on mobile: branded web splash (first paint 5–10 s → about 1 s) and trimmed fonts (−830 / −220 / −170 KiB)
+- [ ] Next if needed: deferred loading for the admin and staff areas, or the Wasm build (needs cross-origin isolation headers that GitHub Pages can't set)
 - [ ] Optional: custom domain, and a Resend key for RSVP emails
 - [ ] Phone notifications: run `/config` in Claude Code on the computer
 
