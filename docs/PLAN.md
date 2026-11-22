@@ -46,8 +46,7 @@ The goal is work that looks designed by a person, not generated.
   - [x] Home hero tile: a waving head-and-shoulders portrait; Say hello section: pointing at the contact links
   - [x] Pure vector (a few KB), with still poses for reduced motion
   - [x] `Character` component and `CharacterArt` for use inside other SVGs
-- [x] 3D portrait from Eyad's real photo on the Experience hire card: a cut-out (BiRefNet-portrait), depth and surface normals (Meta Sapiens 0.3B, human-specific) made on this PC with `X:	ools\depth_portrait2.py`; lit per pixel from the normals, warm studio backdrop and a shadow that follows the silhouette, rendered as a WebGL relief that turns towards the pointer, sways and breathes; flat photo without WebGL, still for reduced motion
-- [ ] Full-turn 3D head with Eyad's likeness: needs a `.glb` avatar Eyad makes from a selfie (Avaturn or in3D, his own account); the site can load it in place of the relief
+- [x] Tried a 3D relief of the real photo on the hire card (depth and normals from Sapiens); Eyad preferred the cartoon, so the hire card shows the suit character
 - [x] Fixed the report findings: Smash Padel card contrast (5.5:1), Arabic heading layout shift (Arabic font loads with display=optional)
 - [ ] Personalise the hobby details in `src/content.ts`
 - [x] Designed background: the hero scene (phone of shipped apps, laptop, the character pointing), plus the room, hire card and Say hello

@@ -1,6 +1,6 @@
 import { t } from "../i18n";
 import { useEffect } from "react";
-import { Portrait3D } from "../components/Portrait3D";
+import { Character } from "../components/Character";
 import { ProShowcase } from "../components/ProShowcase";
 import { ArrowIcon, GithubIcon } from "../components/Icons";
 import { education, experience, principles, profile, skills } from "../content";
@@ -31,12 +31,15 @@ export function WorkView({
       onBack={onBack}
     >
       <div className="hire-card" data-reveal>
-        <div className="hire-photo">
-          <Portrait3D
-            className="hire-photo-3d"
-            label={t("Eyad Oraby, Flutter engineer")}
-          />
-        </div>
+        <Character
+          outfit="suit"
+          pose="wave"
+          className="hire-me"
+          label={t("Eyad in a suit, ready for work")}
+        />
+        <span className="hire-me-bust" aria-hidden="true">
+          <Character outfit="suit" pose="wave" viewBox="40 18 150 150" />
+        </span>
         <span className="hire-status">
           <span className="hire-dot" aria-hidden="true" />
           {t("Open to work")}

@@ -128,5 +128,4 @@ export const uiArabic: Record<string, string> = {
   "Eyad in a suit, ready for work": "إياد ببدلة، جاهز للعمل",
   "Say hello": "قل مرحبًا",
   "Hiring, or building something? Let's talk.": "تبحث عن موظف، أو تبني شيئًا؟ لنتحدث.",
-  "Eyad Oraby, Flutter engineer": "إياد عرابي، مهندس Flutter",
 };
