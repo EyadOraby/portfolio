@@ -83,7 +83,7 @@ The goal is work that looks designed by a person, not generated.
 - [ ] Profile name, bio, location and website (GitHub settings; the CLI token can't change them)
 - [x] README per project: screenshots now in all five; refresh them after the redesigns
 - [ ] Ongoing, real activity: every piece of this plan lands as small PRs, giving a steady, honest history. Add an `explorations` repo for small experiments (Flutter animations, Rive, accessibility, RTL) as they happen. No backdated or filler commits: reviewers spot them, and they undo the trust the profile is meant to build.
-- [ ] Decide what to do with the old public repos (`academy-app`, `dashboard`): polish them or archive them
+- [x] Old repos: `academy-app` made private (client planning files), empty `dashboard` archived
 
 ### 6. CV: ATS-friendly, in LaTeX
 - [ ] Eyad sends the existing `.tex` source (not found on this computer; only a March 2023 PDF on the Desktop)
