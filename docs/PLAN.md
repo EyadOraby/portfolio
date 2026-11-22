@@ -65,11 +65,13 @@ The goal is work that looks designed by a person, not generated.
 - [ ] Waiting on Eyad: Firebase authorised domain for web sign-in
 
 ### 3. SANAD: full UI/UX redesign
-- [ ] Brand: civic and trustworthy, accessibility first; personality, palette, type pair, icon family, illustration style
+- [x] Brand (docs/BRAND.md in the repo): deep teal and sand, Atkinson Hyperlegible + Noto Sans Arabic, geometric emblems drawn in code, new wordmark (decided by Claude per Eyad's go-ahead)
 - [ ] UX review: services, applications, appointments, Activity, accessibility settings, staff portal
 - [ ] Redesign every screen (the older form pages are the weakest), phone, tablet and desktop, EN and AR
-- [ ] Custom illustrations for each service area and for empty states
-- [ ] New app icon, splash screen and landing page
+- [x] Emblems for every service area and the What's new banner
+- [ ] Emblems in empty states
+- [x] Landing page restyled
+- [ ] New app icon and splash screen
 
 ### 4. Mini Shop: rename and full redesign
 - [x] New name and focus: The Maker's Market, Egyptian handmade crafts and home goods
