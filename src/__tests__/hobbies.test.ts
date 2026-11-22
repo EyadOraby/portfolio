@@ -59,3 +59,18 @@ describe("collection", () => {
     expect(readPieces({ entries: "x" })).toEqual([]);
   });
 });
+
+describe("Arabic", () => {
+  it("translates every hobby and interest, with a value for every tile", async () => {
+    const { hobbies, interests } = await import("../content");
+    const { pastimesAr, labelsAr } = await import("../content.ar");
+    for (const p of [...hobbies, ...interests]) {
+      const ar = pastimesAr[p.slug];
+      expect(ar, p.slug).toBeDefined();
+      expect(ar.tiles).toHaveLength(p.tiles.length);
+      expect(ar.notes.length).toBeGreaterThan(0);
+      for (const tile of p.tiles)
+        expect(labelsAr[tile.label], tile.label).toBeDefined();
+    }
+  });
+});
