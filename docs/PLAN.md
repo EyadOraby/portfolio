@@ -59,7 +59,7 @@ The goal is work that looks designed by a person, not generated.
 - [x] Brand (docs/BRAND.md in the repo): herb green and tomato on cream, Young Serif + Nunito with Lalezar + Baloo Bhaijaan 2, ingredient doodles (decided by Claude per Eyad's go-ahead)
 - [x] Order flow pass: dish sheet with quantity, menu steppers, basket note for the kitchen (shown to the restaurant), arrival estimate, real dish descriptions
 - [x] Courier role added (deliveries to pick up and drop off, cash collected); admin colours warmed
-- [ ] Redesign every screen for phone, tablet and desktop, in English and Arabic
+- [x] Screens reviewed at phone, tablet and desktop in EN and AR (screen tests at all three sizes); order flow, courier and account updated
 - [x] Ingredient doodles on Discover, sign-in and empty states
 - [x] Doodles on onboarding (replacing 1.4 MB of stock photos) and on order tracking
 - [x] Landing page restyled in the new brand
