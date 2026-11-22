@@ -6,7 +6,7 @@ import { alsoDelivered, education, experience, profile, proApps, projects, skill
 
 /**
  * A one-page CV built from the same content as the site. "Download PDF"
- * uses the browser's print dialog with print-only styles.
+ * serves the ATS-friendly LaTeX build in public/Eyad_Oraby_CV.pdf.
  */
 export function CvView({ onBack }: { onBack: () => void }) {
   useEffect(() => {
@@ -25,9 +25,9 @@ export function CvView({ onBack }: { onBack: () => void }) {
         </button>
         <span className="view-header-end">
           <LangToggle />
-          <button type="button" className="button" onClick={() => window.print()}>
+          <a className="button" href="/Eyad_Oraby_CV.pdf" download="Eyad_Oraby_CV.pdf">
             {t("Download PDF")}
-          </button>
+          </a>
         </span>
       </div>
 
