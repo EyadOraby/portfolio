@@ -45,7 +45,7 @@ The goal is work that looks designed by a person, not generated.
   - [ ] Scenes: hero wave, desk (freelance), video call (professional), one per hobby, footer point
   - [ ] Clean up as vector or WebP, keep stills under 120 KB, add a still pose for reduced motion
   - [ ] `Character` component, placed per the plan, light and dark mode checked
-- [ ] Fix the open report findings: Smash Padel card contrast, Arabic heading layout shift
+- [x] Fixed the report findings: Smash Padel card contrast (5.5:1), Arabic heading layout shift (Arabic font loads with display=optional)
 - [ ] Personalise the hobby details in `src/content.ts`
 - [ ] Designed background in the current concept, with the character blending into the existing animations
 - [ ] Professional part: white shirt and suit look, bright and energetic in both themes, "open to work" message
@@ -79,7 +79,7 @@ The goal is work that looks designed by a person, not generated.
 - [x] Renamed everywhere: package `makers_market`, app ID `com.eyadoraby.makersmarket`, repo `makers-market`, Pages URL, landing page, portfolio entry, README
 - [x] Brand (docs/BRAND.md in the repo): arch logo, clay/indigo/sand palette, Fraunces + Work Sans with Amiri + Readex Pro, Material outlined icons, product art drawn in code (decided by Claude per Eyad's go-ahead)
 - [x] First redesign pass: storefront, makers banner, product page with maker card, cart, checkout, dashboard restyled, EN and AR, phone and desktop
-- [ ] Arabic product names and maker names in the catalogue (currently English data in both languages)
+- [x] Arabic product names, makers, regions and descriptions (tool/catalog_ar.py)
 - [ ] Screen smoke tests to lift coverage past 42.5%
 
 ### 5. GitHub profile
@@ -102,7 +102,7 @@ The goal is work that looks designed by a person, not generated.
 - [x] PDF on the portfolio (CV page, Download PDF) and linked from the GitHub profile
 
 ### 7. Smaller items carried over
-- [ ] RSVP Studio: theme-chip label contrast
+- [x] RSVP Studio: theme chips pick text colour by contrast ratio
 - [ ] Flutter first load on mobile: deferred loading, trimming assets, trying the Wasm build
 - [ ] Optional: custom domain, and a Resend key for RSVP emails
 - [ ] Phone notifications: run `/config` in Claude Code on the computer
