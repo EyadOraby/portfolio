@@ -3619,3 +3619,12 @@ a.widget:active {
     display: none;
   }
 }
+
+/* Arabic letters join, so no letter spacing or capitals there. */
+[dir="rtl"] .stamp-name,
+[dir="rtl"] .garage-tag,
+[dir="rtl"] .travel-label,
+[dir="rtl"] .stamp-region {
+  letter-spacing: 0;
+  text-transform: none;
+}

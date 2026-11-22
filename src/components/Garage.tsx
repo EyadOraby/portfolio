@@ -95,7 +95,7 @@ function Showroom() {
         <div className="showroom-label" aria-live="polite">
           <span>{car.maker}</span>
           <strong>{car.name}</strong>
-          <small>{car.line}</small>
+          <small>{t(car.line)}</small>
         </div>
         {webgl && <span className="showroom-hint">{t("Drag to turn")}</span>}
       </div>

@@ -123,7 +123,7 @@ export function TravelMap() {
         <p className="travel-label" aria-live="polite">
           {label ? (
             <>
-              <strong>{label.name}</strong> · {t(label.region)}
+              <strong>{t(label.name)}</strong> · {t(label.region)}
             </>
           ) : (
             <>
@@ -222,7 +222,7 @@ export function TravelMap() {
               }
               onClick={() => setFocus(focus === p.id ? null : p.id)}
             >
-              <span className="stamp-name">{p.name}</span>
+              <span className="stamp-name">{t(p.name)}</span>
               <span className="stamp-region">{t(p.region)}</span>
             </button>
           </li>
