@@ -33,7 +33,7 @@ The site is dark by design; the hire card is the deliberate exception.
 
 ## The character
 
-Drawn in code (`src/components/Character.tsx`) from Eyad's photos: wavy dark hair, thick brows; light stubble with the suit, a fuller beard in casual outfits (black zip hoodie over a blue tee; white tee and aviators for travel and sport). The professional Experience page uses a real portrait (`public/me/eyad-professional.jpg`) instead; the cartoon is for the rest of the site and the personal side.
+An avatar-style cartoon (big head, soft shading, expressive eyes, in the spirit of a Bitmoji but drawn from scratch) in code (`src/components/Character.tsx`) from Eyad's photos: wavy dark hair, thick brows; light stubble with the suit, a fuller beard in casual outfits (black zip hoodie over a blue tee; white tee and aviators for travel and sport). The professional Experience page uses a real portrait (`public/me/eyad-professional.jpg`) instead; the cartoon is for the rest of the site and the personal side.
 
 | Where | Outfit | Pose |
 |---|---|---|

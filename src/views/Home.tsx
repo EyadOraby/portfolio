@@ -56,7 +56,7 @@ export function Home({
           <HeroScene />
           <div className="intro-top">
             <span className="monogram monogram-me" aria-hidden="true">
-              <Character outfit="suit" pose="wave" viewBox="28 6 160 160" />
+              <Character outfit="suit" pose="wave" viewBox="40 18 150 150" />
             </span>
             <span className="intro-pills">
               <span className="pill pill-hire">
