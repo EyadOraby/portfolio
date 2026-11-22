@@ -11,6 +11,7 @@ Where everything stands, so work can resume from any machine. The full to-do lis
 - **SANAD:** calm civic redesign (teal and sand, Atkinson Hyperlegible, geometric emblems, wordmark).
 - **Portfolio:** "Explore the room" guided tour on Off the clock, contrast and Arabic layout-shift fixes, fresh screenshots of every app.
 - **Later on 22 Nov:** SANAD government and medical pages rebuilt (shared layouts, real request tracking, one provider page); Tabkha order flow (dish sheet, kitchen note) and a new Courier role; splash screens and trimmed fonts in all three apps; tablet size in every screen test; illustrated character on the portfolio (hero, hire card, room, Say hello); Arabic CV.
+- **3D portrait:** the Experience hire card now shows Eyad's real photo as a 3D relief that follows the pointer (WebGL, no library, about 40 KB of images).
 - Brand guides live in each app's `docs/BRAND.md`. Everything still open is in [PLAN.md](PLAN.md).
 
 ## Projects

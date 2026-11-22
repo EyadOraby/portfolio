@@ -1,5 +1,6 @@
 import { t } from "../i18n";
 import { useEffect } from "react";
+import { Portrait3D } from "../components/Portrait3D";
 import { ProShowcase } from "../components/ProShowcase";
 import { ArrowIcon, GithubIcon } from "../components/Icons";
 import { education, experience, principles, profile, skills } from "../content";
@@ -30,14 +31,12 @@ export function WorkView({
       onBack={onBack}
     >
       <div className="hire-card" data-reveal>
-        <img
-          className="hire-photo"
-          src="/me/eyad-professional.jpg"
-          alt={t("Eyad Oraby, Flutter engineer")}
-          width={522}
-          height={556}
-          loading="eager"
-        />
+        <div className="hire-photo">
+          <Portrait3D
+            className="hire-photo-3d"
+            label={t("Eyad Oraby, Flutter engineer")}
+          />
+        </div>
         <span className="hire-status">
           <span className="hire-dot" aria-hidden="true" />
           {t("Open to work")}
