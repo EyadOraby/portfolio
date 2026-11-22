@@ -1,6 +1,6 @@
 # Status across projects
 
-Where everything stands, so work can resume from any machine. Updated 2026-11-22 (evening).
+Where everything stands, so work can resume from any machine. The full to-do list and workflow are in [PLAN.md](PLAN.md). Updated 2026-11-22 (evening).
 
 ## Projects
 
