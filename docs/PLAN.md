@@ -61,7 +61,7 @@ The goal is work that looks designed by a person, not generated.
 - [x] Ingredient doodles on Discover, sign-in and empty states
 - [ ] Doodles on onboarding and order success
 - [x] Landing page restyled in the new brand
-- [x] New app icon (Android, iOS, web) from assets/app_icon.png
+- [x] App icon: keeps Tabkha's original pot-and-hands logo (decided by Claude: it already fits the warm kitchen brand)
 - [ ] Splash screen in the new brand
 - [x] Screen smoke tests (EN/AR, phone/desktop): 43 tests, coverage 13.8% to 51.5%
 - [ ] Waiting on Eyad: Firebase authorised domain for web sign-in
@@ -83,6 +83,7 @@ The goal is work that looks designed by a person, not generated.
 - [x] First redesign pass: storefront, makers banner, product page with maker card, cart, checkout, dashboard restyled, EN and AR, phone and desktop
 - [x] Arabic product names, makers, regions and descriptions (tool/catalog_ar.py)
 - [x] Screen smoke tests (EN/AR, phone/desktop): 50 tests, coverage 42.5% to 84.1%
+- [x] New app icon (the clay arch with the zigzag) for Android, iOS and the web
 
 ### 5. GitHub profile
 - [x] Profile README repo (`EyadOraby/EyadOraby`): intro, shipped apps, open-source table, current focus (CV link to add once the new CV is out)
