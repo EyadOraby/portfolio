@@ -2,6 +2,15 @@
 
 Everything discussed and not yet done, in one place. Tick items as they land. Updated 2026-11-22.
 
+## Decisions so far (22 Nov 2026)
+
+- **Mini Shop:** becomes a shop for Egyptian handmade crafts and home goods. The look is earthy, patterned and story-led. Name to be chosen.
+- **Tabkha:** warm home kitchen. Cream, terracotta and herb green, hand-drawn ingredient illustrations, a friendly rounded serif.
+- **SANAD:** calm civic. Deep teal and sand, generous spacing, simple geometric illustrations, very high legibility.
+- **Portfolio:** keep the current concept and animations, and add a designed background that the animated character lives in.
+  - *Professional part:* suit and white-shirt style. Bright and energetic, even in dark mode, saying "open to work, ready for anything".
+  - *Personal part:* a mix of interests where each space or corner is one interest or hobby, possibly with a small mini game as a showcase.
+
 ## How work runs (workflow)
 
 1. **Decide:** design choices come from Eyad first (style, names, fonts, colours). Nothing gets built on a guess.
