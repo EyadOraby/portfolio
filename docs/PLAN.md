@@ -77,9 +77,11 @@ The goal is work that looks designed by a person, not generated.
 - [ ] Screen smoke tests to lift coverage past 42.5%
 
 ### 5. GitHub profile
-- [ ] Profile README repo (`EyadOraby/EyadOraby`): a short intro, what I build, current focus, and links to the portfolio and CV
-- [ ] Pin the best six repos, each with a description, topics, live link and screenshot in its README
-- [ ] README per project: what it is, screenshots, stack, how to run, tests, live demo
+- [x] Profile README repo (`EyadOraby/EyadOraby`): intro, shipped apps, open-source table, current focus (CV link to add once the new CV is out)
+- [x] Descriptions, topics and live links on the five main repos
+- [ ] Pin the six repos on the profile (GitHub's site only: Customize your pins)
+- [ ] Profile name, bio, location and website (GitHub settings; the CLI token can't change them)
+- [x] README per project: screenshots now in all five; refresh them after the redesigns
 - [ ] Ongoing, real activity: every piece of this plan lands as small PRs, giving a steady, honest history. Add an `explorations` repo for small experiments (Flutter animations, Rive, accessibility, RTL) as they happen. No backdated or filler commits: reviewers spot them, and they undo the trust the profile is meant to build.
 - [ ] Decide what to do with the old public repos (`academy-app`, `dashboard`): polish them or archive them
 
