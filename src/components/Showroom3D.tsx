@@ -84,52 +84,85 @@ function glassStrip(
 function wheel(m: CarModel, outward: 1 | -1) {
   const r = m.wheelRadius;
   const g = new THREE.Group();
+  const rubber = new THREE.MeshStandardMaterial({
+    color: 0x0f1013,
+    roughness: 0.92,
+  });
   const tyre = new THREE.Mesh(
-    new THREE.CylinderGeometry(r, r, 0.25, 40),
-    new THREE.MeshStandardMaterial({ color: 0x0f1013, roughness: 0.9 }),
+    new THREE.CylinderGeometry(r - 0.01, r - 0.01, 0.24, 48),
+    rubber,
   );
   tyre.rotation.x = Math.PI / 2;
   g.add(tyre);
+  // Rounded sidewalls on both faces.
+  for (const z of [-0.12, 0.12]) {
+    const wall = new THREE.Mesh(
+      new THREE.TorusGeometry(r - 0.05, 0.05, 12, 48),
+      rubber,
+    );
+    wall.position.z = z;
+    g.add(wall);
+  }
   const metal = new THREE.MeshStandardMaterial({
     color: m.rim,
     metalness: 0.85,
-    roughness: 0.3,
+    roughness: 0.28,
   });
   const barrel = new THREE.Mesh(
-    new THREE.CylinderGeometry(r * 0.74, r * 0.74, 0.255, 40),
+    new THREE.CylinderGeometry(r * 0.7, r * 0.7, 0.25, 40),
     new THREE.MeshStandardMaterial({
-      color: 0x1a1c20,
+      color: 0x15171b,
       metalness: 0.6,
       roughness: 0.5,
     }),
   );
   barrel.rotation.x = Math.PI / 2;
   g.add(barrel);
+
   const face = new THREE.Group();
-  face.position.z = 0.13 * outward;
-  for (let i = 0; i < 5; i++) {
-    const spoke = new THREE.Mesh(
-      new THREE.BoxGeometry(r * 0.72, 0.07, 0.03),
-      metal,
-    );
-    spoke.position.x = (r * 0.72) / 2;
-    const arm = new THREE.Group();
-    arm.rotation.z = (i * Math.PI * 2) / 5;
-    arm.add(spoke);
-    face.add(arm);
+  face.position.z = 0.135 * outward;
+  const lip = new THREE.Mesh(
+    new THREE.TorusGeometry(r * 0.71, 0.018, 8, 48),
+    metal,
+  );
+  face.add(lip);
+  const len = r * 0.66;
+  const offsets = m.doubleSpokes ? [-0.07, 0.07] : [0];
+  for (let i = 0; i < m.spokes; i++) {
+    for (const o of offsets) {
+      const spoke = new THREE.Mesh(
+        new THREE.BoxGeometry(len, m.doubleSpokes ? 0.034 : 0.05, 0.035),
+        metal,
+      );
+      spoke.position.x = len / 2 + 0.04;
+      const arm = new THREE.Group();
+      arm.rotation.z = (i * Math.PI * 2) / m.spokes + o;
+      arm.add(spoke);
+      face.add(arm);
+    }
   }
   const hub = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.06, 0.06, 0.04, 20),
+    new THREE.CylinderGeometry(0.075, 0.075, 0.05, 24),
     metal,
   );
   hub.rotation.x = Math.PI / 2;
   face.add(hub);
+  const cap = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.04, 0.04, 0.055, 20),
+    new THREE.MeshStandardMaterial({
+      color: 0x111215,
+      metalness: 0.4,
+      roughness: 0.4,
+    }),
+  );
+  cap.rotation.x = Math.PI / 2;
+  face.add(cap);
   g.add(face);
   const caliper = new THREE.Mesh(
-    new THREE.BoxGeometry(0.1, 0.2, 0.06),
+    new THREE.BoxGeometry(0.12, 0.22, 0.07),
     new THREE.MeshStandardMaterial({ color: m.caliper, roughness: 0.4 }),
   );
-  caliper.position.set(-r * 0.45, r * 0.15, 0.08 * outward);
+  caliper.position.set(-r * 0.42, r * 0.18, 0.07 * outward);
   // The caliper stays put while the wheel turns.
   return { group: g, spin: [face], caliper };
 }
@@ -226,7 +259,13 @@ function buildCar(m: CarModel, paint: THREE.MeshPhysicalMaterial) {
   for (const side of [-1, 1]) {
     const mirror = new THREE.Mesh(
       new THREE.BoxGeometry(0.16, 0.09, 0.14),
-      paint,
+      m.id === "golf"
+        ? new THREE.MeshStandardMaterial({
+            color: m.accent,
+            metalness: 0.9,
+            roughness: 0.35,
+          })
+        : paint,
     );
     mirror.position.set(
       m.windscreen[1][0] - 0.12,
@@ -249,20 +288,90 @@ function buildCar(m: CarModel, paint: THREE.MeshPhysicalMaterial) {
     );
     car.add(skirt);
   }
+  const housing = new THREE.MeshPhysicalMaterial({
+    color: 0x0d1016,
+    metalness: 0.3,
+    roughness: 0.1,
+    clearcoat: 1,
+  });
+  const chrome = new THREE.MeshStandardMaterial({
+    color: 0xcfd3d8,
+    metalness: 1,
+    roughness: 0.18,
+  });
+  const white = lamp(0xffffff, 2.4);
+
+  // Headlights: a dark glass housing with the light signature on top.
   for (const side of [-1, 1]) {
-    const head = new THREE.Mesh(
-      new THREE.BoxGeometry(0.08, 0.07, 0.34),
-      lamp(0xffffff, 2.2),
+    const z = side * (m.width / 2 - 0.32);
+    const box = new THREE.Mesh(
+      new THREE.BoxGeometry(0.06, 0.11, 0.42),
+      housing,
     );
-    head.position.set(front - 0.05, m.headlightY, side * (m.width / 2 - 0.3));
-    car.add(head);
+    box.position.set(front - 0.05, m.headlightY, z);
+    car.add(box);
+    if (m.lights === "strips") {
+      for (const dy of [0.025, -0.02]) {
+        const strip = new THREE.Mesh(
+          new THREE.BoxGeometry(0.02, 0.016, 0.36),
+          white,
+        );
+        strip.position.set(front - 0.015, m.headlightY + dy, z);
+        strip.rotation.x = side * 0.12;
+        car.add(strip);
+      }
+    } else {
+      const unit = new THREE.Mesh(
+        new THREE.BoxGeometry(0.02, 0.05, 0.3),
+        white,
+      );
+      unit.position.set(front - 0.015, m.headlightY, z);
+      car.add(unit);
+    }
   }
-  const grille = new THREE.Mesh(
-    new THREE.BoxGeometry(0.06, 0.22, m.width * 0.5),
-    dark,
-  );
-  grille.position.set(front - 0.02, m.headlightY - 0.24, 0);
-  car.add(grille);
+  if (m.lights === "bar") {
+    const bar = new THREE.Mesh(
+      new THREE.BoxGeometry(0.02, 0.014, m.width - 1.0),
+      white,
+    );
+    bar.position.set(front - 0.03, m.headlightY + 0.045, 0);
+    car.add(bar);
+  }
+
+  // Grille: a slim slot with a lower intake, or a big single-frame grille.
+  if (m.grille === "frame") {
+    const frame = new THREE.Mesh(
+      new THREE.BoxGeometry(0.06, 0.32, m.width * 0.44),
+      dark,
+    );
+    frame.position.set(front - 0.03, m.headlightY - 0.22, 0);
+    car.add(frame);
+    const surround = new THREE.Mesh(
+      new THREE.BoxGeometry(0.05, 0.34, m.width * 0.46),
+      new THREE.MeshStandardMaterial({
+        color: m.accent,
+        metalness: 0.7,
+        roughness: 0.35,
+      }),
+    );
+    surround.position.set(front - 0.045, m.headlightY - 0.22, 0);
+    car.add(surround);
+  } else {
+    const slot = new THREE.Mesh(
+      new THREE.BoxGeometry(0.05, 0.07, m.width * 0.5),
+      dark,
+    );
+    slot.position.set(front - 0.03, m.headlightY - 0.03, 0);
+    car.add(slot);
+    const intake = new THREE.Mesh(
+      new THREE.BoxGeometry(0.06, 0.17, m.width * 0.62),
+      dark,
+    );
+    intake.position.set(front - 0.04, m.headlightY - 0.3, 0);
+    car.add(intake);
+  }
+
+  // Tail lights across the back, a diffuser and the exhaust tips.
   const tail = new THREE.Mesh(
     new THREE.BoxGeometry(0.06, 0.05, m.width - 0.3),
     lamp(0xff2a2a, 1.8),
@@ -270,11 +379,77 @@ function buildCar(m: CarModel, paint: THREE.MeshPhysicalMaterial) {
   tail.position.set(0.0, m.taillightY, 0);
   car.add(tail);
   const diffuser = new THREE.Mesh(
-    new THREE.BoxGeometry(0.1, 0.14, m.width * 0.7),
+    new THREE.BoxGeometry(0.12, 0.16, m.width * 0.72),
     dark,
   );
-  diffuser.position.set(0.04, m.sill + 0.08, 0);
+  diffuser.position.set(0.04, m.sill + 0.09, 0);
   car.add(diffuser);
+  for (const z of m.exhausts) {
+    const tip = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.045, 0.045, 0.14, 24, 1, true),
+      chrome,
+    );
+    tip.rotation.z = Math.PI / 2;
+    if (m.ovalExhausts) tip.scale.set(1, 1, 1.7);
+    tip.position.set(0.0, m.sill + 0.06, z);
+    car.add(tip);
+    const hole = new THREE.Mesh(new THREE.CircleGeometry(0.04, 20), dark);
+    hole.rotation.y = -Math.PI / 2;
+    if (m.ovalExhausts) hole.scale.set(1.7, 1, 1);
+    hole.position.set(-0.06, m.sill + 0.06, z);
+    car.add(hole);
+  }
+
+  // Wheel arches: flared in body colour, or framed in black trim.
+  const archMat = m.arches === "flare" ? paint : dark;
+  for (const x of m.wheels) {
+    for (const side of [-1, 1]) {
+      const arch = new THREE.Mesh(
+        new THREE.TorusGeometry(
+          m.wheelRadius + ARCH_GAP + 0.02,
+          m.arches === "flare" ? 0.055 : 0.04,
+          10,
+          32,
+          Math.PI,
+        ),
+        archMat,
+      );
+      arch.position.set(x, m.wheelRadius, side * (m.width / 2 - 0.03));
+      car.add(arch);
+    }
+  }
+
+  // Roof spoiler over the tailgate, and door shut lines.
+  if (m.roofSpoiler) {
+    const [rx, ry] = m.rearGlass[1];
+    const spoiler = new THREE.Mesh(
+      new THREE.BoxGeometry(0.28, 0.035, cabinW - 0.06),
+      paint,
+    );
+    spoiler.position.set(rx - 0.02, ry + 0.035, 0);
+    spoiler.rotation.z = -0.08;
+    car.add(spoiler);
+  }
+  const shut = new THREE.MeshBasicMaterial({ color: 0x050608 });
+  const doorH = belt - m.sill - 0.12;
+  const doorXs = [
+    m.windscreen[1][0] - 0.08,
+    (m.glass[1][0] + m.glass[2][0]) / 2,
+  ];
+  for (const x of doorXs) {
+    for (const side of [-1, 1]) {
+      const line = new THREE.Mesh(
+        new THREE.BoxGeometry(0.008, doorH, 0.004),
+        shut,
+      );
+      line.position.set(
+        x,
+        m.sill + 0.08 + doorH / 2,
+        side * (m.width / 2 + 0.003),
+      );
+      car.add(line);
+    }
+  }
 
   const spinning: THREE.Object3D[] = [];
   for (const x of m.wheels) {

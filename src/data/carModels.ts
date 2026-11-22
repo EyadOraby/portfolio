@@ -34,6 +34,21 @@ export type CarModel = {
   paints: { name: string; hex: string }[];
   rim: string;
   caliper: string;
+  /** Wheel design: spoke count, and whether each spoke is doubled. */
+  spokes: number;
+  doubleSpokes: boolean;
+  /** Front lights: one bar across the nose, or two slanted strips. */
+  lights: "bar" | "strips";
+  /** Grille: a slim slot, or a large single-frame trapezoid. */
+  grille: "slot" | "frame";
+  /** Arches: flared in body colour, or framed in black trim. */
+  arches: "flare" | "trim";
+  /** Exhaust tips across the back, as offsets from the centre in metres. */
+  exhausts: number[];
+  ovalExhausts: boolean;
+  roofSpoiler: boolean;
+  /** Accent for small trim pieces (mirror caps, light strips). */
+  accent: string;
 };
 
 export const carModels: CarModel[] = [
@@ -84,6 +99,15 @@ export const carModels: CarModel[] = [
     ],
     rim: "#b8bec7",
     caliper: "#1f4fa3",
+    spokes: 5,
+    doubleSpokes: true,
+    lights: "bar",
+    grille: "slot",
+    arches: "flare",
+    exhausts: [-0.62, -0.5, 0.5, 0.62],
+    ovalExhausts: false,
+    roofSpoiler: true,
+    accent: "#c8ccd2",
   },
   {
     id: "rs3",
@@ -133,6 +157,15 @@ export const carModels: CarModel[] = [
     ],
     rim: "#2b2e33",
     caliper: "#c62828",
+    spokes: 10,
+    doubleSpokes: false,
+    lights: "strips",
+    grille: "frame",
+    arches: "flare",
+    exhausts: [-0.6, 0.6],
+    ovalExhausts: true,
+    roofSpoiler: false,
+    accent: "#2b2e33",
   },
   {
     id: "rs6",
@@ -181,6 +214,15 @@ export const carModels: CarModel[] = [
     ],
     rim: "#1d1f23",
     caliper: "#c62828",
+    spokes: 10,
+    doubleSpokes: false,
+    lights: "strips",
+    grille: "frame",
+    arches: "flare",
+    exhausts: [-0.68, 0.68],
+    ovalExhausts: true,
+    roofSpoiler: true,
+    accent: "#1d1f23",
   },
   {
     id: "cupra",
@@ -229,6 +271,15 @@ export const carModels: CarModel[] = [
     ],
     rim: "#b87333",
     caliper: "#b87333",
+    spokes: 5,
+    doubleSpokes: true,
+    lights: "strips",
+    grille: "frame",
+    arches: "trim",
+    exhausts: [-0.62, -0.5, 0.5, 0.62],
+    ovalExhausts: false,
+    roofSpoiler: true,
+    accent: "#b87333",
   },
 ];
 
