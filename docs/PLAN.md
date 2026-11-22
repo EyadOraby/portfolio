@@ -54,11 +54,13 @@ The goal is work that looks designed by a person, not generated.
 - [ ] New screenshots of the redesigned apps
 
 ### 2. Tabkha: full UI/UX redesign
-- [ ] Brand: name stays; personality, palette, type pair, icon family, illustration style
+- [x] Brand (docs/BRAND.md in the repo): herb green and tomato on cream, Young Serif + Nunito with Lalezar + Baloo Bhaijaan 2, ingredient doodles (decided by Claude per Eyad's go-ahead)
 - [ ] UX review of the order flow (browse, item, cart, checkout, tracking) and the admin and courier views
 - [ ] Redesign every screen for phone, tablet and desktop, in English and Arabic
-- [ ] Custom illustrations: empty states, onboarding, success and errors
-- [ ] New app icon, splash screen and landing page in the new brand
+- [x] Ingredient doodles on Discover, sign-in and empty states
+- [ ] Doodles on onboarding and order success
+- [x] Landing page restyled in the new brand
+- [ ] New app icon and splash screen
 - [ ] Screen smoke tests (same pattern as SANAD)
 - [ ] Waiting on Eyad: Firebase authorised domain for web sign-in
 
